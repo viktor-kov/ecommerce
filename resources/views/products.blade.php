@@ -3,12 +3,16 @@
 @section('title')
 
 @section('category-name')
-    <h1 class="font-bold text-5xl h-32 flex items-center">{{$category_name->category_name}}</h1>
+    @if ($products->isEmpty())
+    <h1 class="text-4xl">Žiadne výsledky z gategórie <span class="font-bold">{{$category_name->category_name}}</span></h1>
+    @else
+        <h1 class="text-4xl"><span class="font-bold">{{$category_name->category_name}}</span></h1>
+    @endif
 @endsection
 
 @section('content')
 @if(!$products->isEmpty())
-    <ul class="product-section w-4/5 m-auto grid justify-items-center xl:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1 ">
+    <ul class="product-section w-4/5 m-auto grid justify-items-center xl:grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1">
         @foreach ($products as $product)
             <div class="product-container w-9/10  flex flex-col bg-gray-200 shadow-xl" >
                 <a href="{{$id}}/{{$product->slug}}">
@@ -26,7 +30,5 @@
             </div>
         @endforeach
     </ul>
-@else
-    <h1>Žiadne výsledky</h1>
 @endif
 @endsection

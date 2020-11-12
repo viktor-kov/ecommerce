@@ -28,7 +28,7 @@
         <nav class="mb-10 h-12 bg-gray-400">
 
         </nav>
-        <main>
+        <main class="h-screen">
             @yield('content')
         </main>
         <aside>
