@@ -1,9 +1,7 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth-master')
 
+@section('content')
+    <section class="w-2/5 m-auto mt-48">
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -44,5 +42,5 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+    </section>
+@endsection
