@@ -18,21 +18,14 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
-    <body class="container font-sans antialiased w-2/3 mx-auto">
-        <header class="h-10 bg-black">
-            @include('header')
-        </header>
-        <section>
-            @yield('hero')
-        </section>
+    <header class="h-10 bg-black">
+        @include('header')
+    </header>
+    <body class="container font-sans antialiased w-2/3 mx-auto h-screen">
+        @yield('navigation')
         <main>
-            @yield('content')
+            <section>
+                @yield('stats')
+            </section>
         </main>
-        <aside>
-            @yield('often-bought')
-        </aside>
-        <footer class="bg-black h-40 mt-10">
-            @include('footer')
-        </footer>
     </body>
-</html>

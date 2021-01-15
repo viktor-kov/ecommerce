@@ -21,8 +21,9 @@
         <aside class="mt-3">
             <p>Chcete odoberať novinky zo strány easy-components.sk?</p>
             <p>Zadajte svoj email na odoberanie noviniek</p>
-            <form action="">
-                <input type="mail" placeholder="email@email.com" class="w-full text-gray-700">
+            <form action="{{route('subscribe.update')}}" method="post">
+                @csrf
+                <input type="mail" name="email" placeholder="email@email.com" class="w-full text-gray-700 p-1">
                 <input type="submit" value="ODOBERAŤ" class="bg-green-500 p-2 mt-2 float-right cursor-pointer">
             </form>
         </aside>
