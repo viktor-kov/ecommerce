@@ -43,7 +43,7 @@ class ProductController extends Controller
         $new_product->save();
     
 
-        return back();
+        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug]);
     }
 
     public function update(Request $request) {
@@ -80,7 +80,7 @@ class ProductController extends Controller
             'photo_path' => $product_photo_path,
         ]);
 
-        return back();
+        return redirect()->route('product.show', ['id' => $product_category, 'slug' => $product_slug]);
     }
 
     public function delete(Request $request) {
