@@ -25,36 +25,33 @@ use App\Http\Controllers\InformationsController;
 |
 */
 
+//main routes
 Route::get('/', [PagesController::class, 'home'])->name('home.index');
-
+Route::get('/profile', [PagesController::class, 'profile'])->name('profile.show');
+Route::get('/admin', [PagesController::class, 'admin'])->middleware('admin')->name('adminpanel');
 Route::get('/products/{id}/{slug?}', [PagesController::class, 'products'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
-Route::get('/profile', [PagesController::class, 'profile'])->name('profile.show');
-
-Route::get('/admin', [PagesController::class, 'admin'])->middleware('admin')->name('adminpanel');
-
-Route::get('/allusers/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
-
+//product routes
 Route::get('/allproducts/{slug?}', [PagesController::class, 'all_products'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
-
 Route::get('/newproduct', [PagesController::class, 'new_product'])->middleware('admin')->name('newproduct');
-
 Route::post('/addproduct', [ProductController::class, 'store'])->middleware('admin')->name('addproduct');
-
 Route::get('/edit/{id?}', [PagesController::class, 'edit_product'])->middleware('admin')->name('editproduct');
-
 Route::post('/editproduct/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
-
 Route::post('/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
 
+
+
+//user info routes
 Route::post('/userupdate/{id}', [UserRoleController::class, 'update'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
-
+Route::get('/allusers/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
 Route::post('/informations_update', [InformationsController::class, 'store']);
-
 Route::post('/avatar_update', [UserAvatarController::class, 'update']);
 
+//subscribe route
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.update');
 
+
+//cart 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
