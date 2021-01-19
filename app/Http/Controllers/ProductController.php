@@ -29,7 +29,7 @@ class ProductController extends Controller
         $product_without_dph = ($request->product_price) * 0.80;
 
         $extension = $request->file('product_image')->extension();
-        $photo_name = $product_slug.time().'.'.$extension;
+        $photo_name = $product_slug.'.'.$extension;
         $photo_path = $request->file('product_image')->storeAs('products', $photo_name, 'public');
 
         $new_product->name = $product_name; 
@@ -57,7 +57,7 @@ class ProductController extends Controller
             $delete_product_photo = Storage::disk('public')->delete($photo_path);
 
             $extension = $request->file('product_image')->extension();
-            $photo_name = $product_slug.time().'.'.$extension;
+            $photo_name = $product_slug.'.'.$extension;
             $photo_path = $request->file('product_image')->storeAs('products', $photo_name, 'public');
         }
         else {

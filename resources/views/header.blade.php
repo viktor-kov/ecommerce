@@ -5,20 +5,27 @@
     </div>
 
     <ul class="flex w-9/12 justify-end">
+            <li class="pr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
+                <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart"></i></a>
+                
+                @if (Cart::count() > 0)
+                    <span>{{Cart::count()}}</span>
+                @endif
+            </li>
         @if (! auth()->user())
             <li class="pr-8"><a href="{{ route('login')}}">Prihlásiť sa</a></li>
             <li class="pr-4"><a href="{{ route('register')}}">Zaregistrovať sa</a></li>
         @else
-        <li class="pr-4"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
-        <li class="pr-4"> 
-            <form method="POST" action="{{ route('logout') }}">
-            @csrf
+            <li class="pr-4"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
+            <li class="pr-4"> 
+                <form method="POST" action="{{ route('logout') }}">
+                @csrf
 
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                Odhlásiť sa
-            </a>
-            </form>
-        </li>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    Odhlásiť sa
+                </a>
+                </form>
+            </li>
         @endif
     </ul>
 </nav>

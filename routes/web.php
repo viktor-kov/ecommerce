@@ -5,12 +5,14 @@ use App\Models\Information;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\PagesController;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\InformationsController;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [PagesController::class, 'home']);
+Route::get('/', [PagesController::class, 'home'])->name('home.index');
 
-Route::get('/products/{id}/{slug?}', [PagesController::class, 'products'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+']);
+Route::get('/products/{id}/{slug?}', [PagesController::class, 'products'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 Route::get('/profile', [PagesController::class, 'profile'])->name('profile.show');
 
@@ -52,5 +54,15 @@ Route::post('/informations_update', [InformationsController::class, 'store']);
 Route::post('/avatar_update', [UserAvatarController::class, 'update']);
 
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.update');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::put('/cartupdate/{row_id}', [CartController::class, 'update'])->name('cart.update');
+
+Route::get('/empty', function() {
+    Cart::destroy();
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
