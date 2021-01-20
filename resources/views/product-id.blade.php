@@ -34,13 +34,19 @@
         <li class="product-container w-9/10  flex flex-col bg-gray-200 shadow-xl h-100">
             <a href="{{route('product.show', $featured_product->category)}}/{{$featured_product->slug}}">
                 <div class="product-img">
-                    <img src="{{asset('img/'.$featured_product->photo_path)}}" alt="{{$featured_product->name}}" class="h-72">
+                    <img src="{{asset('img/'.$featured_product->photo_path)}}" alt="{{$featured_product->name}}" class="h-72 w-80">
                 </div>
                 <div class="product-information p-2">
                     <h2 class="product-title font-semibold"><a href="../{{$featured_product->category}}/{{$featured_product->slug}}">{{$featured_product->name}}</a></h2>
                     <div class="product-price flex justify-between items-center mt-4">
                         <span class="text-red-600 font-semibold text-lg">{{$featured_product->price}}€</span>
-                        <a href="" class="text-white bg-green-400 p-4 md:break-words">Vložiť do košíka</a>
+                        <form action="{{route('cart.store')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{$featured_product->slug}}">
+                            <input type="hidden" name="product_name" value="{{$featured_product->name}}">
+                            <input type="hidden" name="product_category" value="{{$featured_product->category}}">
+                            <input type="submit" value="Pridať do košíka" class="p-4 bg-green-400 text-white cursor-pointer">
+                        </form>
                     </div>
                 </div>
             </a>
