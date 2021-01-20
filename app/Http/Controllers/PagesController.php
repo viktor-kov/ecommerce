@@ -14,6 +14,7 @@ class PagesController extends Controller
     public function home() {
         return view('home', [
             'title' => 'Domov',
+            'categories' => Category::get(),
         ]);
     }
 
