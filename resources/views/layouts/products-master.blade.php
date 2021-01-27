@@ -30,13 +30,13 @@
         <nav class="mb-10 h-12 bg-gray-400">
 
         </nav>
-        <main class="h-screen">
+        <main class="min-h-screen">
             @yield('content')
         </main>
         <aside>
             @yield('often-bought')
         </aside>
-        <footer class="bg-black h-40 mt-10">
+        <footer class="bg-black mt-10">
             @include('footer')
         </footer>
     </body>
