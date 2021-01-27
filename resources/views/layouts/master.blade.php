@@ -20,20 +20,20 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
-    <body class="container font-sans antialiased w-2/3 mx-auto">
+    <body class="container font-sans antialiased mx-auto">
         <header class="h-10 bg-black">
             @include('header')
         </header>
         <section>
             @yield('hero')
         </section>
-        <main class="min-h-full">
+        <main>
             @yield('content')
         </main>
         <aside>
             @yield('often-bought')
         </aside>
-        <footer class="bg-black h-40 mt-10">
+        <footer class="bg-black mt-10">
             @include('footer')
         </footer>
     </body>

@@ -1,24 +1,26 @@
-<section class="flex justify-evenly text-white">
-    <div class="navigation w-64 h-32 list-none">
-        <div class="line h-px w-full bg-white mt-4 mb-4"></div>
-        <nav class="ml-4">
-            <li><a href="">Domovská stránka</a></li>
-            <li><a href="">Kategórie</a></li>
-            <li><a href="">Kontakt</a></li>
-            <li><a href="{{ route('login')}}">Prihlásiť sa</a></li>
-            <li><a href="{{ route('register')}}">Registrovať sa</a></li>
+<section class="grid grid-cols-2 lg:grid-cols-3 text-white p-4">
+    <div class="list-none grid justify-around">
+        <nav>
+            <ul>
+                <li><a href="">Domovská stránka</a></li>
+                <li><a href="">Kategórie</a></li>
+                <li><a href="">Kontakt</a></li>
+                <li><a href="{{ route('login')}}">Prihlásiť sa</a></li>
+                <li><a href="{{ route('register')}}">Registrovať sa</a></li>
+            </ul>
         </nav>
     </div>
-    <div class="common-questions  w-64 h-32 list-none">
-        <div class="line h-px w-full bg-white mt-4 mb-4"></div>
-        <nav class="ml-4">
-            <li><a href="">Prečo práve my?</a></li>
-            <li><a href="">Doprava</a></li>
-            <li><a href="">Kariéra</a></li>
+    <div class="list-none grid justify-around">
+        <nav>
+           <ul>
+                <li><a href="">Prečo práve my?</a></li>
+                <li><a href="">Doprava</a></li>
+                <li><a href="">Kariéra</a></li>
+           </ul>
         </nav>
     </div>
-    <div class="subscribe  w-2/5 h-32">
-        <aside class="mt-3">
+    <div class="grid col-span-full p-2 lg:col-span-1 lg:p-0">
+        <aside>
             <p>Chcete odoberať novinky zo strány easy-components.sk?</p>
             <p>Zadajte svoj email na odoberanie noviniek</p>
             <form action="{{route('subscribe.update')}}" method="post">

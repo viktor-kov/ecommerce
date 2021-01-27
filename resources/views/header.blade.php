@@ -1,11 +1,11 @@
 
-<nav class="flex text-white leading-9">
-    <div class="logo w-1/4">
-        <h1 class="text-center"><a href="http://localhost/www/ecommerce/public/">easy-components</a></h1>
+<nav class="flex justify-between text-white pr-4 pl-4 leading-9">
+    <div class="hidden desktop:block">
+        <h1><a href="http://localhost/www/ecommerce/public/">easy-components</a></h1>
     </div>
 
-    <ul class="flex w-9/12 justify-end">
-            <li class="pr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
+    <ul class="flex">
+            <li class="mr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
                 <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart"></i></a>
                 
                 @if (Cart::count() > 0)
