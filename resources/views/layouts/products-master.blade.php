@@ -20,7 +20,7 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
-    <body class="font-sans antialiased w-2/3 mx-auto">
+    <body class="container font-sans antialiased mx-auto">
         <header class="h-10 bg-black">
             @include('header')
         </header>

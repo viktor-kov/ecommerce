@@ -29,15 +29,15 @@
 
 
 @section('often-bought')
-<ul class="grid grid-cols-4 gap-x-2 mt-10">
+<ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10">
     @foreach ($featured_products as $featured_product) 
-        <li class="product-container w-9/10  flex flex-col bg-gray-200 shadow-xl h-100">
+        <li class="product-container bg-gray-200 shadow-xl h-100">
             <a href="{{route('product.show', $featured_product->category)}}/{{$featured_product->slug}}">
                 <div class="product-img">
-                    <img src="{{asset('img/'.$featured_product->photo_path)}}" alt="{{$featured_product->name}}" class="h-72 w-80">
+                    <img src="{{asset('img/'.$featured_product->photo_path)}}" alt="{{$featured_product->name}}" class="h-72 w-full">
                 </div>
                 <div class="product-information p-2">
-                    <h2 class="product-title font-semibold"><a href="../{{$featured_product->category}}/{{$featured_product->slug}}">{{$featured_product->name}}</a></h2>
+                    <h2 class="h-10 git font-semibold"><a href="../{{$featured_product->category}}/{{$featured_product->slug}}">{{$featured_product->name}}</a></h2>
                     <div class="product-price flex justify-between items-center mt-4">
                         <span class="text-red-600 font-semibold text-lg">{{$featured_product->price}}€</span>
                         <form action="{{route('cart.store')}}" method="post">
