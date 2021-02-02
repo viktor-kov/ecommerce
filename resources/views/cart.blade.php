@@ -35,9 +35,12 @@
         @endforeach
     </ul>
     @if (Cart::subtotal() > 0)
-        <section class="flex justify-between">
-            <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block">Späť na kategórie!</a>
-            <p>Total: {{Cart::subtotal()}}€</p>
+        <section class="">
+            <p class="flex justify-end">Total: {{Cart::subtotal()}}€</p>
+            <section class="grid grid-cols-2 gap-1 justify-center w-full">
+                <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">Späť na kategórie!</a>
+                <a href="" class="p-4 border border-black mt-4 inline-block bg-green-400">Checkout</a>
+            </section>
         </section>
     @endif
     @else 
