@@ -6,7 +6,7 @@
     <h1>Všetky produkty</h1>
     <ul class="product-section m-auto grid justify-items-center xl:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">
         @foreach ($products as $product)
-            <div class="product-container w-80 flex flex-col bg-gray-200 shadow-xl h-100" >
+            <li class="product-container w-80 flex flex-col bg-gray-200 shadow-xl h-100">
                 <a href="edit/{{$product->id}}">
                     <div class="product-img">
                         <img src="{{asset('img/'.$product->photo_path)}}" alt="{{$product->name}}" class="h-72 w-80">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </li>
         @endforeach
     </ul>
 @endsection

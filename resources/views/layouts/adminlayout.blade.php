@@ -23,7 +23,7 @@
     <header class="h-10 bg-black">
         @include('header')
     </header>
-    <body class="container font-sans antialiased w-2/3 mx-auto h-screen">
+    <body class="container font-sans antialiased mx-auto">
         @yield('navigation')
         <main>
             <section>
