@@ -6,11 +6,7 @@
 
     <ul class="flex">
             <li class="mr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
-                <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart"></i></a>
-                
-                @if (Cart::count() > 0)
-                    <span>{{Cart::count()}}</span>
-                @endif
+                <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart mr-1"></i>{{(Cart::count() > 0) ? Cart::count() : ''}}</a>
             </li>
         @if (! auth()->user())
             <li class="pr-8"><a href="{{ route('login')}}">Prihlásiť sa</a></li>

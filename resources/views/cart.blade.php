@@ -2,7 +2,7 @@
 
 
 @section('content')
-<section class="min-h-screengit">
+<section class="min-h-screen">
     @if (Cart::count() > 0)
         <h1>Košík</h1>
         <ul class="mt-2 w-3/4">
