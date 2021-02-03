@@ -12,7 +12,7 @@
                         <a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">
                             <img src="{{asset('img/products/'.$product->id.'.jpeg')}}"  alt="{{$product->name}}" class="h-24 w-auto">
                         </a>
-                        <h1 class="place-self-center"><a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">{{$product->name}}</a></h1>
+                        <h1 class="grid items-center"><a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">{{$product->name}}</a></h1>
                         <form action="{{route('cart.update', $product->rowId)}}" class="place-self-center" method="post">
                             @csrf
                             @method('PUT')
