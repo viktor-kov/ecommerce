@@ -9,7 +9,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function index() {
-        return view('cart');
+        return view('cart', [
+            'featured_products' => Product::select()->limit(4)->get(),
+        ]);
     }
 
     public function store(Request $request) {
