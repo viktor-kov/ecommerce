@@ -12,7 +12,7 @@
 
 @section('content')
 @if(!$products->isEmpty())
-    <ul class="product-section m-auto grid justify-items-center xl:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">
+    <ul class="product-section m-auto grid justify-items-center sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         @foreach ($products as $product)
             <li class="product-container w-80 flex flex-col bg-gray-200 shadow-xl h-100">
                 <a href="{{$id}}/{{$product->slug}}">

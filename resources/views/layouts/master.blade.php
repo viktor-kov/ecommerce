@@ -30,10 +30,10 @@
         <main>
             @yield('content')
         </main>
-        <aside>
+        <section>
             @yield('often-bought')
-        </aside>
-        <footer class="bg-black mt-10">
+        </section>
+        <footer class="bg-black">
             @include('footer')
         </footer>
     </body>

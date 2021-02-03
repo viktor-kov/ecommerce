@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <nav class="mt-10">
-        <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <nav class="mt-10 mb-10 md:mt-44 md:mb-44 xl:mt-10 xl:mb-10">
+        <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center pl-2 pr-2">
             @foreach ($categories as $category)
                 <li class="bg-gray-200 rounded-lg cursor-pointer block h-auto">
                     <a href="{{route('product.show', ['id' => $category->id])}}">
