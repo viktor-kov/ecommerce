@@ -45,7 +45,6 @@
             <h1 class="text-3xl">Fakturačné údaje</h1>
             <form action="./informations_update" method="post" class="p-1 w-full">
                 @csrf 
-                <section class="flex flex-col mb-2 justify-between">
                     <p class="w-full block">
                         Meno: <input type="text" name="name" class="border border-black block w-full p-1" @if ($informations) value="{{$informations->name}} @endif">
                     </p>
