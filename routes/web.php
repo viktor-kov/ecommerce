@@ -57,9 +57,6 @@ Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/cartupdate/{row_id}', [CartController::class, 'update'])->name('cart.update');
 
-Route::get('/empty', function() {
-    Cart::destroy();
-});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
