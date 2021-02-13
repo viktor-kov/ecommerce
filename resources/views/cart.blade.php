@@ -39,7 +39,9 @@
                 <p class="flex justify-end">Total: {{Cart::subtotal()}}€</p>
                 <section class="grid grid-cols-2 gap-1 justify-center w-full">
                     <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">Späť na kategórie!</a>
-                    <a href="" class="p-4 border border-black mt-4 inline-block bg-green-400">Checkout</a>
+                    <form action="{{route('checkout.index')}}" method="get">
+                        @csrf
+                        <input type="submit" value="Checkout" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">
                 </section>
             </section>
             @endif

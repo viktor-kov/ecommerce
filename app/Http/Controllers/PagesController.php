@@ -82,4 +82,8 @@ class PagesController extends Controller
             'product' => Product::where('id', $id)->first(),
         ]);
     }
+    
+    public function thankyou() {
+        return view('thankyou');
+    }
 }

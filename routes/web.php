@@ -6,9 +6,12 @@ use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use Composer\DependencyResolver\Request;
 use App\Http\Controllers\PagesController;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
@@ -56,7 +59,12 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/cartupdate/{row_id}', [CartController::class, 'update'])->name('cart.update');
-
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
+
+Route::fallback(function () {
+    abort(403);
+});

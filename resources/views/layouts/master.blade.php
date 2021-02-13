@@ -13,12 +13,16 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        @yield('extra-css')
+        
+
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
+        @yield('extra-js')
     </head>
     <body class="container font-sans antialiased mx-auto">
         <header class="h-10 bg-black">
@@ -36,5 +40,6 @@
         <footer class="bg-black">
             @include('footer')
         </footer>
+        @yield('extra-stuff')
     </body>
 </html>
