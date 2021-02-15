@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('extra-js')
-    
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
 @endsection
 
 @section('extra-css')
@@ -10,36 +11,51 @@
 
 @section('content')
 <section>
-    <h1 class="text-3xl">{{__('checkout.order-info')}}</h1>
-    <section class="grid grid-cols-2 w-full min-h-screen">
+    <h1 class="text-3xl">{{__('checkout.ship-adress')}}</h1>
+    <section class="grid grid-cols-2 w-full h-screen">
         <section>
-            <form action="./informations_update" method="post" class="p-1">
+            <form action="{{route('checkout.store')}}" method="post" class="p-1" id="checkout-form">
                 @csrf 
-                    <p class="w-full block">
-                        Meno: <input type="text" name="name" class="border border-black block w-full p-1" @if ($informations) value="{{$informations->name}} @endif">
-                    </p>
-                    <p class="w-full block">
-                    Priezvisko: <input type="text" name="lastname" @if ($informations) value="{{$informations->lastname}} @endif" class="border border-black block w-full p-1">
-                    </p>
-                    <p>
-                        Mesto: <input type="text" name="town" @if ($informations) value="{{$informations->town}}" @endif class="border border-black block p-1 w-full">
-                    </p>
-                    <p>
-                        PSČ: <input type="text" name="psc" @if ($informations) value="{{$informations->psc}}" @endif class="border border-black block p-1 w-full">
-                    </p>
-                    <p>
-                        Ulica: <input type="text" name="street" @if ($informations) value="{{$informations->street}}" @endif class="border border-black block p-1 w-full">
-                    </p>
-                    <p>
-                        Číslo domu: <input type="text" name="house_id" @if ($informations) value="{{$informations->house_id}}" @endif class="border border-black block p-1 w-full">
-                    </p>
-                    <p>
-                        Telefónne číslo: <input type="text" name="phone_number" @if ($informations) value="{{$informations->phone_number}}" @endif class="border border-black block p-1 w-full">
-                    </p>
+                <p class="w-full block">
+                    {{__('profile.name')}} <input type="text" name="name" class="border border-black block w-full p-1" @if ($informations) value="{{$informations->name}} @endif" required>
+                </p>
+                <p class="w-full block">
+                    {{__('profile.lastname')}} <input type="text" name="lastname" @if ($informations) value="{{$informations->lastname}} @endif" class="border border-black block w-full p-1" required>
+                </p>
+                <p>
+                    {{__('profile.town')}} <input type="text" name="town" @if ($informations) value="{{$informations->town}}" @endif class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('profile.zip')}} <input type="text" name="psc" @if ($informations) value="{{$informations->psc}}" @endif class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('profile.street')}} <input type="text" name="street" @if ($informations) value="{{$informations->street}}" @endif class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('profile.house-id')}} <input type="text" name="house_id" @if ($informations) value="{{$informations->house_id}}" @endif class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('profile.phone-number')}} <input type="text" name="phone_number" @if ($informations) value="{{$informations->phone_number}}" @endif class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('checkout.card-number')}} <input type="text" name="card_number" class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('checkout.card-exp-month')}} <input type="text" name="card_exp_month" class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('checkout.card-exp-year')}} <input type="text" name="card_exp_year" class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    {{__('checkout.card-cvc')}} <input type="text" name="card_cvc" class="border border-black block p-1 w-full" required>
+                </p>
+                <p>
+                    <button type="submit" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</button>
+                </p>
             </form>
         </section>
-            <section>
-                <ul class="overflow-y-auto h-1/2">
+            <section class="h-3/5 overflow-y-auto">
+                <ul>
                     @foreach (Cart::content() as $product)
                         <li class="mb-2 flex border-b border-black">
                             <section class="grid grid-cols-4 justify-around p-2 text-xl w-full">
@@ -53,14 +69,11 @@
                         </li>
                     @endforeach
                 </ul>
-                <p class="p-4 border border-black text-center">
-                    Celkovo: <span>{{Cart::subtotal()}}</span>
-                </p>
             </section>
         </section>
 </section>
 @endsection
 
 @section('extra-stuff')
-
+    <script src="{{asset('js/checkout.js')}}"></script>
 @endsection

@@ -9,8 +9,8 @@
                 <h1 class="text-4xl">{{$product->name}}</h1>
                 <p class="mt-4 h-64 overflow-y-auto p-2 border-l bg-gray-100 shadow-xl">{{$product->text}}</p>
                 <aside class="pricin pt-6 pb-6">
-                    <p class="flex justify-between text-gray-400">Cena s DPH <span>{{$product->price}}€</span></p>
-                    <p class="flex justify-between text-gray-400">Cena bez DPH <span>{{$product->without_dph}}€</span></p>
+                    <p class="flex justify-between text-gray-400">{{__('products.with-dph')}} <span>{{$product->price}}€</span></p>
+                    <p class="flex justify-between text-gray-400">{{__('products.without-dph')}} <span>{{$product->without_dph}}€</span></p>
                 </aside>
                 <aside class="buy-buttons flex justify-evenly">
                     <form action="{{route('cart.store')}}" method="post">
@@ -18,7 +18,7 @@
                         <input type="hidden" name="product_id" value="{{$product->slug}}">
                         <input type="hidden" name="product_name" value="{{$product->name}}">
                         <input type="hidden" name="product_category" value="{{$product->category}}">
-                        <input type="submit" value="Pridať do košíka" class="p-4 bg-green-400 text-white cursor-pointer">
+                        <input type="submit" value="{{__('products.add-to-cart')}}" class="p-4 bg-green-400 text-white cursor-pointer">
                     </form>
                 </aside>
             </div>
@@ -45,7 +45,7 @@
                             <input type="hidden" name="product_id" value="{{$featured_product->slug}}">
                             <input type="hidden" name="product_name" value="{{$featured_product->name}}">
                             <input type="hidden" name="product_category" value="{{$featured_product->category}}">
-                            <input type="submit" value="Pridať do košíka" class="p-4 bg-green-400 text-white cursor-pointer">
+                            <input type="submit" value="{{__('products.add-to-cart')}}" class="p-4 bg-green-400 text-white cursor-pointer">
                         </form>
                     </div>
                 </div>

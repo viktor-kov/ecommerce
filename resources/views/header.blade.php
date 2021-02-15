@@ -9,8 +9,8 @@
                 <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart mr-1"></i>{{(Cart::count() > 0) ? Cart::count() : ''}}</a>
             </li>
         @if (! auth()->user())
-            <li class="pr-8"><a href="{{ route('login')}}">Prihlásiť sa</a></li>
-            <li class="pr-4"><a href="{{ route('register')}}">Zaregistrovať sa</a></li>
+            <li class="pr-8"><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
+            <li class="pr-4"><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
         @else
             <li class="pr-4"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
             <li class="pr-4"> 
@@ -18,7 +18,7 @@
                 @csrf
 
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                    Odhlásiť sa
+                    {{__('auth.logout')}}
                 </a>
                 </form>
             </li>

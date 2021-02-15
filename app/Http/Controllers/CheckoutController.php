@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Stripe;
+
+use Stripe\Charge;
+use Stripe\Stripe;
 use App\Models\Informations;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
+use App\Http\Controllers\PagesController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -42,27 +46,36 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        \Stripe\Stripe::setApiKey('sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo');
-            function calculateOrderAmount(array $items): int {
-            // Replace this constant with a calculation of the order's amount
-            // Calculate the order total on the server to prevent
-            // customers from directly manipulating the amount on the client
-            return 1400;
-            }
-            header('Content-Type: application/json');
-    
-            // retrieve JSON from POST body
-            $json_str = file_get_contents('php://input');
-            $json_obj = json_decode($json_str);
-            $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => calculateOrderAmount($json_obj->items),
-                'currency' => 'usd',
-            ]);
-            $output = [
-                'clientSecret' => $paymentIntent->client_secret,
-            ];
-            echo json_encode($output);
-    
+        Stripe::setApiKey('sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo');
+
+        $stripe = new \Stripe\StripeClient(
+            'sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo'
+          );
+
+        $description = $request->name . ' ' . $request->lastname;
+        $stripe_tok =$stripe->tokens->create([
+            'card' => [
+              'number' => $request->card_number,
+              'exp_month' => $request->card_exp_month,
+              'exp_year' => $request->card_exp_year,
+              'cvc' => $request->card_cvc,
+            ],
+        ])->id;
+
+        $price = Cart::subtotal() * 100;
+        try {
+            $charge = Charge::create(array(
+                "amount" => $price,
+                "currency" => "eur",
+                "source" => $stripe_tok,
+                "description" => $description
+            ));
+            Cart::destroy();
+            return redirect()->route('thankyou.index');
+        }catch(\Exception $e) {
+            dd($e);
+            return redirect()->route('home.index');
+        }
     }
 
     /**

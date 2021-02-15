@@ -4,7 +4,6 @@
 @section('content')
 <section class="min-h-screen">
     @if (Cart::count() > 0)
-        <h1>Košík</h1>
         <ul class="mt-2 w-3/4">
             @foreach (Cart::content() as $product)
                 <li class="mb-2 flex border-b border-black">
@@ -36,23 +35,23 @@
         </ul>
         @if (Cart::subtotal() > 0)
             <section class="w-3/4">
-                <p class="flex justify-end">Total: {{Cart::subtotal()}}€</p>
+                <p class="flex justify-end">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</p>
                 <section class="grid grid-cols-2 gap-1 justify-center w-full">
-                    <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">Späť na kategórie!</a>
+                    <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">{{__('checkout.back-to-categories')}}</a>
                     <form action="{{route('checkout.index')}}" method="get">
                         @csrf
-                        <input type="submit" value="Checkout" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">
+                        <input type="submit" value="{{__('checkout.checkout')}}" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">
                 </section>
             </section>
             @endif
             @else 
             <section class="grid grid-rows-1 justify-center">
-                <h1 class="p-10 back text-3xl">Váš košík je prázdny</h1>
-                <a href="{{route('home.index')}}" class="p-4 border border-black text-center">Začnite nakupovať teraz!</a>
+                <h1 class="p-10 back text-3xl">{{__('checkout.empty-cart')}}</h1>
+                <a href="{{route('home.index')}}" class="p-4 border border-black text-center">{{__('checkout.start-shopping')}}</a>
             </section>
     @endif
     <section class="mt-20">
-        <h1 class="hidden md:block text-2xl">Odporúčané produkty</h1>
+        <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
         <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10">
             @foreach ($featured_products as $featured_product) 
                 <li class="product-container bg-gray-200 shadow-xl h-100">
@@ -69,7 +68,7 @@
                                     <input type="hidden" name="product_id" value="{{$featured_product->slug}}">
                                     <input type="hidden" name="product_name" value="{{$featured_product->name}}">
                                     <input type="hidden" name="product_category" value="{{$featured_product->category}}">
-                                    <input type="submit" value="Pridať do košíka" class="p-4 bg-green-400 text-white cursor-pointer">
+                                    <input type="submit" value="{{__('products.add-to-cart')}}" class="p-4 bg-green-400 text-white cursor-pointer">
                                 </form>
                             </div>
                         </div>

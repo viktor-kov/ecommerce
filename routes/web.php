@@ -61,6 +61,7 @@ Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.
 Route::put('/cartupdate/{row_id}', [CartController::class, 'update'])->name('cart.update');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/thankyou', [PagesController::class, 'thankyou'])->name('thankyou.index');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');

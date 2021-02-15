@@ -28,7 +28,7 @@
                                 <input type="hidden" name="product_id" value="{{$product->slug}}">
                                 <input type="hidden" name="product_name" value="{{$product->name}}">
                                 <input type="hidden" name="product_category" value="{{$product->category}}">
-                                <input type="submit" value="Pridať do košíka" class="p-4 bg-green-400 text-white cursor-pointer">
+                                <input type="submit" value="{{__('products.add-to-cart')}}" class="p-4 bg-green-400 text-white cursor-pointer">
                             </form>
                         </div>
                     </div>
