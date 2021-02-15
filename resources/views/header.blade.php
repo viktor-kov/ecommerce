@@ -5,6 +5,17 @@
     </div>
 
     <ul class="flex">
+            <li class="pr-8">
+                @foreach (Config::get('language') as $lang => $language)
+                    <a href="{{route('lang', ['lang' => $lang])}}">
+                        @if ($lang == App::getLocale())
+                            <strong class="text-green-400">{{$language}}</strong>
+                        @else
+                            {{$language}}
+                        @endif
+                    </a>
+                @endforeach
+            </li>
             <li class="mr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
                 <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart mr-1"></i>{{(Cart::count() > 0) ? Cart::count() : ''}}</a>
             </li>

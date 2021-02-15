@@ -16,6 +16,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\InformationsController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesControlle
 Route::fallback(function () {
     abort(403);
 });
+
+Route::get('lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
