@@ -7,7 +7,7 @@
     <ul class="flex">
             <li class="pr-8">
                 @foreach (Config::get('language') as $lang => $language)
-                    <a href="{{route('lang', ['lang' => $lang])}}">
+                    <a href="{{route('lang', ['lang' => $lang])}}" class="pr-4">
                         @if ($lang == App::getLocale())
                             <strong class="text-green-400">{{$language}}</strong>
                         @else
