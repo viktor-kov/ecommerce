@@ -5,4 +5,5 @@ return [
     'with-dph' => 'Price with DPH',
     'without-dph' => 'Price without DPH',
     'previous-orders' => 'Previous orders',
+    'no-products' => 'No results from the category ',
 ];
