@@ -5,9 +5,9 @@
     </div>
 
     <ul class="flex">
-            <li class="pr-8">
+            <li class="flex">
                 @foreach (Config::get('language') as $lang => $language)
-                    <a href="{{route('lang', ['lang' => $lang])}}" class="pr-4">
+                    <a href="{{route('lang', ['lang' => $lang])}}" class="pr-1">
                         @if ($lang == App::getLocale())
                             <strong class="text-green-400">{{$language}}</strong>
                         @else
@@ -16,15 +16,15 @@
                     </a>
                 @endforeach
             </li>
-            <li class="mr-8 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
+            <li class="pr-2 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
                 <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart mr-1"></i>{{(Cart::count() > 0) ? Cart::count() : ''}}</a>
             </li>
         @if (! auth()->user())
-            <li class="pr-8"><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
-            <li class="pr-4"><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
+            <li class="pr-2"><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
+            <li class="pr-2"><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
         @else
-            <li class="pr-4"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
-            <li class="pr-4"> 
+            <li class="pr-2"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
+            <li class="pr-2"> 
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
