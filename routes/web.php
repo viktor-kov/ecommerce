@@ -1,15 +1,9 @@
 <?php
 
-use App\Models\User;
-use App\Models\Information;
-use App\Http\Middleware\Admin;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use Composer\DependencyResolver\Request;
 use App\Http\Controllers\PagesController;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\UserRoleController;
@@ -71,4 +65,4 @@ Route::fallback(function () {
     abort(403);
 });
 
-Route::get('lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
+Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');

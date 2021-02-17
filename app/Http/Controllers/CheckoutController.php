@@ -8,7 +8,6 @@ use Stripe\Stripe;
 use App\Models\Informations;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
-use App\Http\Controllers\PagesController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
