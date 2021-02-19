@@ -23,7 +23,7 @@
                                 <option value="5" {{($product->qty == 5) ? 'selected' : ''}}>5</option>
                             </select>
                         </form>
-                        <h2 class="place-self-center">{{$product->price}}€</h2>
+                        <h2 class="place-self-center">{{number_format($product->price, 2)}}€</h2>
                     </section>
                     <form action="{{route('cart.destroy', $product->rowId)}}" method="post" class="place-self-center">
                         @csrf
