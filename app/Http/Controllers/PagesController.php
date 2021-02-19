@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Informations;
-use App\Models\Subscriptions;
 use Illuminate\Http\Request;
+use App\Models\Subscriptions;
 
 class PagesController extends Controller
 {
@@ -37,7 +38,10 @@ class PagesController extends Controller
     }
 
     public function profile() {   
-        return view('profile', ['informations' => Informations::where('user_id', auth()->user()->id)->latest()->first()]);
+        return view('profile', [
+            'informations' => Informations::where('user_id', auth()->user()->id)->latest()->first(),
+            'invoices' => Invoice::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     public function admin() {

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 
 use Stripe\Charge;
 use Stripe\Stripe;
+use App\Models\Invoice;
 use App\Models\Informations;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
+use Barryvdh\DomPDF\Facade as PDF;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -69,6 +71,18 @@ class CheckoutController extends Controller
                 "source" => $stripe_tok,
                 "description" => $description
             ));
+
+            $pdf_name = time() . ".pdf";
+            $path = storage_path('app/invoices/' . $pdf_name);
+            $pdf = PDF::loadView('invoice')->save($path);
+
+            $new_invoice = new Invoice;
+
+            $new_invoice->user_id = auth()->user()->id;
+            $new_invoice->invoice_name = $pdf_name;
+
+            $new_invoice->save();
+
             Cart::destroy();
             return redirect()->route('thankyou.index');
         }catch(\Exception $e) {

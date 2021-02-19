@@ -10,6 +10,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\InformationsController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageController;
 
 /*
@@ -58,6 +59,7 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.in
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/thankyou', [PagesController::class, 'thankyou'])->name('thankyou.index');
 
+Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
 
@@ -65,4 +67,5 @@ Route::fallback(function () {
     abort(403);
 });
 
-Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
+Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
+Route::get('/invoice/{id}/delete', [InvoiceController::class, 'deletePDF'])->name('invoice.delete');
