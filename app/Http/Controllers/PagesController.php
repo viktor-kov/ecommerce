@@ -40,7 +40,7 @@ class PagesController extends Controller
     public function profile() {   
         return view('profile', [
             'informations' => Informations::where('user_id', auth()->user()->id)->latest()->first(),
-            'invoices' => Invoice::where('user_id', auth()->user()->id)->get()
+            'invoices' => Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
         ]);
     }
 

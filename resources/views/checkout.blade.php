@@ -64,7 +64,7 @@
                                 </a>
                                 <h1 class="grid items-center"><a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">{{$product->name}}</a></h1>
                                 <h1 class="place-self-center">{{$product->qty}}</h1>
-                                <h2 class="place-self-center">{{$product->price}}€</h2>
+                                <h2 class="place-self-center">{{number_format($product->price, 2)}}€</h2>
                             </section>
                         </li>
                     @endforeach
