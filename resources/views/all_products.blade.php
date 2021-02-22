@@ -1,6 +1,5 @@
 @extends('layouts.products-master')
 
-@section('title')
 
 @section('content')
     <ul class="product-section m-auto grid justify-items-center xl:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">
