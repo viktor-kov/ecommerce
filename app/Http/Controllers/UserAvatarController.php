@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AvatarUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,7 @@ use Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController;
 class UserAvatarController extends Controller
 {
 
-    public function update(Request $request)
+    public function update(AvatarUpdateRequest $request)
     {
         $photo_path = $request->profile_photo_path;
 
