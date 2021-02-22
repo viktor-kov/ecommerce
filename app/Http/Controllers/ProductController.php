@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductDeleteRequest;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -20,7 +23,7 @@ class ProductController extends Controller
        return view('product-id')->with(['products' => $product, 'title' => $slug]);
     }
 
-    public function store(Request $request) {
+    public function store(ProductStoreRequest $request) {
 
         $new_product = new Product;
 
@@ -46,7 +49,7 @@ class ProductController extends Controller
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug]);
     }
 
-    public function update(Request $request) {
+    public function update(ProductUpdateRequest $request) {
         $product_name = $request->product_name;
         $product_without_dph = ($request->product_price) * 0.80;
 
@@ -83,7 +86,7 @@ class ProductController extends Controller
         return redirect()->route('product.show', ['id' => $product_category, 'slug' => $product_slug]);
     }
 
-    public function delete(Request $request) {
+    public function delete(ProductDeleteRequest $request) {
 
         $id = $request->id;
         $photo_path = $request->product_photo_path;
