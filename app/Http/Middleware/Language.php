@@ -22,7 +22,7 @@ class Language
             $locale = session('applocale');
         }
         else {
-            $locale = 'en';
+            $locale = 'sk';
         }
 
         App::setLocale($locale);
