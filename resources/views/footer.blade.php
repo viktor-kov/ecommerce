@@ -20,7 +20,7 @@
     </div>
     <div class="grid col-span-full p-2 lg:col-span-1 lg:p-0">
         <aside>
-            <p>{{__('other.subscribe-text')}}</p>
+            <p>{!! __('other.subscribe-text') !!}</p>
             <form action="{{route('subscribe.update')}}" method="post">
                 @csrf
                 <input type="mail" name="email" placeholder="email@email.com" class="w-full text-gray-700 p-1">
