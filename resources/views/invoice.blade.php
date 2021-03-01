@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{auth()->user()->email}}</title>
+    <title>{{$data['email']}}</title>
     <style>
         .right {
             float: right;
@@ -37,8 +37,8 @@
                 <p>Bratislava, Dúbravka</p>
             </aside>
             <aside class="right">
-                <p>{{auth()->user()->name}}</p>
-                <p>{{auth()->user()->email}}</p>
+                <p>{{$data['name']}}</p>
+                <p>{{$data['email']}}</p>
             </aside>
         </section>
     </header>

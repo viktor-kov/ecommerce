@@ -72,18 +72,20 @@ class CheckoutController extends Controller
                 "description" => $description
             ));
 
-            if(auth()->user()) {
                 $pdf_name = time() . ".pdf";
                 $path = storage_path('app/invoices/' . $pdf_name);
-                $pdf = PDF::loadView('invoice')->save($path);
+                $data = $request->all();
+                $pdf = PDF::loadView('invoice', compact('data'))->save($path);
 
                 $new_invoice = new Invoice;
 
-                $new_invoice->user_id = auth()->user()->id;
+                if(auth()->user()) {
+                    $new_invoice->user_id = auth()->user()->id;
+                }
+
                 $new_invoice->invoice_name = $pdf_name;
 
                 $new_invoice->save();
-            }
 
             Cart::destroy();
             return redirect()->route('thankyou.index');
