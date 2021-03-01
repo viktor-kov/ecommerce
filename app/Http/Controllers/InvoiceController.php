@@ -17,6 +17,9 @@ class InvoiceController extends Controller
             if($invoice->user_id == auth()->user()->id) {
                 return response()->file(storage_path('app/invoices/').$id);
             }
+            else {
+                abort(403);
+            }
         }
         else {
             return abort(403);
