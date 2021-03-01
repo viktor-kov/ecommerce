@@ -16,6 +16,7 @@
     <li class="p-4 bg-gray-400">{{__('admin.users')}}: {{$users}}</li>
     <li class="bg-gray-400"><a href="{{route('allproducts')}}" class="p-4 block">{{__('admin.products')}} {{$products}}</a></li>
     <li class="p-4 bg-gray-400">{{__('admin.newsletter')}} {{$subscriptions}}</li>
+    <li class="p-4 bg-yellow-300 col-span-full"><a href="{{route('orders')}}" class="block">{{__('admin.orders')}}</a></li>
 </ul>
     
 @endsection

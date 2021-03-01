@@ -18,6 +18,7 @@ return [
     'registered' => 'Registrácia:',
     'role' => 'Rola:',
     'update' => 'Aktualizovať rolu:',
+    'orders' => 'Objednávky',
 ];
 
 ?>

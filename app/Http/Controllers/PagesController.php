@@ -90,4 +90,10 @@ class PagesController extends Controller
     public function thankyou() {
         return view('thankyou');
     }
+
+    public function orders() {
+        return view('orders', [
+            'orders' => Invoice::all()->where('active', 1),
+        ]);
+    }
 }

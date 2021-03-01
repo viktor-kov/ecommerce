@@ -49,4 +49,9 @@ class InvoiceController extends Controller
         }
 
     }
+
+    public function updateStatus($id) {
+        $invoice = Invoice::where('id', $id)->update(['active' => 0]);
+        return back();
+    }
 }

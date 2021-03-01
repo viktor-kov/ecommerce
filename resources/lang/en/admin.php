@@ -18,6 +18,7 @@ return [
     'registered' => 'Registered at:',
     'role' => 'User role:',
     'update' => 'Update role',
+    'orders' => 'Orders',
 ];
 
 ?>
