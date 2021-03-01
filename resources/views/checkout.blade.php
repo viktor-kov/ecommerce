@@ -23,6 +23,9 @@
                     {{__('profile.lastname')}} <input type="text" name="lastname" @if ($informations) value="{{$informations->lastname}} @endif" class="border border-black block w-full p-1" required>
                 </p>
                 <p>
+                    {{__('profile.email')}} <input type="email" name="email" @if (auth()->user()) value="{{auth()->user()->email}} @endif" class="border border-black block w-full p-1" required>
+                </p>
+                <p>
                     {{__('profile.town')}} <input type="text" name="town" @if ($informations) value="{{$informations->town}}" @endif class="border border-black block p-1 w-full" required>
                 </p>
                 <p>
