@@ -12,6 +12,7 @@ use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\InformationsController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +72,5 @@ Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.s
 Route::get('/invoice/{id}/delete', [InvoiceController::class, 'deletePDF'])->name('invoice.delete');
 
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
-Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('orderstatus.update');
+Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
+Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');

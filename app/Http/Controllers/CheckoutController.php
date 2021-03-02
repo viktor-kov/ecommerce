@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\InvoiceRequest;
 use Stripe\Charge;
 use Stripe\Stripe;
+use App\Models\Order;
 use App\Models\Invoice;
 use App\Models\Informations;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Http\Requests\InvoiceRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -72,20 +73,37 @@ class CheckoutController extends Controller
                 "description" => $description
             ));
 
+                //pdf create
                 $pdf_name = time() . ".pdf";
                 $path = storage_path('app/invoices/' . $pdf_name);
                 $data = $request->all();
                 $pdf = PDF::loadView('invoice', compact('data'))->save($path);
 
+                //save pdf name to database
+                //if the user is not logged in, than the user_id in DB will be null
                 $new_invoice = new Invoice;
-
                 if(auth()->user()) {
                     $new_invoice->user_id = auth()->user()->id;
                 }
-
                 $new_invoice->invoice_name = $pdf_name;
-
                 $new_invoice->save();
+
+
+                //inserting bought products to DB
+                $last_id_invoice = $new_invoice->id;
+                foreach(Cart::content() as $product) {
+                    $products_array[] = [
+                        'user_id' => auth()->user()->id,
+                        'invoice_id' => $last_id_invoice,
+                        'product_name' => $product->name,
+                        'quantity' => $product->qty,
+                        'price' => $product->price,
+                    ];
+
+                }
+                //inserting all bought products to DB
+                Order::insert($products_array);
+
 
             Cart::destroy();
             return redirect()->route('thankyou.index');

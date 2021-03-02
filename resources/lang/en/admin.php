@@ -19,6 +19,7 @@ return [
     'role' => 'User role:',
     'update' => 'Update role',
     'orders' => 'Orders',
+    'show-order' => 'Show order',
 ];
 
 ?>

@@ -19,6 +19,7 @@ return [
     'role' => 'Rola:',
     'update' => 'Aktualizovať rolu:',
     'orders' => 'Objednávky',
+    'show-order' => 'Načítať objednávku',
 ];
 
 ?>
