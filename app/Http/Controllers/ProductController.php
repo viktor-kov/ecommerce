@@ -25,6 +25,8 @@ class ProductController extends Controller
 
     public function store(ProductStoreRequest $request) {
 
+        dd($request->all());
+
         $new_product = new Product;
 
         $product_name = $request->product_name;
