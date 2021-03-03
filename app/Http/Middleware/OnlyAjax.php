@@ -19,7 +19,7 @@ class OnlyAjax
         if (! $request->ajax()) {
             return abort(403);
         }
-        
+
         return $next($request);
     }
 }

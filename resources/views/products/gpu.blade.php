@@ -32,14 +32,14 @@
     Typ chladiča <input type="text" name="gpu_cooling" id="" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Sirka <input type="text" name="gpu_width" id="" class="w-3/4">
+    Sirka <input type="text" name="gpu_width" id="gpu_width" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Vyska <input type="text" name="gpu_height" id="" class="w-3/4">
+    Vyska <input type="text" name="gpu_height" id="gpu_height" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Hlbka <input type="text" name="gpu_depth" id="" class="w-3/4">
+    Hlbka <input type="text" name="gpu_depth" id="gpu_depth" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Odporučany vykon zdroja <input type="text" name="gpu_supply_power" id="" class="w-3/4">
+    Odporučany vykon zdroja <input type="text" name="gpu_supply_power" id="gpu_supply_power" class="w-3/4">
 </p>
