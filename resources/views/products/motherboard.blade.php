@@ -1,52 +1,52 @@
 <p class="flex justify-between mt-1">
-    Socket <input type="text" name="motherboard_socket" id="motherboard_socket" class="w-3/4">
+    {{__('products.product-cpu-socket')}} <input type="text" name="motherboard_socket" id="motherboard_socket" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Čipset <input type="text" name="motherboard_chipset" id="motherboard_chipset" class="w-3/4">
+    {{__('products.product-cpu-chipset')}} <input type="text" name="motherboard_chipset" id="motherboard_chipset" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Formát základnej dosky <input type="text" name="motherboard_format" id="motherboard_format" class="w-3/4">
+    {{__('products.product-motherboard-format')}} <input type="text" name="motherboard_format" id="motherboard_format" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Základné funkcie <input type="text" name="motherboard_functions" id="motherboard_functions" class="w-3/4">
+    {{__('products.product-functions')}} <input type="text" name="motherboard_functions" id="motherboard_functions" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Typ pamäte <input type="text" name="motherboard_memory" id="motherboard_memory" class="w-3/4">
+    {{__('products.product-ram-type')}} <input type="text" name="motherboard_memory" id="motherboard_memory" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Počet slotov RAM <input type="text" name="motherboard_memory_slots" id="motherboard_memory_slots" class="w-3/4">
+    {{__('products.product-motherboard-ram-slots')}} <input type="text" name="motherboard_memory_slots" id="motherboard_memory_slots" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Režim zapojenia <input type="text" name="motherboard_memory_insertion" id="motherboard_memory_insertion" class="w-3/4">
+    {{__('products.product-motherboard-ram-insertion')}} <input type="text" name="motherboard_memory_insertion" id="motherboard_memory_insertion" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Max frekvencia RAM <input type="text" name="motherboard_memory_frequency" id="motherboard_memory_frequency" class="w-3/4">
+    {{__('products.product-ram-frequency')}} <input type="text" name="motherboard_memory_frequency" id="motherboard_memory_frequency" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Externy <input type="text" name="motherboard_extern" id="motherboard_extern" class="w-3/4">
+    {{__('products.product-motherboard-extern')}} <input type="text" name="motherboard_extern" id="motherboard_extern" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Interny <input type="text" name="motherboard_intern" id="motherboard_intern" class="w-3/4">
+    {{__('products.product-motherboard-intern')}} <input type="text" name="motherboard_intern" id="motherboard_intern" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    PCI Express x16 <input type="text" name="motherboard_pci_x16" id="motherboard_pci_x16" class="w-3/4">
+    {{__('products.product-motherboard-pci-x16')}} <input type="text" name="motherboard_pci_x16" id="motherboard_pci_x16" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    PCI Exptrss x1 <input type="text" name="motherboard_pci_x1" id="motherboard_pci_x1" class="w-3/4">
+    {{__('products.product-motherboard-pci-x1')}} <input type="text" name="motherboard_pci_x1" id="motherboard_pci_x1" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    M.2 sloty <input type="text" name="motherboard_m2" id="motherboard_m2" class="w-3/4">
+    {{__('products.product-m2')}} <input type="text" name="motherboard_m2" id="motherboard_m2" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    USB 2.0 <input type="text" name="motherboard_usb20" id="motherboard_usb20" class="w-3/4">
+    {{__('products.product-usb20')}} <input type="text" name="motherboard_usb20" id="motherboard_usb20" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    USB 3.2 <input type="text" name="motherboard_usb32" id="motherboard_usb32" class="w-3/4">
+    {{__('products.product-usb32')}} <input type="text" name="motherboard_usb32" id="motherboard_usb32" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    USB 3.1 <input type="text" name="motherboard_usb31" id="motherboard_usb31" class="w-3/4">
+    {{__('products.product-usb31')}} <input type="text" name="motherboard_usb31" id="motherboard_usb31" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    Serial SATA III <input type="text" name="motherboard_sata" id="motherboard_sata" class="w-3/4">
+    {{__('products.product-sata')}} <input type="text" name="motherboard_sata" id="motherboard_sata" class="w-3/4">
 </p>
 
