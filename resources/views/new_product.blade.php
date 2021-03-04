@@ -44,7 +44,7 @@
                         <option value="8">Grafické karty</option>               
                     </select>
                 </p>
-                <div id="parameters"></div>
+                <div id="parameters" class="mt-8"></div>
                 <p class="mt-2">
                     <input type="submit" value="{{__('admin.add-product')}}" class="p-4 bg-green-400 text-white w-full cursor-pointer">
                 </p>

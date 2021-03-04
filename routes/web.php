@@ -14,6 +14,8 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
+use App\Models\MemoryProduct;
+use App\Models\MemorySpecification;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +79,7 @@ Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middlewa
 Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 
 Route::get('/specifications/{id}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
+
+Route::get('/skuska', function() {
+    return MemorySpecification::all();
+});
