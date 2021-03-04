@@ -80,6 +80,3 @@ Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middlewa
 
 Route::get('/specifications/{id}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
 
-Route::get('/skuska', function() {
-    return MemorySpecification::all();
-});
