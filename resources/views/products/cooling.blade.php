@@ -20,7 +20,7 @@
     {{__('products.product-intel-socket')}} <input type="text" name="cooling_intel_socket" id="cooling_intel_socket" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-amd-socket')}} <input type="text" name="cooling_amd_socet" id="cooling_amd_socet" class="w-3/4">
+    {{__('products.product-amd-socket')}} <input type="text" name="cooling_amd_socket" id="cooling_amd_socket" class="w-3/4">
 </p>
 <p class="flex justify-between mt-1">
     {{__('products.product-height')}} <input type="text" name="cooling_height" id="cooling_height" class="w-3/4">
