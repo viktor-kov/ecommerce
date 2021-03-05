@@ -1,7 +1,5 @@
 @extends('layouts.products-master')
 
-@section('title')
-
 @section('category-name')
     @if ($products->isEmpty())
         <h1 class="text-4xl">{{__('products.no-products')}}<span class="font-bold">{{$category_name->category_name}}</span></h1>
