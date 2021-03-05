@@ -23,9 +23,12 @@
                 </aside>
             </div>
         </section>
+        @include($specification_view)
     </div>
 
+
 @endsection
+
 
 
 @section('often-bought')
