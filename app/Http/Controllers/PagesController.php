@@ -16,6 +16,7 @@ use App\Models\DiskSpecification;
 use App\Models\MemorySpecification;
 use App\Models\SupplySpecification;
 use App\Models\CoolingSpecification;
+use App\Models\EmailSubscription;
 use App\Models\MotherboardSpecification;
 
 class PagesController extends Controller
@@ -101,7 +102,7 @@ class PagesController extends Controller
         return view('admin', [
             'users' => User::get()->count(),
             'products' => Product::get()->count(),
-            'subscriptions' => Subscriptions::get()->count()
+            'subscriptions' => EmailSubscription::get()->count()
         ]);
     }
 
