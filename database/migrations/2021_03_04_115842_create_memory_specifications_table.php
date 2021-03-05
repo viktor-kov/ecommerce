@@ -20,7 +20,7 @@ class CreateMemorySpecificationsTable extends Migration
             $table->text('ram_memory');
             $table->text('ram_frequency');
             $table->text('ram_module_count');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

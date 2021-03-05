@@ -29,7 +29,7 @@ class CreateCpuSpecificationsTable extends Migration
             $table->text('cpu_technology');
             $table->text('cpu_cache');
             $table->text('cpu_chipset');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

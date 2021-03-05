@@ -33,7 +33,7 @@ class CreateMotherboardSpecificationsTable extends Migration
             $table->text('motherboard_usb32');
             $table->text('motherboard_usb31');
             $table->text('motherboard_sata');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

@@ -31,7 +31,7 @@ class CreateGpuSpecificationsTable extends Migration
             $table->text('gpu_height');
             $table->text('gpu_depth');
             $table->text('gpu_supply_power');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

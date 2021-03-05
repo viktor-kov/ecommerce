@@ -24,10 +24,10 @@ class CreateCoolingSpecificationsTable extends Migration
             $table->text('cooling_average_fan');
             $table->text('coling_intel_socket');
             $table->text('cooling_amd_socket');
-            $table->text('cooling_amd_height');
-            $table->text('cooling_amd_width');
-            $table->text('cooling_amd_depth');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->text('cooling_height');
+            $table->text('cooling_width');
+            $table->text('cooling_depth');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
