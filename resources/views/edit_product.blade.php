@@ -1,5 +1,15 @@
 @extends('layouts.adminlayout')
 
+@section('extra-js')
+    <script>
+        function show(selected) {
+            let product_category = selected.value;
+            let url = 'http://localhost/www/ecommerce/public/specifications/' + product_category;
+            
+            $("#parameters").load(url);
+        }
+    </script>
+@endsection
 
 @section('stats')
     <section>
@@ -24,7 +34,7 @@
                 </p>
                 <p class="flex justify-between mt-1">
                     {{__('admin.product-category')}}
-                    <select name="product_category" id="role" class="w-3/4">
+                    <select name="product_category" id="role" class="w-3/4" onchange="show(this)">
                         <option value="1" {{($product->category == 1) ? 'selected' : ''}}>Pamäť RAM</option>
                         <option value="2" {{($product->category == 2) ? 'selected' : ''}}>Procesory</option>
                         <option value="3" {{($product->category == 3) ? 'selected' : ''}}>Základné dosky</option>
@@ -35,6 +45,7 @@
                         <option value="8" {{($product->category == 8) ? 'selected' : ''}}>Grafické karty</option>               
                     </select>
                 </p>
+                <div id="parameters" class="mt-8"></div>
                 <p class="mt-2">
                     <input type="submit" value="{{__('admin.edit-product')}}" class="p-4 bg-green-400 text-white w-full cursor-pointer">
                 </p>
