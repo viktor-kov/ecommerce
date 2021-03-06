@@ -72,7 +72,6 @@ Route::fallback(function () {
 });
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
-Route::get('/invoice/{id}/delete', [InvoiceController::class, 'deletePDF'])->name('invoice.delete');
 
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
 Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');

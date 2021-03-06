@@ -79,9 +79,6 @@
         @foreach ($invoices as $invoice)
             <li class="bg-gray-300  p-2 border border-black mb-1 flex justify-end">
                 <a href="{{route('invoice.show', ['id' => $invoice->invoice_name])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>
-                <a href="{{route('invoice.delete', ['id' => $invoice->invoice_name])}}" class="mr-4">
-                    <i class="fas fa-trash"></i>
-                </a>
             </li>
         @endforeach
         </ul>

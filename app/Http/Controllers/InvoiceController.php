@@ -26,30 +26,6 @@ class InvoiceController extends Controller
         }
     }
 
-    public function deletePDF($id) {
-
-        if(auth()->user()) {
-            $invoice = Invoice::where('invoice_name', $id)->first();
-
-            if($invoice) {
-                if($invoice->user_id == auth()->user()->id) {
-                    $invoice_id = $invoice->id;
-                    $delete_invoice_pdf = Storage::disk('local')->delete('/invoices/'.$id);
-                    $delete_invoice= Invoice::where('id', $invoice_id)->delete();
-                    
-                    return back();
-                }
-                else {
-                    return abort(403);
-                }
-            }
-            else {
-                return back();
-            }
-        }
-
-    }
-
     public function updateStatus($id) {
         $invoice = Invoice::where('id', $id)->update(['active' => 0]);
         return redirect()->route('orders');
