@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function index() {
         return view('cart', [
-            'featured_products' => Product::select()->limit(4)->get(),
+            'featured_products' => Product::get()->random(4),
         ]);
     }
 
