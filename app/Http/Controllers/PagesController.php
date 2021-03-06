@@ -81,7 +81,7 @@ class PagesController extends Controller
                 'product' => $product,
                 'product_specifications' => $product_specifications,
                 'specification_view' => $specification_view,
-                'featured_products' => Product::select()->where('category', $product_category)->where('slug', '!=', $slug)->limit(4)->get(),
+                'featured_products' => Product::select()->where('category', $product_category)->where('slug', '!=', $slug)->get()->random(4),
             ]);
         }
         return view('products', [
