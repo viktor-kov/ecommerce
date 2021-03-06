@@ -1,24 +1,24 @@
 <p class="flex justify-between mt-1">
-    {{__('products.product-size')}} <input type="text" name="case_size" id="case_size" class="w-3/4">
+    {{__('products.product-size')}} <input type="text" name="case_size" id="case_size" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_size}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-color')}} <input type="text" name="case_color" id="case_color" class="w-3/4">
+    {{__('products.product-color')}} <input type="text" name="case_color" id="case_color" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_color}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-motherboard-format')}} <input type="text" name="case_motherboard_format" id="case_motherboard_format" class="w-3/4">
+    {{__('products.product-motherboard-format')}} <input type="text" name="case_motherboard_format" id="case_motherboard_format" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_motherboard_format}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-supply-format')}} <input type="text" name="case_supply" id="case_supply" class="w-3/4">
+    {{__('products.product-supply-format')}} <input type="text" name="case_supply" id="case_supply" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_supply}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-width')}} <input type="text" name="case_width" id="case_width" class="w-3/4">
+    {{__('products.product-width')}} <input type="text" name="case_width" id="case_width" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_width}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-height')}} <input type="text" name="case_height" id="case_height" class="w-3/4">
+    {{__('products.product-height')}} <input type="text" name="case_height" id="case_height" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_height}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-depth')}} <input type="text" name="case_depth" id="case_depth" class="w-3/4">
+    {{__('products.product-depth')}} <input type="text" name="case_depth" id="case_depth" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_depth}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-weight')}} <input type="text" name="case_weight" id="case_weight" class="w-3/4">
+    {{__('products.product-weight')}} <input type="text" name="case_weight" id="case_weight" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->case_weight}}" @endif>
 </p>
