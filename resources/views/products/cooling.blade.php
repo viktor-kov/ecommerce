@@ -17,7 +17,7 @@
     {{__('products.product-fan-average')}} <input type="text" name="cooling_average_fan" id="cooling_average_fan" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->cooling_average_fan}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-intel-socket')}} <input type="text" name="cooling_intel_socket" id="cooling_intel_socket" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->coling_intel_socket}}" @endif>
+    {{__('products.product-intel-socket')}} <input type="text" name="cooling_intel_socket" id="cooling_intel_socket" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->cooling_intel_socket}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
     {{__('products.product-amd-socket')}} <input type="text" name="cooling_amd_socket" id="cooling_amd_socket" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->cooling_amd_socket}}" @endif>

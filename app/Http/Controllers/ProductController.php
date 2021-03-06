@@ -167,11 +167,11 @@ class ProductController extends Controller
                 $product_specifications->cooling_min_speed = $request->cooling_min_speed;
                 $product_specifications->cooling_max_speed = $request->cooling_max_speed;
                 $product_specifications->cooling_average_fan = $request->cooling_average_fan;
-                $product_specifications->coling_intel_socket = $request->coling_intel_socket;
+                $product_specifications->cooling_intel_socket = $request->cooling_intel_socket;
                 $product_specifications->cooling_amd_socket = $request->cooling_amd_socket;
-                $product_specifications->cooling_amd_height = $request->cooling_amd_height;
-                $product_specifications->cooling_amd_width = $request->cooling_amd_width;
-                $product_specifications->cooling_amd_depth = $request->cooling_amd_depth;
+                $product_specifications->cooling_height = $request->cooling_height;
+                $product_specifications->cooling_width = $request->cooling_width;
+                $product_specifications->cooling_depth = $request->cooling_depth;
 
                 $product_specifications->save();
                 break; 
