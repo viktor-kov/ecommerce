@@ -78,5 +78,5 @@ Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->
 Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
 Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 
-Route::get('/specifications/{id}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
+Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
 
