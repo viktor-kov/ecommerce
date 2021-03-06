@@ -2,15 +2,29 @@
 
 @section('extra-js')
     <script>
+
+        let product_category_main = {{$product_category}};
+        let product_id = {{$product_id}};
+
+        //when the page load, than the specifications will display
         window.onload = function() {
-            url = 'http://localhost/www/ecommerce/public/specifications/' + {{$product_category}} + '/' + {{$product_id}};
+            url = 'http://localhost/www/ecommerce/public/specifications/' + product_category_main + '/' + product_id;
             $("#parameters").load(url);
         } 
 
+        //when we select the item from dropdown, than this function will execute and return the specifications field
         function show(selected) {
+            let url;
             let product_category = selected.value;
-            let url = 'http://localhost/www/ecommerce/public/specifications/' + product_category;
-            
+
+            //if the main product category is the same as choosen product category from dropdown, than the specifications will display to edit
+            if(product_category_main == product_category) {
+                url = 'http://localhost/www/ecommerce/public/specifications/' + product_category + '/' + product_id;
+            }
+            else {
+                url = 'http://localhost/www/ecommerce/public/specifications/' + product_category;
+            }
+
             $("#parameters").load(url);
         }
     </script>
