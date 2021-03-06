@@ -152,8 +152,8 @@ class ProductController extends Controller
                 $product_specifications->disk_usage = $request->disk_usage;
                 $product_specifications->disk_read_speed = $request->disk_read_speed;
                 $product_specifications->disk_write_speed = $request->disk_write_speed;
-                $product_specifications->disk_disk_consumption = $request->disk_disk_consumption;
-                $product_specifications->disk_disk_life = $request->disk_disk_life;
+                $product_specifications->disk_consumption = $request->disk_consumption;
+                $product_specifications->disk_life = $request->disk_life;
 
                 $product_specifications->save();
                 break; 
