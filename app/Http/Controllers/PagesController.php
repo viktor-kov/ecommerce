@@ -136,6 +136,57 @@ class PagesController extends Controller
     }
 
     public function edit_product($id) {
+         //select product by slug from db
+         $product = Product::where('id', $id)->first();
+         //get the product id
+         $product_id = $product->id;
+         //get the product category
+         $product_category = $product->category;
+
+         switch($product_category) {
+             case 1:
+                 $product_specifications = MemorySpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.ram';
+                 break;
+             case 2:
+                 $product_specifications = CpuSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.cpu';
+                 break;
+             case 3:
+                 $product_specifications = MotherboardSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.motherboard';
+                 break;
+             case 4:
+                 $product_specifications = CaseSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.case';
+                 break;
+             case 5:
+                 $product_specifications = SupplySpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.supply';
+                 break;
+             case 6:
+                 $product_specifications = DiskSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.disk';
+                 break;
+             case 7:
+                 $product_specifications = CoolingSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.cooling';
+                 break;
+             case 8:
+                 $product_specifications = GpuSpecification::where('product_id', $product_id)->first();
+                 $specification_view = 'specifications.gpu';
+                 break;
+         }
+
+         return view('edit_product', [
+             'product' => $product,
+             'product_id' => $product_id,
+             'product_category' => $product_category,
+             'product_specifications' => $product_specifications,
+             'specification_view' => $specification_view,
+         ]);
+
+
         return view('edit_product', [
             'product' => Product::where('id', $id)->first(),
         ]);
