@@ -13,18 +13,21 @@ class InformationsController extends Controller
 
     public function store(StoreInformationRequest $request) {
 
-        $information = new Informations;
-        $information->user_id = $request->user()->id;
-        $information->name = $request->name;
-        $information->lastname = $request->lastname;
-        $information->town = $request->town;
-        $information->psc = $request->psc;
-        $information->street = $request->street;
-        $information->house_id = $request->house_id;
-        $information->phone_number = $request->phone_number;
+        //if we has inforamtions about the user, we will update them, if we dont have, we will create
+        $information = Informations::updateOrCreate(
+        [
+            'user_id' => auth()->id(),
+        ],
+        [
+            'name' =>  $request->name,
+            'lastname' => $request->lastname,
+            'town' => $request->town,
+            'psc' => $request->psc, 
+            'street' => $request->street,
+            'house_id' => $request->house_id,
+            'phone_number' => $request->phone_number,
+        ]);
 
-        $information->save();
-
-        return back();
+        return redirect()->route('profile.show');
     }
 }
