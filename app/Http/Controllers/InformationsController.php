@@ -28,6 +28,6 @@ class InformationsController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
-        return redirect()->route('profile.show');
+        return redirect()->route('profile');
     }
 }
