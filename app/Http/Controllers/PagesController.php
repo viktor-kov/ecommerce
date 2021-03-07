@@ -18,6 +18,7 @@ use App\Models\SupplySpecification;
 use App\Models\CoolingSpecification;
 use App\Models\EmailSubscription;
 use App\Models\MotherboardSpecification;
+use Exception;
 
 class PagesController extends Controller
 {
@@ -77,11 +78,19 @@ class PagesController extends Controller
                     break;
             }
 
+            //trying to get random 4 products from the current product category, but when there is an error, 
+            //we will choose 4 random products from all of the products
+            try {
+                $featured_products = Product::where('category', $product_category)->where('slug', '!=', $slug)->get()->random(4);
+            } catch(\Exception $e) {
+                $featured_products = Product::where('slug', '!=', $slug)->get()->random(4);
+            }
+
             return view('product-id', [
                 'product' => $product,
                 'product_specifications' => $product_specifications,
                 'specification_view' => $specification_view,
-                'featured_products' => Product::select()->where('category', $product_category)->where('slug', '!=', $slug)->get()->random(4),
+                'featured_products' => $featured_products,
             ]);
         }
         return view('products', [
