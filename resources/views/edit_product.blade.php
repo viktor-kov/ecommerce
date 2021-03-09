@@ -72,7 +72,7 @@
             <form action="../delete/{{$product->id}}" method="post">
                 @csrf
                 <input type="hidden" name="product_photo_path" value="{{$product->photo_path}}">
-                <input type="submit" value="{{__('admin.del-product')}}" class="p-4 bg-red-600 text-white w-full cursor-pointer mt-4">
+                <input type="submit" value="{{__('admin.del-product')}}" class="p-4 bg-red-600 text-white w-full cursor-pointer mt-4" onclick="return confirm('Si si istý?')">
             </form>
             <section class="p-4">
                 <img src="{{asset('img/'.$product->photo_path)}}" alt="" class="mx-auto w-1/2">
