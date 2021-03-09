@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PagesController;
@@ -13,6 +13,7 @@ use App\Http\Controllers\InformationsController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SpecificationController;
 use App\Models\MemoryProduct;
 use App\Models\MemorySpecification;
@@ -66,6 +67,9 @@ Route::get('/thankyou', [PagesController::class, 'thankyou'])->name('thankyou.in
 Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
+
+//user password update
+Route::post('/updatepassword', [PasswordController::class, 'update'])->middleware('auth')->name('password.update');
 
 Route::fallback(function () {
     abort(403);
