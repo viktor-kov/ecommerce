@@ -1,22 +1,20 @@
 <?php
 
-use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\InformationsController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SpecificationController;
-use App\Models\MemoryProduct;
-use App\Models\MemorySpecification;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,3 +81,8 @@ Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middlewa
 
 Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
 
+
+//routes for storing reviews, getting and deleting them
+Route::post('/review', [ReviewController::class, 'store'])->middleware('auth')->name('review.store');
+Route::get('/review', [ReviewController::class, 'index'])->middleware('admin')->name('review.index');
+Route::delete('/review/{id}', [ReviewController::class, 'delete'])->middleware('admin')->name('review.destroy');

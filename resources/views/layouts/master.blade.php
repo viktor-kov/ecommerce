@@ -37,6 +37,9 @@
         <section>
             @yield('often-bought')
         </section>
+        <section>
+            @yield('reviews')
+        </section>
         <footer class="bg-black">
             @include('footer')
         </footer>

@@ -20,6 +20,7 @@ return [
     'update' => 'Update role',
     'orders' => 'Orders',
     'show-order' => 'Show order',
+    'see-reviews' => 'Load all reviews',
 ];
 
 ?>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\User;
+use App\Models\Review;
 use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Category;
@@ -13,12 +15,11 @@ use App\Models\CpuSpecification;
 use App\Models\GpuSpecification;
 use App\Models\CaseSpecification;
 use App\Models\DiskSpecification;
+use App\Models\EmailSubscription;
 use App\Models\MemorySpecification;
 use App\Models\SupplySpecification;
 use App\Models\CoolingSpecification;
-use App\Models\EmailSubscription;
 use App\Models\MotherboardSpecification;
-use Exception;
 
 class PagesController extends Controller
 {
@@ -86,7 +87,15 @@ class PagesController extends Controller
                 $featured_products = Product::where('slug', '!=', $slug)->get()->random(4);
             }
 
+            //get all reviews belongs to the product
+            //joing them on users table by review user id and users id
+            $reviews = Review::where('product_id', $product_id)
+                ->join('users', 'reviews.user_id', '=', 'users.id')
+                ->select('reviews.text', 'reviews.created_at', 'users.name')
+                ->get();
+
             return view('product-id', [
+                'reviews' => $reviews,
                 'product' => $product,
                 'product_specifications' => $product_specifications,
                 'specification_view' => $specification_view,

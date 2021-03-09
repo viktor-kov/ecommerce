@@ -20,6 +20,7 @@ return [
     'update' => 'Aktualizovať rolu:',
     'orders' => 'Objednávky',
     'show-order' => 'Načítať objednávku',
+    'see-reviews' => 'Načítať všetky recenzie',
 ];
 
 ?>
