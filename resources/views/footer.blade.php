@@ -23,7 +23,7 @@
             <p>{!! __('other.subscribe-text') !!}</p>
             <form action="{{route('subscribe.update')}}" method="post">
                 @csrf
-                <input type="mail" name="email" placeholder="email@email.com" class="w-full text-gray-700 p-1">
+                <input type="email" name="email" placeholder="email@email.com" class="w-full text-gray-700 p-1">
                 <input type="submit" value="{{__('other.subscribe-btn')}}" class="bg-green-500 p-2 mt-2 float-right cursor-pointer">
             </form>
         </aside>
