@@ -9,7 +9,14 @@ class Informations extends Model
 {
     use HasFactory;
 
-    protected $guarded = [
+    protected $fillable = [
         'user_id',
-    ];
+        'name',
+        'lastname',
+        'town',
+        'psc',
+        'street',
+        'house_id',
+        'phone_number',
+    ];    
 }
