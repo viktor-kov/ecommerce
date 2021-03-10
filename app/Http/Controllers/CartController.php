@@ -38,19 +38,19 @@ class CartController extends Controller
         ])->associate('App\Models\Product');
     
 
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success', 'Pridali ste položku do košíka!');
     }
 
     public function destroy($row_id) {
         Cart::remove($row_id);
 
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success', 'Odstránili ste produkt zo košíka');
     }
 
     public function update($row_id, Request $request) {
 
         $qty = $request->qty;
         Cart::update($row_id, $qty);
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success', 'Aktualizovali sme počet kusov!');
     }
 }

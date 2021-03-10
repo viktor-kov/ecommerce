@@ -15,8 +15,6 @@ class SubscribeController extends Controller
             ['email' => $request->email]
         );
 
-
-
-        return back();
+        return back()->with('success', 'Ďakujeme za odoberanie noviniek');
     }
 }

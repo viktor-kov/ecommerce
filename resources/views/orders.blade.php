@@ -1,11 +1,35 @@
 @extends('layouts.adminlayout')
 
+@section('messages')
+    @if (session()->get('success'))
+        @include('messages.success')
+    @endif
+
+    @if (session()->get('error'))
+        @include('messages.error')
+    @endif
+@endsection
+
+@section('extra-js')
+    
+    <script type="text/javascript"> 
+        $(document).ready( function() {
+            $('#message').delay(5000).fadeOut();
+        });
+    </script>
+
+@endsection
+
 @section('extra-js')
 <script>
     $(document).ready(function(){
         setInterval(function() {
             $( "#order-list" ).load("{{route('orders')}} #order-list li");
         }, 20000);
+
+        $(document).ready( function() {
+            $('#message').delay(5000).fadeOut();
+        });
     });
 </script>
 @endsection

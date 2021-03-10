@@ -32,6 +32,6 @@ class UserAvatarController extends Controller
         $update_avatar = User::where('id', $user_id)->update(['profile_photo_path' => $name ]);
 
         
-        return back();
+        return back()->with('success', 'Avatar bol nahraný!');
     }
 }

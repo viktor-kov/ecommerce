@@ -25,6 +25,7 @@
     <header class="h-10 bg-black">
         @include('header')
     </header>
+    @yield('messages')
     <body class="container font-sans antialiased mx-auto">
         @yield('navigation')
         <main>

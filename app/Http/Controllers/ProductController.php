@@ -199,7 +199,7 @@ class ProductController extends Controller
                 break;
         }
     
-        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug]);
+        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Pridali ste produkt');
     }
 
     public function update(ProductUpdateRequest $request) {
@@ -236,7 +236,7 @@ class ProductController extends Controller
             'photo_path' => $product_photo_path,
         ]);
 
-        return redirect()->route('product.show', ['id' => $product_category, 'slug' => $product_slug]);
+        return redirect()->route('product.show', ['id' => $product_category, 'slug' => $product_slug])->with('success', 'Upravili ste produkt');
     }
 
     public function delete(ProductDeleteRequest $request) {
@@ -248,6 +248,6 @@ class ProductController extends Controller
 
         $delete_product_photo = Storage::disk('public')->delete($photo_path);
 
-        return redirect('allproducts');
+        return redirect('allproducts')->with('error', 'Zmazali ste produkt');
     }
 }

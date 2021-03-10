@@ -1,5 +1,24 @@
 @extends('layouts.products-master')
 
+@section('messages')
+    @if (session()->get('success'))
+        @include('messages.success')
+    @endif
+
+    @if (session()->get('error'))
+        @include('messages.error')
+    @endif
+@endsection
+
+@section('extra-js')
+    
+    <script type="text/javascript"> 
+        $(document).ready( function() {
+            $('#message').delay(5000).fadeOut();
+        });
+    </script>
+
+@endsection
 
 @section('content')
     <ul class="product-section m-auto grid justify-items-center xl:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">

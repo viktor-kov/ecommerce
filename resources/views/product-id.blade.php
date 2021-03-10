@@ -1,5 +1,24 @@
 @extends('layouts.master')
 
+@section('messages')
+    @if (session()->get('success'))
+        @include('messages.success')
+    @endif
+
+    @if (session()->get('error'))
+        @include('messages.error')
+    @endif
+@endsection
+
+@section('extra-js')
+    
+    <script type="text/javascript"> 
+        $(document).ready( function() {
+            $('#message').delay(5000).fadeOut();
+        });
+    </script>
+
+@endsection
 
 @section('content')
     <div class="main-container shadow-xl">

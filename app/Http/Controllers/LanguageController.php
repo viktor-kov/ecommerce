@@ -13,6 +13,6 @@ class LanguageController extends Controller
             session()->put('applocale', $lang);
         }
 
-        return back();
+        return back()->with('success', 'Jazyk sa nastavil');
     }
 }
