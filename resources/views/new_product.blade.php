@@ -8,6 +8,17 @@
             
             $("#parameters").load(url);
         }
+
+        function loadImage(event) {
+            let output = document.getElementById('imagePreview');
+
+            //create adress to the uploaded img and append in to the imagePreview img source
+            output.src = URL.createObjectURL(event.target.files[0]);
+
+            output.onload = function() {
+                URL.revokeObjectURL(output.src); // free memory
+            }
+        };
     </script>
 @endsection
 
@@ -25,7 +36,7 @@
                     {{__('admin.product-desc')}} <textarea name="product_description" id="product_desc" rows="10" class="w-3/4"></textarea>
                 </p>
                 <p class="flex justify-between mt-1">
-                    {{__('admin.product-img')}} <input type="file" name="product_image" id="product_img" class="w-3/4 bg-red-500">
+                    {{__('admin.product-img')}} <input type="file" name="product_image" id="product_img" onchange="loadImage(event)" class="w-3/4 bg-red-500">
                 </p>
                 <p class="flex justify-between mt-1">
                     {{__('admin.product-price')}} <input type="text" name="product_price" id="product_price" class="w-3/4">
@@ -49,6 +60,7 @@
                     <input type="submit" value="{{__('admin.add-product')}}" class="p-4 bg-green-400 text-white w-full cursor-pointer">
                 </p>
             </form>
+            <img id="imagePreview" class="mx-auto w-1/2">
         </section>
    </section>
 
