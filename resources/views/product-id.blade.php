@@ -63,10 +63,18 @@
     <ul class="flex overflow-x-auto mb-2">
         @forelse ($reviews as $review)
             <li class="mr-2">
-                <section class="w-72 h-72 p-4 border border-dashed relative">
-                    <header><strong>&commat;{{$review->name}}</strong></header>
-                    <body>{{$review->text}}</body>
-                    <footer class="absolute bottom-0 left-0 right-0 text-center text-cool-gray-400">{{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i | d.m.Y')}}</footer>
+                <section class="w-72 h-72 p-4 border border-dashed overflow-y-auto">
+                    <header class="pb-1 border-dashed border-b">
+                        <strong>&commat;{{$review->name}}</strong>
+                    </header>
+                    <small class="text-xs">
+                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i | d.m.Y')}}
+                    </small>
+                    <body>
+                        <section class="mt-4">
+                            {{$review->text}}
+                        </section>
+                    </body>
                 </section>
             </li>
         @empty

@@ -91,7 +91,7 @@ class PagesController extends Controller
             //joing them on users table by review user id and users id
             $reviews = Review::where('product_id', $product_id)
                 ->join('users', 'reviews.user_id', '=', 'users.id')
-                ->select('reviews.text', 'reviews.created_at', 'users.name')
+                ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
                 ->get();
 
             return view('product-id', [
