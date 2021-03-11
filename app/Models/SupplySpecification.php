@@ -10,4 +10,12 @@ class SupplySpecification extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'product_id',
+        'supply_power',
+        'supply_format',
+        'supply_equipment',
+        'supply_protection',
+    ];
 }

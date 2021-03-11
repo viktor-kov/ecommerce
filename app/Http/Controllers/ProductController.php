@@ -17,6 +17,7 @@ use App\Models\MotherboardSpecification;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductDeleteRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Services\ProductService;
 
 class ProductController extends Controller
 {
@@ -202,41 +203,38 @@ class ProductController extends Controller
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Pridali ste produkt');
     }
 
-    public function update(ProductUpdateRequest $request) {
-        $product_name = $request->product_name;
-        $product_without_dph = ($request->product_price) * 0.80;
+    //update the product
+    public function update(Request $request, ProductService $productService) {
 
-        $product_slug = Str::slug($product_name, '-');
-        
+        $product_id = $request->id;
+
+        $edited_product = Product::where('id', $product_id)->get()->first();
+        //from product name make slug
+        $product_slug = Str::slug($request->product_name, '-');
+
+        $product_photo = $request->product_photo_path;
+
+        //if we uploaded the new product photo
         if($request->file('product_image')) {
-            $photo_path = $request->product_photo_path;
-            $delete_product_photo = Storage::disk('public')->delete($photo_path);
-
-            $extension = $request->file('product_image')->extension();
-            $photo_name = $product_slug.'.'.$extension;
-            $photo_path = $request->file('product_image')->storeAs('products', $photo_name, 'public');
+           $product_photo = $productService->updateProductPhoto($request, $product_photo, $product_slug);
         }
-        else {
-            $photo_path = $request->product_photo_path;
+        
+        //update product in main table
+        $productService->updateProduct($request, $product_photo);
+
+        //if edited product category is different than the category we want to switch, 
+        //than we will delete product specifications from the previous product category
+        if($edited_product->category != $request->product_category) {
+
+            //delete old specifications from old product category
+            $productService->deleteSpecifications($product_id, $edited_product->category);
+
         }
 
-        $id = $request->id;
-        $product_text = $request->product_description;
-        $product_price = $request->product_price;
-        $product_category = $request->product_category;
-        $product_photo_path = $photo_path;
+        //update new specifications
+        $productService->updateProductSpecification($request, $product_id);
 
-        $update_product = Product::where('id', $id)->update([
-            'name' => $product_name, 
-            'text' => $product_text,
-            'slug' => $product_slug,
-            'category' => $product_category,
-            'price' => $product_price,
-            'without_dph' => $product_without_dph,
-            'photo_path' => $product_photo_path,
-        ]);
-
-        return redirect()->route('product.show', ['id' => $product_category, 'slug' => $product_slug])->with('success', 'Upravili ste produkt');
+        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Upravili ste produkt');
     }
 
     public function delete(ProductDeleteRequest $request) {
