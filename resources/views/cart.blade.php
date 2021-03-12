@@ -22,9 +22,9 @@
 
 
 @section('content')
-<section class="min-h-screen">
+<section class="min-h-screen p-2 sm:p-0">
     @if (Cart::count() > 0)
-        <ul class="mt-2 w-3/4">
+        <ul class="mt-2 w-full md:w-3/4">
             @foreach (Cart::content() as $product)
                 <li class="mb-2 flex border-b border-black">
                     <section class="grid grid-cols-4 justify-around p-2 text-xl w-full">
@@ -54,7 +54,7 @@
             @endforeach
         </ul>
         @if (Cart::subtotal() > 0)
-            <section class="w-3/4">
+            <section class="w-full md:w-3/4">
                 <p class="flex justify-end">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</p>
                 <section class="grid grid-cols-2 gap-1 justify-center w-full">
                     <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">{{__('checkout.back-to-categories')}}</a>

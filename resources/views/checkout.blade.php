@@ -12,7 +12,7 @@
 @section('content')
 <section>
     <h1 class="text-3xl">{{__('checkout.ship-adress')}}</h1>
-    <section class="grid grid-cols-2 w-full h-screen">
+    <section class="grid grid-cols-1 md:grid-cols-2 w-full h-min-screen">
         <section>
             <form action="{{route('checkout.store')}}" method="post" class="p-1" id="checkout-form">
                 @csrf 
