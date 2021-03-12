@@ -1,21 +1,21 @@
 
-<nav class="flex justify-between text-white pr-4 pl-4 leading-9">
-    <div class="hidden desktop:block">
-        <h1><a href="http://localhost/www/ecommerce/public/">easy-components</a></h1>
+<nav class="grid grid-cols-1 md:grid-cols-2 text-white pr-4 pl-4 leading-9 flex-wrap">
+    <div class="flex justify-between">
+        <h1><a href="{{route('home.index')}}">easy-components</a></h1>
+        <li class="flex">
+            @foreach (Config::get('language') as $lang => $language)
+                <a href="{{route('lang', ['lang' => $lang])}}" class="pr-1">
+                    @if ($lang == App::getLocale())
+                        <strong class="text-green-400">{{$language}}</strong>
+                    @else
+                        {{$language}}
+                    @endif
+                </a>
+            @endforeach
+        </li>
     </div>
 
-    <ul class="flex">
-            <li class="flex">
-                @foreach (Config::get('language') as $lang => $language)
-                    <a href="{{route('lang', ['lang' => $lang])}}" class="pr-1">
-                        @if ($lang == App::getLocale())
-                            <strong class="text-green-400">{{$language}}</strong>
-                        @else
-                            {{$language}}
-                        @endif
-                    </a>
-                @endforeach
-            </li>
+    <ul class="flex justify-between md:justify-self-end">
             <li class="pr-2 {{(Cart::count() > 0) ? 'text-green-400' : ''}}">
                 <a href="{{route('cart.index')}}"><i class="fas fa-shopping-cart mr-1"></i>{{(Cart::count() > 0) ? Cart::count() : ''}}</a>
             </li>
