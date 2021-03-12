@@ -1,40 +1,40 @@
 @extends('layouts.auth-master')
 
 @section('content')
-    <section class="w-2/5 m-auto mt-48">
+    <section class="w-full sm:w-4/5 lg:w-1/2 m-auto mt-20 p-4">
         <x-jet-validation-errors class="mb-4" />
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" class="">
                 @csrf
 
                 <div>
-                    <x-jet-label for="name" value="{{ __('Name') }}" />
-                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <label for="name">{{ __('Name') }}</label>
+                    <input id="name" class="block mt-1 w-full border p-2" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="email" value="{{ __('auth.email') }}" />
-                    <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    <label for="email">{{ __('auth.email') }}</label>
+                    <input id="email" class="block mt-1 w-full border p-2" type="email" name="email" :value="old('email')" required>
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="password" value="{{ __('auth.password') }}" />
-                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                    <label for="password">{{ __('auth.password') }}</label>
+                    <input id="password" class="block mt-1 w-full border p-2" type="password" name="password" required autocomplete="new-password">
                 </div>
 
                 <div class="mt-4">
-                    <x-jet-label for="password_confirmation" value="{{ __('auth.confirmpassword') }}" />
-                    <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <label for="password_confirmation">{{ __('auth.confirmpassword') }}</label>
+                    <input id="password_confirmation" class="block mt-1 w-full border p-2" type="password" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-end">
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('auth.alreadyregistered') }}
                     </a>
 
-                    <x-jet-button class="ml-4">
+                    <button class="ml-4 bg-green-400 p-2 text-white rounded mt-2">
                         {{ __('auth.register') }}
-                    </x-jet-button>
+                    </button>
                 </div>
             </form>
     </section>

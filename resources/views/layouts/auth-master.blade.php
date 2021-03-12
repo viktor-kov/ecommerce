@@ -27,7 +27,7 @@
         <main class="h-screen">
             @yield('content')
         </main>
-        <footer class="bg-black">
+        <footer class="bg-black mt-10 lg:mt-0">
             @include('footer')
         </footer>
     </body>
