@@ -22,8 +22,8 @@
 
 @section('content')
     <div class="main-container shadow-xl">
-        <section class="grid grid-cols-2 mt-4 p-8">
-            <img src="{{asset('img/'.$product->photo_path)}}" alt="" class="h-200">
+        <section class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 mt-4 p-8">
+            <img src="{{asset('img/'.$product->photo_path)}}" alt="" class="h-200 mx-auto">
             <div class="product-informations">
                 <h1 class="text-4xl">{{$product->name}}</h1>
                 <p class="mt-4 h-64 overflow-y-auto p-2 border border-dashed">{{$product->text}}</p>
