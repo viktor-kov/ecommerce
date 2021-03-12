@@ -38,8 +38,8 @@ Route::get('/allproducts/{slug?}', [PagesController::class, 'all_products'])->wh
 Route::get('/newproduct', [PagesController::class, 'new_product'])->middleware('admin')->name('newproduct');
 Route::post('/addproduct', [ProductController::class, 'store'])->middleware('admin')->name('addproduct');
 Route::get('/edit/{id?}', [PagesController::class, 'edit_product'])->middleware('admin')->name('editproduct');
-Route::post('/editproduct/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
-Route::post('/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
+Route::put('/editproduct/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
+Route::delete('/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
 
 
 

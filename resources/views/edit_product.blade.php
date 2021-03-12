@@ -46,13 +46,14 @@
     <section>
         <h1 class="text-center text-3xl">{{__('admin.edit-product')}}</h1>    
         <section class="bg-gray-200 p-4">
-            <form action="../editproduct/{{$product->id}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('updateproduct', ['id' => $product->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <p class="flex justify-between">
-                    {{__('admin.product-name')}} <input type="text" name="product_name" id="" class="w-3/4" value="{{$product->name}}">
+                    {{__('admin.product-name')}} <input type="text" name="product_name" id="product_name" class="w-3/4" value="{{$product->name}}">
                 </p>
                 <p class="flex justify-between mt-1">
-                    {{__('admin.product-desc')}} <textarea name="product_description" rows="10" class="w-3/4">{{$product->text}}</textarea>
+                    {{__('admin.product-desc')}} <textarea name="product_description" id="product_description" rows="10" class="w-3/4">{{$product->text}}</textarea>
                 </p>
                 <p class="flex justify-between mt-1">
                     {{__('admin.product-img')}} <input type="file" name="product_image" id="" onchange="loadImage(event)" class="w-3/4 bg-red-500">
@@ -81,8 +82,9 @@
                     <input type="submit" value="{{__('admin.edit-product')}}" class="p-4 bg-green-400 text-white w-full cursor-pointer">
                 </p>
             </form>
-            <form action="../delete/{{$product->id}}" method="post">
+            <form action="{{route('deleteproduct', ['id' => $product->id])}}" method="POST">
                 @csrf
+                @method('DELETE')
                 <input type="hidden" name="product_photo_path" value="{{$product->photo_path}}">
                 <input type="submit" value="{{__('admin.del-product')}}" class="p-4 bg-red-600 text-white w-full cursor-pointer mt-4" onclick="return confirm('Si si istý?')">
             </form>
