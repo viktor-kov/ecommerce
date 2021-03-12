@@ -27,6 +27,18 @@
 
             $("#parameters").load(url);
         }
+
+        //show uploaded image
+        function loadImage(event) {
+            let output = document.getElementById('imagePreview');
+
+            //create adress to the uploaded img and append in to the imagePreview img source
+            output.src = URL.createObjectURL(event.target.files[0]);
+
+            output.onload = function() {
+                URL.revokeObjectURL(output.src); // free memory
+            }
+        };
     </script>
 @endsection
 
@@ -43,7 +55,7 @@
                     {{__('admin.product-desc')}} <textarea name="product_description" rows="10" class="w-3/4">{{$product->text}}</textarea>
                 </p>
                 <p class="flex justify-between mt-1">
-                    {{__('admin.product-img')}} <input type="file" name="product_image" id="" class="w-3/4 bg-red-500">
+                    {{__('admin.product-img')}} <input type="file" name="product_image" id="" onchange="loadImage(event)" class="w-3/4 bg-red-500">
                 </p>
                 <p class="flex justify-between mt-1">
                     {{__('admin.product-price')}} <input type="text" name="product_price" id="" class="w-3/4" value="{{$product->price}}"">
@@ -75,7 +87,7 @@
                 <input type="submit" value="{{__('admin.del-product')}}" class="p-4 bg-red-600 text-white w-full cursor-pointer mt-4" onclick="return confirm('Si si istý?')">
             </form>
             <section class="p-4">
-                <img src="{{asset('img/'.$product->photo_path)}}" alt="" class="mx-auto w-1/2">
+                <img src="{{asset('img/'.$product->photo_path)}}" id="imagePreview" alt="" class="mx-auto w-1/2">
             </section>
         </section>
    </section>
