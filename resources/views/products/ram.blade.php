@@ -8,5 +8,5 @@
     {{__('products.product-ram-type')}} <input type="text" name="ram_type" id="ram_type" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->ram_type}}" @endif>
 </p>
 <p class="flex justify-between mt-1">
-    {{__('products.product-module-count')}} <input type="text" name="module_count" id="modul_count" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->ram_module_count}}" @endif>
+    {{__('products.product-module-count')}} <input type="text" name="ram_module_count" id="ram_module_count" class="w-3/4" @if ($product_specifications) value="{{$product_specifications->ram_module_count}}" @endif>
 </p>
