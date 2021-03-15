@@ -47,7 +47,7 @@ Route::delete('/delete/{id}', [ProductController::class, 'delete'])->middleware(
 Route::post('/userupdate/{id}', [UserRoleController::class, 'update'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
 Route::get('/allusers/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
 Route::post('/informations_update', [InformationsController::class, 'store']);
-Route::post('/avatar_update', [UserAvatarController::class, 'update']);
+Route::put('/avatar_update', [UserAvatarController::class, 'update'])->middleware('auth')->name('avatar.update');
 
 //subscribe route
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.update');

@@ -25,9 +25,9 @@
         <section class="avatar flex flex-col m-auto">
             <img src="{{asset('img/avatars/'.auth()->user()->profile_photo_path)}}" alt="" class="h-72 w-72 rounded-full border border-black">
             <section class="mt-8">
-                <form action="./avatar_update" method="post" enctype="multipart/form-data">
+                <form action="{{route('avatar.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="profile_photo_path" value="{{auth()->user()->profile_photo_path}}">
+                    @method('PUT')
                     <input type="file" name="avatar">
                     <input type="submit" value="{{__('profile.update-avatar')}}" class="p-2 bg-green-500 text-white block mt-2 w-full cursor-pointer">
                 </form>

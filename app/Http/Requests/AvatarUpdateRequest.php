@@ -24,8 +24,7 @@ class AvatarUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_photo_path' => 'required',
-            'avatar' => 'required|image',
+            'avatar' => 'required|image|max:512',
         ];
     }
 }

@@ -15,6 +15,7 @@
         "grpc/grpc": "^v1.27.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "hardevine/shoppingcart": "^2.9",
+        "intervention/image": "^2.5",
         "laravel/cashier": "^12.8",
         "laravel/framework": "^8.0",
         "laravel/jetstream": "^1.5",
