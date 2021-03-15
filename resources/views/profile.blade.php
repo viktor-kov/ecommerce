@@ -63,8 +63,9 @@
     <main>
         <section>
             <h1 class="text-3xl">{{__('checkout.ship-adress')}}</h1>
-            <form action="./informations_update" method="post" class="p-1 w-full">
+            <form action="{{route('informations.update')}}" method="POST" class="p-1 w-full">
                 @csrf 
+                @method('PUT')
                     <p class="w-full block">
                         {{__('profile.name')}} <input type="text" name="name" class="border border-black block w-full p-1" @if ($informations) value="{{$informations->name}} @endif">
                     </p>
