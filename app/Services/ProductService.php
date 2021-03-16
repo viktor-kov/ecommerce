@@ -246,7 +246,7 @@ class ProductService {
                     'ram_type' => $request->ram_type,
                     'ram_memory' => $request->ram_memory,
                     'ram_frequency' => $request->ram_frequency,
-                    'ram_module_count' => $request->module_count,
+                    'ram_module_count' => $request->ram_module_count,
                 ]);
                 break;
             case 2: 
