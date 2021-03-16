@@ -9,7 +9,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function index() {
-        return view('cart', [
+        return view('guest.cart', [
             'featured_products' => Product::get()->random(4),
         ]);
     }

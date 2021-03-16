@@ -24,7 +24,7 @@ use App\Models\MotherboardSpecification;
 class PagesController extends Controller
 {
     public function home() {
-        return view('home', [
+        return view('guest.home', [
             'title' => 'Domov',
             'categories' => Category::get(),
         ]);
@@ -94,7 +94,7 @@ class PagesController extends Controller
                 ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
                 ->get();
 
-            return view('product-id', [
+            return view('guest.product-id', [
                 'reviews' => $reviews,
                 'showed_product' => $product,
                 'product_specifications' => $product_specifications,
@@ -102,7 +102,7 @@ class PagesController extends Controller
                 'featured_products' => $featured_products,
             ]);
         }
-        return view('products', [
+        return view('guest.products', [
             'id' => $id,
             'products' => Product::all()->where('category', $id),
             'category_name' => Category::where('id', $id)->first(),
@@ -110,14 +110,14 @@ class PagesController extends Controller
     }
 
     public function profile() {   
-        return view('profile', [
+        return view('guest.profile', [
             'informations' => Informations::where('user_id', auth()->user()->id)->latest()->first(),
             'invoices' => Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
         ]);
     }
 
     public function admin() {
-        return view('admin', [
+        return view('admin.admin', [
             'users' => User::get()->count(),
             'products' => Product::get()->count(),
             'subscriptions' => EmailSubscription::get()->count()
@@ -126,28 +126,28 @@ class PagesController extends Controller
 
     public function all_users($id = null) {
         if($id) {
-            return view('userprofile', [
+            return view('admin.userprofile', [
                 'user' => User::where('id', $id)->first()
             ]);
         }
         else {
-            return view('all_users', [
+            return view('admin.all_users', [
                 'users' => User::all()
             ]);
         }
     }
 
     public function new_product() {
-        return view('new_product');
+        return view('admin.new_product');
     }
 
     public function all_products($slug = null) {
         if($slug) {
-            return view('product-id', [
+            return view('guest.product-id', [
                 'product' => Product::where('slug', $slug)->first(),
             ]);
         }
-        return view('all_products', [
+        return view('admin.all_products', [
             'products' => Product::all(),
             'category_name' => 'Všetky produkty'
         ]);
@@ -188,7 +188,7 @@ class PagesController extends Controller
                 break;
         }
 
-        return view('edit_product', [
+        return view('admin.edit_product', [
             'product' => $product,
             'product_id' => $product_id,
             'product_category' => $product_category,
@@ -198,11 +198,11 @@ class PagesController extends Controller
     }
     
     public function thankyou() {
-        return view('thankyou');
+        return view('guest.thankyou');
     }
 
     public function orders() {
-        return view('orders', [
+        return view('admin.orders', [
             'orders' => Invoice::all()->where('active', 1),
         ]);
     }

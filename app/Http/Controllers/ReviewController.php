@@ -14,7 +14,7 @@ class ReviewController extends Controller
                 ->select('reviews.user_id','reviews.id','reviews.text', 'reviews.created_at', 'users.name')
                 ->paginate(10);
 
-        return view('reviews', [
+        return view('admin.reviews', [
             'reviews' => $reviews,
         ]);
     }

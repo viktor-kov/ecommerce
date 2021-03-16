@@ -16,7 +16,7 @@ class OrderController extends Controller
             $total_sum += $price;
         }
 
-        return view('show-order', [
+        return view('admin.show-order', [
             'order' => $all_products,
             'total_sum' => $total_sum,
         ]);

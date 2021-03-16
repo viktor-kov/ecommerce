@@ -23,29 +23,13 @@ class CheckoutController extends Controller
     public function index()
     {
         if(auth()->user()) {
-            return view('checkout', ['informations' => Informations::where('user_id', auth()->user()->id)->latest()->first()]);
+            return view('guest.checkout', ['informations' => Informations::where('user_id', auth()->user()->id)->latest()->first()]);
         }
         else {
-            return view('checkout', ['informations' => []]);
+            return view('guest.checkout', ['informations' => []]);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(InvoiceRequest $request)
     {
         Stripe::setApiKey('sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo');
@@ -77,7 +61,7 @@ class CheckoutController extends Controller
                 $pdf_name = time() . ".pdf";
                 $path = storage_path('app/invoices/' . $pdf_name);
                 $data = $request->all();
-                $pdf = PDF::loadView('invoice', compact('data'))->save($path);
+                $pdf = PDF::loadView('admin.invoice', compact('data'))->save($path);
 
                 //save pdf name to database
                 //if the user is not logged in, than the user_id in DB will be null
@@ -111,50 +95,5 @@ class CheckoutController extends Controller
             dd($e);
             return redirect()->route('home.index');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

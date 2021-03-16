@@ -24,13 +24,13 @@ class ProductController extends Controller
 {
     public function index() {
         $products = Product::all();
-        return view('products')->with(['products' => $products]);
+        return view('guest.products')->with(['products' => $products]);
     }
 
     public function show($slug) {
        $product = Product::where('slug', $slug)->get();
 
-       return view('product-id')->with(['products' => $product, 'title' => $slug]);
+       return view('guest.product-id')->with(['products' => $product, 'title' => $slug]);
     }
 
     public function store(ProductStoreRequest $request) {
