@@ -23,18 +23,24 @@ class CartController extends Controller
         if($duplicates->isNotEmpty()) {
             return redirect()->route('cart.index');
         }
-
+        
         $product_id = $request->product_id;
-        $product_name = $request->product_name;
-        $product_price = Product::where('slug', $product_id)->value('price');
-        $product_category = $request->product_category;
+        $product = Product::where('slug', $product_id)->first();
+        $product_name = $product->name;
+        $product_price = $product->price;
+        $product_category = $product->category;
+
+        $product_photo = $product->photo_path;
 
         Cart::add([
             'id' => $product_id,
             'name' => $product_name,
             'qty' => 1,
             'price' => $product_price,
-            'options' => ['category' => $product_category]
+            'options' => [
+                'category' => $product_category,
+                'product_photo' => $product_photo,
+            ]
         ])->associate('App\Models\Product');
     
 
