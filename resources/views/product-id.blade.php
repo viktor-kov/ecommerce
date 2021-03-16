@@ -37,7 +37,7 @@
                         <input type="hidden" name="product_id" value="{{$product->slug}}">
                         <input type="hidden" name="product_name" value="{{$product->name}}">
                         <input type="hidden" name="product_category" value="{{$product->category}}">
-                        <button type="submit" value="{{__('products.add-to-cart')}}" class="p-4 bg-green-400 text-white cursor-pointer w-full block"></button>
+                        <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer w-full block">{{__('products.add-to-cart')}}</button>
                     </form>
                 </aside>
             </div>
