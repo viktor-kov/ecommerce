@@ -25,27 +25,27 @@
 <section class="min-h-screen p-2 sm:p-0">
     @if (Cart::count() > 0)
         <ul class="mt-2 w-full md:w-3/4">
-            @foreach (Cart::content() as $product)
+            @foreach (Cart::content() as $product_in_cart)
                 <li class="mb-2 flex border-b border-black">
                     <section class="grid grid-cols-4 justify-around p-2 text-xl w-full">
-                        <a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">
-                            <img src="{{asset('img/products/'.$product->id.'.jpeg')}}"  alt="{{$product->name}}" class="h-24 w-auto">
+                        <a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->id ])}}">
+                            <img src="{{asset('img/products/'.$product_in_cart->id.'.jpeg')}}"  alt="{{$product_in_cart->name}}" class="h-24 w-auto">
                         </a>
-                        <h1 class="grid items-center"><a href="{{route('product.show', $product->options->category)}}/{{$product->id}}">{{$product->name}}</a></h1>
-                        <form action="{{route('cart.update', $product->rowId)}}" class="place-self-center" method="post">
+                        <h1 class="grid items-center"><a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->id ])}}">{{$product_in_cart->name}}</a></h1>
+                        <form action="{{route('cart.update', ['row_id' => $product_in_cart->rowId])}}" class="place-self-center" method="post">
                             @csrf
                             @method('PUT')
                             <select name="qty" id="qty" onchange="this.form.submit()">
-                                <option value="1" {{($product->qty == 1) ? 'selected' : ''}}>1</option>
-                                <option value="2" {{($product->qty == 2) ? 'selected' : ''}}>2</option>
-                                <option value="3" {{($product->qty == 3) ? 'selected' : ''}}>3</option>
-                                <option value="4" {{($product->qty == 4) ? 'selected' : ''}}>4</option>
-                                <option value="5" {{($product->qty == 5) ? 'selected' : ''}}>5</option>
+                                <option value="1" {{($product_in_cart->qty == 1) ? 'selected' : ''}}>1</option>
+                                <option value="2" {{($product_in_cart->qty == 2) ? 'selected' : ''}}>2</option>
+                                <option value="3" {{($product_in_cart->qty == 3) ? 'selected' : ''}}>3</option>
+                                <option value="4" {{($product_in_cart->qty == 4) ? 'selected' : ''}}>4</option>
+                                <option value="5" {{($product_in_cart->qty == 5) ? 'selected' : ''}}>5</option>
                             </select>
                         </form>
-                        <h2 class="place-self-center">{{number_format($product->price, 2)}}€</h2>
+                        <h2 class="place-self-center">{{number_format($product_in_cart->price, 2)}}€</h2>
                     </section>
-                    <form action="{{route('cart.destroy', $product->rowId)}}" method="post" class="place-self-center">
+                    <form action="{{route('cart.destroy', ['row_id' => $product_in_cart->rowId])}}" method="post" class="place-self-center">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-xl text-gray-500"><i class="fas fa-trash"></i></button>
@@ -61,6 +61,7 @@
                     <form action="{{route('checkout.index')}}" method="get">
                         @csrf
                         <input type="submit" value="{{__('checkout.checkout')}}" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">
+                    </form>
                 </section>
             </section>
             @endif
