@@ -23,20 +23,20 @@
 @section('content')
     <div class="main-container shadow-xl">
         <section class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 mt-4 p-8">
-            <img src="{{asset('img/'.$product->photo_path)}}" alt="" class="h-200 mx-auto">
+            <img src="{{asset('img/'.$showed_product->photo_path)}}" alt="" class="h-200 mx-auto">
             <div class="product-informations">
-                <h1 class="text-4xl">{{$product->name}}</h1>
-                <p class="mt-4 h-64 overflow-y-auto p-2 border border-dashed">{{$product->text}}</p>
+                <h1 class="text-4xl">{{$showed_product->name}}</h1>
+                <p class="mt-4 h-64 overflow-y-auto p-2 border border-dashed">{{$showed_product->text}}</p>
                 <aside class="pricin mt-6 mb-6 p-2 bg-gray-200">
-                    <p class="flex justify-between">{{__('products.with-dph')}} <span class="font-extrabold text-xl">{{$product->price}}€</span></p>
-                    <p class="flex justify-between text-gray-400">{{__('products.without-dph')}} <span>{{$product->without_dph}}€</span></p>
+                    <p class="flex justify-between">{{__('products.with-dph')}} <span class="font-extrabold text-xl">{{$showed_product->price}}€</span></p>
+                    <p class="flex justify-between text-gray-400">{{__('products.without-dph')}} <span>{{$showed_product->without_dph}}€</span></p>
                 </aside>
                 <aside class="buy-buttons">
                     <form action="{{route('cart.store')}}" method="post">
                         @csrf
-                        <input type="hidden" name="product_id" value="{{$product->slug}}">
-                        <input type="hidden" name="product_name" value="{{$product->name}}">
-                        <input type="hidden" name="product_category" value="{{$product->category}}">
+                        <input type="hidden" name="product_id" value="{{$showed_product->slug}}">
+                        <input type="hidden" name="product_name" value="{{$showed_product->name}}">
+                        <input type="hidden" name="product_category" value="{{$showed_product->category}}">
                         <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer w-full block">{{__('products.add-to-cart')}}</button>
                     </form>
                 </aside>
@@ -85,8 +85,9 @@
         <section class="border border-dashed">
             <form action="{{route('review.store')}}" method="POST">
                 @csrf
-                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="hidden" name="product_id" value="{{$showed_product->id}}">
                 <textarea name="review_text" rows="5"class="w-full" placeholder="Add review"></textarea>
+                <input type="hidden" name="product_slug" value="{{$showed_product->slug}}">
                 <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">Add review</button>
             </form>
         </section>

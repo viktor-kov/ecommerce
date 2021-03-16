@@ -96,7 +96,7 @@ class PagesController extends Controller
 
             return view('product-id', [
                 'reviews' => $reviews,
-                'product' => $product,
+                'showed_product' => $product,
                 'product_specifications' => $product_specifications,
                 'specification_view' => $specification_view,
                 'featured_products' => $featured_products,
