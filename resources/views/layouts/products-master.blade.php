@@ -23,7 +23,7 @@
         @yield('extra-js')
     </head>
     <body class="container font-sans antialiased mx-auto">
-        <header class="h-10 bg-black">
+        <header class="h-20 md:h-10 bg-black">
             @include('header')
         </header>
         @yield('messages')
