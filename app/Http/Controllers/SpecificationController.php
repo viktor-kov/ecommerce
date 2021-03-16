@@ -23,7 +23,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.ram', [
+                return view('new-product-specifications.ram', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 2:
@@ -34,7 +34,7 @@ class SpecificationController extends Controller
                     $product_specifications = "";
                 }
 
-                return view('products.cpu', [
+                return view('new-product-specifications.cpu', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 3:
@@ -45,7 +45,7 @@ class SpecificationController extends Controller
                     $product_specifications = "";
                 }
                 
-                return view('products.motherboard', [
+                return view('new-product-specifications.motherboard', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 4:
@@ -55,7 +55,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.case', [
+                return view('new-product-specifications.case', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 5:
@@ -65,7 +65,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.supply', [
+                return view('new-product-specifications.supply', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 6:
@@ -75,7 +75,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.disk', [
+                return view('new-product-specifications.disk', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 7:
@@ -85,7 +85,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.cooling', [
+                return view('new-product-specifications.cooling', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 8:
@@ -95,7 +95,7 @@ class SpecificationController extends Controller
                 else {
                     $product_specifications = "";
                 }
-                return view('products.gpu', [
+                return view('new-product-specifications.gpu', [
                     'product_specifications' => $product_specifications,
                 ]);
         }
