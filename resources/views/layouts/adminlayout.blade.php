@@ -33,4 +33,5 @@
                 @yield('stats')
             </section>
         </main>
+        @yield('footer-js')
     </body>
