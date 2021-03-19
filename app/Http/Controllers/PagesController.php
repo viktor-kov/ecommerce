@@ -83,7 +83,7 @@ class PagesController extends Controller
 
     public function profile() {   
         return view('guest.profile', [
-            'informations' => Informations::where('user_id', auth()->user()->id)->latest()->first(),
+            'informations' => Informations::where('user_id', auth()->user()->id)->first(),
             'invoices' => Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
         ]);
     }
