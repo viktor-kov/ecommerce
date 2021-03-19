@@ -30,7 +30,7 @@
         </tr>
         <tr class="border-solid border-gray-300 border">
             <td class="text-left p-4">{{__('products.product-intel-socket')}}</td>
-            <td class="text-left p-4">{{$product_specifications->coling_intel_socket}}</td>
+            <td class="text-left p-4">{{$product_specifications->cooling_intel_socket}}</td>
         </tr>
         <tr class="border-solid border-gray-300 border bg-gray-100">
             <td class="text-left p-4">{{__('products.product-amd-socket')}}</td>
