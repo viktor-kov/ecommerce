@@ -12,8 +12,10 @@ use App\Models\UserAction;
 use App\Models\Informations;
 use Illuminate\Http\Request;
 use App\Models\Subscriptions;
+use App\Services\AdminServices;
 use App\Models\CpuSpecification;
 use App\Models\GpuSpecification;
+use App\Services\ProductService;
 use App\Models\CaseSpecification;
 use App\Models\DiskSpecification;
 use App\Models\EmailSubscription;
@@ -21,7 +23,6 @@ use App\Models\MemorySpecification;
 use App\Models\SupplySpecification;
 use App\Models\CoolingSpecification;
 use App\Models\MotherboardSpecification;
-use App\Services\ProductService;
 
 class PagesController extends Controller
 {
@@ -89,28 +90,17 @@ class PagesController extends Controller
     }
 
     public function admin() {
-        //for all days in past week we will count the trafic records from db and pass it to actions arras
-        //now() functions is the todays date and the subDays() is incrementing every round by 1, so we can grab the interactions from every day
-        for($i = 0; $i <= 6; $i++) {
-            $actions_per_day = UserAction::whereDay('created_at', today()->subDays($i))->count();
-            $actions[] = $actions_per_day;
-            
-            $days = ucfirst(today()->subDays($i)->isoFormat('dddd'));
-            $all_days[] = $days;
-        }
-
         //deleting all records older than 8 days
         UserAction::whereDay('created_at', '<', today()->subDays(7))->delete();
 
-        //encode to json the actions array
-        $actions_json = json_encode($actions, JSON_NUMERIC_CHECK);
+        $user_actions = new AdminServices;
 
-        //encode to json the days array
-        $days_json = json_encode($all_days);
+        //getting the user actions - getting back array of days and actions per day
+        $user_actions = $user_actions->showUserActions();
 
         return view('admin.admin', [
-            'days' => $days_json,
-            'actions' => $actions_json,
+            'days' => $user_actions['action_days'],
+            'actions' => $user_actions['user_actions'],
             'users' => User::get()->count(),
             'products' => Product::get()->count(),
             'subscriptions' => EmailSubscription::get()->count()
