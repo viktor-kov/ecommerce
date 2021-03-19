@@ -144,38 +144,10 @@ class PagesController extends Controller
         //get the product category
         $product_category = $product->category;
 
-        switch($product_category) {
-            case 1:
-                $product_specifications = MemorySpecification::where('product_id', $product_id)->first();
-                break;
-             case 2:
-                $product_specifications = CpuSpecification::where('product_id', $product_id)->first();
-                break;
-             case 3:
-                $product_specifications = MotherboardSpecification::where('product_id', $product_id)->first();
-                break;
-             case 4:
-                $product_specifications = CaseSpecification::where('product_id', $product_id)->first();
-                break;
-             case 5:
-                $product_specifications = SupplySpecification::where('product_id', $product_id)->first();
-                break;
-             case 6:
-                $product_specifications = DiskSpecification::where('product_id', $product_id)->first();
-                break;
-             case 7:
-                $product_specifications = CoolingSpecification::where('product_id', $product_id)->first();
-                break;
-             case 8:
-                $product_specifications = GpuSpecification::where('product_id', $product_id)->first();
-                break;
-        }
-
         return view('admin.edit_product', [
             'product' => $product,
             'product_id' => $product_id,
             'product_category' => $product_category,
-            'product_specifications' => $product_specifications,
         ]);
 
     }
