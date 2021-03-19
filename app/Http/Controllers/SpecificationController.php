@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\CpuSpecification;
 use App\Models\GpuSpecification;
 use App\Models\CaseSpecification;
@@ -14,90 +13,62 @@ use App\Models\MotherboardSpecification;
 
 class SpecificationController extends Controller
 {
+    //showing the specifivations for adding the product by choosed category
     public function show($id, $product_id = null) {
+
+        //geeting the specifications for choosed category and if exist some specifications, we will push them to the specification, if not, we will push empty
         switch($id) {
             case 1:
-                if($product_id) {
-                    $product_specifications = MemorySpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? MemorySpecification::where('product_id', $product_id)->first() : "";
+
                 return view('new-product-specifications.ram', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 2:
-                if($product_id) {
-                    $product_specifications = CpuSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? CpuSpecification::where('product_id', $product_id)->first() : "";
 
                 return view('new-product-specifications.cpu', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 3:
-                if($product_id) {
-                    $product_specifications = MotherboardSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? MotherboardSpecification::where('product_id', $product_id)->first() : "";
                 
                 return view('new-product-specifications.motherboard', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 4:
-                if($product_id) {
-                    $product_specifications = CaseSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? CaseSpecification::where('product_id', $product_id)->first() : "";
+               
                 return view('new-product-specifications.case', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 5:
-                if($product_id) {
-                    $product_specifications = SupplySpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? SupplySpecification::where('product_id', $product_id)->first() : "";
+               
                 return view('new-product-specifications.supply', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 6:
-                if($product_id) {
-                    $product_specifications = DiskSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? DiskSpecification::where('product_id', $product_id)->first() : "";
+                
                 return view('new-product-specifications.disk', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 7:
-                if($product_id) {
-                    $product_specifications = CoolingSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? CoolingSpecification::where('product_id', $product_id)->first() : "";
+                
                 return view('new-product-specifications.cooling', [
                     'product_specifications' => $product_specifications,
                 ]);
             case 8:
-                if($product_id) {
-                    $product_specifications = GpuSpecification::where('product_id', $product_id)->first();
-                }
-                else {
-                    $product_specifications = "";
-                }
+                $product_specifications = ($product_id) ? GpuSpecification::where('product_id', $product_id)->first() : "";
+               
                 return view('new-product-specifications.gpu', [
                     'product_specifications' => $product_specifications,
                 ]);
+            default: 
+                    abort(404);
+                    break;
         }
     }
 }
