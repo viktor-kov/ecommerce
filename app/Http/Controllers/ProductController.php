@@ -5,32 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\CpuSpecification;
-use App\Models\GpuSpecification;
-use App\Models\CaseSpecification;
-use App\Models\DiskSpecification;
-use App\Models\MemorySpecification;
-use App\Models\SupplySpecification;
-use App\Models\CoolingSpecification;
 use Illuminate\Support\Facades\Storage;
-use App\Models\MotherboardSpecification;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductDeleteRequest;
-use App\Http\Requests\ProductUpdateRequest;
 use App\Services\ProductService;
-use Stripe\Service\ProductService as ServiceProductService;
 
 class ProductController extends Controller
-{
+{   
+    //showing all products
     public function index() {
         $products = Product::all();
         return view('guest.products')->with(['products' => $products]);
-    }
-
-    public function show($slug) {
-       $product = Product::where('slug', $slug)->get();
-
-       return view('guest.product-id')->with(['products' => $product, 'title' => $slug]);
     }
 
     public function store(ProductStoreRequest $request) {
