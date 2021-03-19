@@ -7,7 +7,7 @@ use App\Models\UserAction;
 class AdminServices {
 
     //show the actions with the page
-    function showUserActions() {
+    public function showUserActions() {
         //for all days in past week we will count the trafic records from db and pass it to actions arras
         //now() functions is the todays date and the subDays() is incrementing every round by 1, so we can grab the interactions from every day
         for($i = 0; $i <= 6; $i++) {

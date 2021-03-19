@@ -17,7 +17,7 @@ use App\Models\MotherboardSpecification;
 class ProductService {
 
     //save the new added product
-    function saveProduct($request, $product_id) {
+    public function saveProduct($request, $product_id) {
         switch($request->product_category) {
             //ram memory specification insert
             case 1: 
@@ -212,7 +212,7 @@ class ProductService {
     }
 
     //update the product in the main product table
-    function updateProduct($request, $product_photo) {
+    public function updateProduct($request, $product_photo) {
 
         $product_id = $request->id;
         $product_name = $request->product_name;
@@ -234,7 +234,7 @@ class ProductService {
     }
 
     //update product specifications
-    function updateProductSpecification($request, $product_id) {
+    public function updateProductSpecification($request, $product_id) {
         //product category - witch product category we want to switch
         $product_category = $request->product_category;
         
@@ -378,7 +378,7 @@ class ProductService {
     }
 
     //update product photo
-    function updateProductPhoto($request, $old_photo_path, $product_slug) {
+    public function updateProductPhoto($request, $old_photo_path, $product_slug) {
         //dele the old photo from disk
         Storage::disk('public')->delete($old_photo_path);
 
@@ -390,7 +390,7 @@ class ProductService {
     }
 
     //delete the product specification from 
-    function deleteSpecifications($product_id, $category) {
+    public function deleteSpecifications($product_id, $category) {
 
         //delete product specifications 
         switch($category) {
@@ -439,7 +439,7 @@ class ProductService {
     }
 
     //show the product specifications
-    function showProductSpecifications($product_category, $product_id) {
+    public function showProductSpecifications($product_category, $product_id) {
         switch($product_category) {
             case 1:
                 $product_data['product_spect'] = MemorySpecification::where('product_id', $product_id)->first();
