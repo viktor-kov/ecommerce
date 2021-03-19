@@ -15,15 +15,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //returning the checkout view
     public function index()
     {
+        //if the user is logged in, get his informations. If not, return the view with nothing.
         if(auth()->user()) {
-            return view('guest.checkout', ['informations' => Informations::where('user_id', auth()->user()->id)->latest()->first()]);
+            return view('guest.checkout', ['informations' => Informations::where('user_id', auth()->user()->id)->first()]);
         }
         else {
             return view('guest.checkout', ['informations' => []]);
@@ -39,7 +36,7 @@ class CheckoutController extends Controller
           );
 
         $description = $request->name . ' ' . $request->lastname;
-        $stripe_tok =$stripe->tokens->create([
+        $stripe_tok = $stripe->tokens->create([
             'card' => [
               'number' => $request->card_number,
               'exp_month' => $request->card_exp_month,
@@ -47,8 +44,11 @@ class CheckoutController extends Controller
               'cvc' => $request->card_cvc,
             ],
         ])->id;
-
+        
+        //need to multiply the total price by 100x bcs the stripe is working with cents
         $price = Cart::subtotal() * 100;
+        
+        //trying to charge the amount
         try {
             $charge = Charge::create(array(
                 "amount" => $price,
@@ -57,42 +57,43 @@ class CheckoutController extends Controller
                 "description" => $description
             ));
 
-                //pdf create
-                $pdf_name = time() . ".pdf";
-                $path = storage_path('app/invoices/' . $pdf_name);
-                $data = $request->all();
-                $pdf = PDF::loadView('admin.invoice', compact('data'))->save($path);
+            //create the PDF based on time
+            $pdf_name = time() . ".pdf";
+            $path = storage_path('app/invoices/' . $pdf_name);
+            //getting the all data from request and putting them tu invoice view for creting and saving the invoice
+            $data = $request->all();
+            $pdf = PDF::loadView('admin.invoice', compact('data'))->save($path);
 
-                //save pdf name to database
-                //if the user is not logged in, than the user_id in DB will be null
-                $new_invoice = new Invoice;
-                if(auth()->user()) {
-                    $new_invoice->user_id = auth()->user()->id;
-                }
-                $new_invoice->invoice_name = $pdf_name;
-                $new_invoice->save();
+            //save pdf name to database
+            //if the user is not logged in, than the user_id in DB will be null
+            $new_invoice = new Invoice;
+            if(auth()->user()) {
+                $new_invoice->user_id = auth()->user()->id;
+            }
+            $new_invoice->invoice_name = $pdf_name;
+            $new_invoice->save();
 
+            //inserting bought products to DB
+            $last_id_invoice = $new_invoice->id;
+            foreach(Cart::content() as $product) {
+                $products_array[] = [
+                    'user_id' => auth()->user()->id,
+                    'invoice_id' => $last_id_invoice,
+                    'product_name' => $product->name,
+                    'quantity' => $product->qty,
+                    'price' => $product->price,
+                ];
+            }
+            //inserting all bought products to DB
+            Order::insert($products_array);
 
-                //inserting bought products to DB
-                $last_id_invoice = $new_invoice->id;
-                foreach(Cart::content() as $product) {
-                    $products_array[] = [
-                        'user_id' => auth()->user()->id,
-                        'invoice_id' => $last_id_invoice,
-                        'product_name' => $product->name,
-                        'quantity' => $product->qty,
-                        'price' => $product->price,
-                    ];
-
-                }
-                //inserting all bought products to DB
-                Order::insert($products_array);
-
-
+            //clearing the cart
             Cart::destroy();
+            //returning to thank you page
             return redirect()->route('thankyou.index');
+
+        //if we cant charge, than we will return the user to homepage
         }catch(\Exception $e) {
-            dd($e);
             return redirect()->route('home.index');
         }
     }
