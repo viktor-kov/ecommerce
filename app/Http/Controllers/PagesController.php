@@ -39,7 +39,7 @@ class PagesController extends Controller
         //if slug exist, than return view with product specifications
         if($slug) {
             //select product by slug from db
-            $product = Product::where('slug', $slug)->first();
+            $product = Product::where('slug', $slug)->firstOrFail();
             //get the product id
             $product_id = $product->id;
             //get the product category
