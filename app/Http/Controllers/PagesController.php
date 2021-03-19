@@ -21,6 +21,7 @@ use App\Models\MemorySpecification;
 use App\Models\SupplySpecification;
 use App\Models\CoolingSpecification;
 use App\Models\MotherboardSpecification;
+use App\Services\ProductService;
 
 class PagesController extends Controller
 {
@@ -45,41 +46,11 @@ class PagesController extends Controller
             //get the product category
             $product_category = $product->category;
 
-            switch($product_category) {
-                case 1:
-                    $product_specifications = MemorySpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.ram';
-                    break;
-                case 2:
-                    $product_specifications = CpuSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.cpu';
-                    break;
-                case 3:
-                    $product_specifications = MotherboardSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.motherboard';
-                    break;
-                case 4:
-                    $product_specifications = CaseSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.case';
-                    break;
-                case 5:
-                    $product_specifications = SupplySpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.supply';
-                    break;
-                case 6:
-                    $product_specifications = DiskSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.disk';
-                    break;
-                case 7:
-                    $product_specifications = CoolingSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.cooling';
-                    break;
-                case 8:
-                    $product_specifications = GpuSpecification::where('product_id', $product_id)->first();
-                    $specification_view = 'specifications.gpu';
-                    break;
-            }
-
+            $product_specifications = new ProductService;
+            
+            //getting the product specifications = the return is array of product spec and spec view.
+            $product_specifications = $product_specifications->showProductSpecifications($product_category, $product_id);
+            
             //trying to get random 4 products from the current product category, but when there is an error, 
             //we will choose 4 random products from all of the products
             try {
@@ -98,8 +69,8 @@ class PagesController extends Controller
             return view('guest.product-id', [
                 'reviews' => $reviews,
                 'showed_product' => $product,
-                'product_specifications' => $product_specifications,
-                'specification_view' => $specification_view,
+                'product_specifications' => $product_specifications['product_spect'],
+                'specification_view' => $product_specifications['product_view'],
                 'featured_products' => $featured_products,
             ]);
         }

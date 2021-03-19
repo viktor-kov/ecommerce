@@ -437,4 +437,42 @@ class ProductService {
         }
 
     }
+
+    //show the product specifications
+    function showProductSpecifications($product_category, $product_id) {
+        switch($product_category) {
+            case 1:
+                $product_data['product_spect'] = MemorySpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.ram';
+                return  $product_data;
+            case 2:
+                $product_data['product_spect'] = CpuSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.cpu';
+                return  $product_data;
+            case 3:
+                $product_data['product_spect'] = MotherboardSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.motherboard';
+                return  $product_data;
+            case 4:
+                $product_data['product_spect'] = CaseSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.case';
+                return  $product_data;
+            case 5:
+                $product_data['product_spect'] = SupplySpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.supply';
+                return  $product_data;
+            case 6:
+                $product_data['product_spect'] = DiskSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.disk';
+                return  $product_data;
+            case 7:
+                $product_data['product_spect'] = CoolingSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.cooling';
+                return  $product_data;
+            case 8:
+                $product_data['product_spect'] = GpuSpecification::where('product_id', $product_id)->first();
+                $product_data['product_view'] = 'specifications.gpu';
+                return  $product_data;
+        }
+    }
 }
