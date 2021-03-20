@@ -1,92 +1,175 @@
-// // A reference to Stripe.js initialized with your real test publishable API key.
-// var stripe = Stripe("pk_test_51IKNFzDzVSz0t3svrAcoB9cvtx8cXv0VJw9zJGWQXcnU4nNnZ7KSzP6c0Guh8z2TPthL1HKELcvXkohRUXmBA5DD00aOjpSCkp");
+const form = document.querySelector('#checkout_form');
+const reg = /^\d{16}$/;
 
-// // Disable the button until we have Stripe set up on the page
-// document.querySelector("button").disabled = true;
-//     var elements = stripe.elements();
-//     var style = {
-//       base: {
-//         color: "#32325d",
-//         fontFamily: 'Arial, sans-serif',
-//         fontSmoothing: "antialiased",
-//         fontSize: "16px",
-//         "::placeholder": {
-//           color: "#32325d"
-//         }
-//       },
-//       invalid: {
-//         fontFamily: 'Arial, sans-serif',
-//         color: "#fa755a",
-//         iconColor: "#fa755a"
-//       }
-//     };
-//     var card = elements.create("card", { style: style });
-//     // Stripe injects an iframe into the DOM
-//     card.mount("#card-element");
-//     card.on("change", function (event) {
-//       // Disable the Pay button if there are no card details in the Element
-//       document.querySelector("button").disabled = event.empty;
-//       document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
-//     });
-//     var form = document.getElementById("payment-form");
-//     form.addEventListener("submit", function(event) {
-//       event.preventDefault();
-//       // Complete payment when the submit button is clicked
-//       payWithCard(stripe, card, data.clientSecret);
-//     });
-// // Calls stripe.confirmCardPayment
-// // If the card requires authentication Stripe shows a pop-up modal to
-// // prompt the user to enter authentication details without leaving your page.
-// var payWithCard = function(stripe, card, clientSecret) {
-//   loading(true);
-//   stripe
-//     .confirmCardPayment(clientSecret, {
-//       payment_method: {
-//         card: card
-//       }
-//     })
-//     .then(function(result) {
-//       if (result.error) {
-//         // Show error to your customer
-//         showError(result.error.message);
-//       } else {
-//         // The payment succeeded!
-//         orderComplete(result.paymentIntent.id);
-//       }
-//     });
-// };
-// /* ------- UI helpers ------- */
-// // Shows a success message when the payment is complete
-// var orderComplete = function(paymentIntentId) {
-//   loading(false);
-//   document
-//     .querySelector(".result-message a")
-//     .setAttribute(
-//       "href",
-//       "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-//     );
-//   document.querySelector(".result-message").classList.remove("hidden");
-//   document.querySelector("button").disabled = true;
-// };
-// // Show the customer the error from Stripe if their card fails to charge
-// var showError = function(errorMsgText) {
-//   loading(false);
-//   var errorMsg = document.querySelector("#card-error");
-//   errorMsg.textContent = errorMsgText;
-//   setTimeout(function() {
-//     errorMsg.textContent = "";
-//   }, 4000);
-// };
-// // Show a spinner on payment submission
-// var loading = function(isLoading) {
-//   if (isLoading) {
-//     // Disable the button and show a spinner
-//     document.querySelector("button").disabled = true;
-//     document.querySelector("#spinner").classList.remove("hidden");
-//     document.querySelector("#button-text").classList.add("hidden");
-//   } else {
-//     document.querySelector("button").disabled = false;
-//     document.querySelector("#spinner").classList.add("hidden");
-//     document.querySelector("#button-text").classList.remove("hidden");
-//   }
-// };
+let name = form.elements.namedItem("name");
+let lastname = form.elements.namedItem("lastname");
+let email = form.elements.namedItem("email");
+let town = form.elements.namedItem("town");
+let psc = form.elements.namedItem("psc");
+let street = form.elements.namedItem("street");
+let house_id = form.elements.namedItem("house_id");
+let phone_number = form.elements.namedItem("phone_number");
+let card_number = form.elements.namedItem("card_number");
+let card_exp_month = form.elements.namedItem("card_exp_month");
+let card_exp_year = form.elements.namedItem("card_exp_year");
+let card_cvc = form.elements.namedItem("card_cvc");
+
+name.addEventListener('input', validate);
+lastname.addEventListener('input', validate);
+email.addEventListener('input', validate);
+town.addEventListener('input', validate);
+psc.addEventListener('input', validate);
+street.addEventListener('input', validate);
+house_id.addEventListener('input', validate);
+phone_number.addEventListener('input', validate);
+card_number.addEventListener('input', validate);
+card_exp_month.addEventListener('input', validate);
+card_exp_year.addEventListener('input', validate);
+card_cvc.addEventListener('input', validate);
+
+
+function validate(e) {
+    let target = e.target;
+
+    if(target.name == "name") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "lastname") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "email") {
+        const email_reg = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        
+        if(! email_reg.test(target.value)) {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "town") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "psc") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "street") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "house_id") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "phone_number") {
+        if(target.value == "") {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+
+    if(target.name == "card_number") {
+        if(reg.test(target.value)) {
+            target.classList.remove('border-black');
+            target.classList.add('border-green-500');
+        }
+        else if(target.value == ""){
+            target.classList.remove('border-green-500');
+            target.classList.remove('border-red-500');
+            target.classList.add('border-black');
+        }
+        else {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-red-500');
+        }
+    }
+
+    if(target.name == "card_exp_month") {
+        const monthNow = new Date().getMonth() + 1;
+        if(target.value == "" || target.value.length != 2 || target.value < monthNow) {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-red-500');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "card_exp_year") {
+        const yearNow = new Date().getFullYear();
+        if(target.value == "" || target.value.length != 4 || target.value < yearNow) {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-red-500');
+        }
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+
+    if(target.name == "card_cvc") {
+        if(target.value == "" || target.value.length != 3) {
+            target.classList.remove('border-green-500');
+            target.classList.add('border-red-500');
+        } 
+        else {
+            target.classList.remove('border-red-500');
+            target.classList.add('border-green-500');
+        }
+    }
+}
