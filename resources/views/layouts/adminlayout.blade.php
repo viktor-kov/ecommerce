@@ -25,6 +25,9 @@
     <header class="h-20 md:h-10 bg-black">
         @include('header')
     </header>
+    @if ($errors->any())
+        @include('messages.validation-error')
+    @endif
     @yield('messages')
     <body class="container font-sans antialiased mx-auto">
         @yield('navigation')
