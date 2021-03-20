@@ -14,12 +14,15 @@ class CartController extends Controller
         ]);
     }
 
+    //store the product in cart
     public function store(Request $request) {
 
+        //checking for duplicates
         $duplicates = Cart::search(function($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->product_id;
         });
 
+        //if we have some duplicates, we will redirect to cart page
         if($duplicates->isNotEmpty()) {
             return redirect()->route('cart.index');
         }
@@ -47,12 +50,14 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Pridali ste položku do košíka!');
     }
 
+    //remove item from cart
     public function destroy($row_id) {
         Cart::remove($row_id);
 
         return redirect()->route('cart.index')->with('success', 'Odstránili ste produkt zo košíka');
     }
 
+    //update the cart quantity
     public function update($row_id, Request $request) {
 
         $qty = $request->qty;
