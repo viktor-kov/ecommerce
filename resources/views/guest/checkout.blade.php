@@ -17,40 +17,40 @@
             <form action="{{route('checkout.store')}}" method="post" class="p-1" id="checkout_form">
                 @csrf 
                 <p class="w-full block">
-                    {{__('profile.name')}} <input type="text" name="name" class="border border-black block outline-none w-full p-1" @if ($informations) value="{{$informations->name}} @endif" required>
+                    {{__('profile.name')}} <input type="text" name="name" class="border border-black block outline-none w-full p-1" @if ($informations) value="{{$informations->name}}" placeholder="Name" @endif required>
                 </p>
                 <p class="w-full block">
-                    {{__('profile.lastname')}} <input type="text" name="lastname" @if ($informations) value="{{$informations->lastname}} @endif" class="border border-black block outline-none w-full p-1" required>
+                    {{__('profile.lastname')}} <input type="text" name="lastname" @if ($informations) value="{{$informations->lastname}}" placeholder="Lastname" @endif class="border border-black block outline-none w-full p-1" required>
                 </p>
                 <p>
-                    {{__('profile.email')}} <input type="email" name="email" @if (auth()->user()) value="{{auth()->user()->email}} @endif" class="border border-black block outline-none w-full p-1" required>
+                    {{__('profile.email')}} <input type="email" name="email" @if (auth()->user()) value="{{auth()->user()->email}}" placeholder="email@email.com" @endif class="border border-black block outline-none w-full p-1" required>
                 </p>
                 <p>
-                    {{__('profile.town')}} <input type="text" name="town" @if ($informations) value="{{$informations->town}}" @endif class="border border-black block p-1 outline-none w-full" required>
+                    {{__('profile.town')}} <input type="text" name="town" @if ($informations) value="{{$informations->town}}" @endif placeholder="Bratislava" class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    {{__('profile.zip')}} <input type="text" name="psc" @if ($informations) value="{{$informations->psc}}" @endif class="border border-black block p-1 outline-none w-full" required>
+                    {{__('profile.zip')}} <input type="text" name="psc" @if ($informations) value="{{$informations->psc}}" @endif placeholder="81103" class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    {{__('profile.street')}} <input type="text" name="street" @if ($informations) value="{{$informations->street}}" @endif class="border border-black block p-1 outline-none w-full" required>
+                    {{__('profile.street')}} <input type="text" name="street" @if ($informations) value="{{$informations->street}}" @endif placeholder="Dúbravka" class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    {{__('profile.house-id')}} <input type="text" name="house_id" @if ($informations) value="{{$informations->house_id}}" @endif class="border border-black block p-1 outline-none w-full" required>
+                    {{__('profile.house-id')}} <input type="text" name="house_id" @if ($informations) value="{{$informations->house_id}}" @endif placeholder="456" class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    {{__('profile.phone-number')}} <input type="text" name="phone_number" @if ($informations) value="{{$informations->phone_number}}" @endif class="border border-black block p-1 outline-none w-full" required>
+                    {{__('profile.phone-number')}} <input type="text" name="phone_number" @if ($informations) value="{{$informations->phone_number}}" placeholder="0918250120" @endif class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    {{__('checkout.card-number')}} <input type="text" name="card_number" class="border border-black block p-1 outline-none w-full" required>
+                    {{__('checkout.card-number')}} <input type="text" name="card_number" class="border border-black block p-1 outline-none w-full" placeholder="4242 4242 4242 4242" required>
                 </p>
                 <p>
-                    {{__('checkout.card-exp-month')}} <input type="text" name="card_exp_month" class="border border-black block p-1 outline-none w-full" required>
+                    {{__('checkout.card-exp-month')}} <input type="text" name="card_exp_month" class="border border-black block p-1 outline-none w-full" placeholder="01" required>
                 </p>
                 <p>
-                    {{__('checkout.card-exp-year')}} <input type="text" name="card_exp_year" class="border border-black block p-1 outline-none w-full" required>
+                    {{__('checkout.card-exp-year')}} <input type="text" name="card_exp_year" class="border border-black block p-1 outline-none w-full" placeholder="2025" required>
                 </p>
                 <p>
-                    {{__('checkout.card-cvc')}} <input type="text" name="card_cvc" class="border border-black block p-1 outline-none w-full" required>
+                    {{__('checkout.card-cvc')}} <input type="text" name="card_cvc" class="border border-black block p-1 outline-none w-full" placeholder="456" required>
                 </p>
                 <p>
                     <button type="submit" id="submitButton" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</button>
