@@ -75,9 +75,12 @@ class CheckoutController extends Controller
 
             //inserting bought products to DB
             $last_id_invoice = $new_invoice->id;
+            //get the user id if is logged in, if not, set to NULL
+            $user_id = (auth()->user()) ? auth()->user()->id : NULL;
+
             foreach(Cart::content() as $product) {
                 $products_array[] = [
-                    'user_id' => auth()->user()->id,
+                    'user_id' => $user_id,
                     'invoice_id' => $last_id_invoice,
                     'product_name' => $product->name,
                     'quantity' => $product->qty,
