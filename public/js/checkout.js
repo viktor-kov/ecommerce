@@ -27,6 +27,9 @@ card_exp_month.addEventListener('input', validate);
 card_exp_year.addEventListener('input', validate);
 card_cvc.addEventListener('input', validate);
 
+form.addEventListener('submit', function() {
+    document.getElementById("submitButton").disabled = true;
+})
 
 function validate(e) {
     let target = e.target;

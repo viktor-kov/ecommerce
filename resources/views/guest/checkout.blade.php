@@ -53,7 +53,7 @@
                     {{__('checkout.card-cvc')}} <input type="text" name="card_cvc" class="border border-black block p-1 outline-none w-full" required>
                 </p>
                 <p>
-                    <button type="submit" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</button>
+                    <button type="submit" id="submitButton" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</button>
                 </p>
             </form>
         </section>
