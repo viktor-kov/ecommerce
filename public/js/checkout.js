@@ -140,7 +140,7 @@ function validate(e) {
 
     if(target.name == "card_exp_month") {
         const monthNow = new Date().getMonth() + 1;
-        if(target.value == "" || target.value.length != 2 || target.value < monthNow) {
+        if(target.value == "" || target.value.length != 2 || (target.value < monthNow || target.value > 12)) {
             target.classList.remove('border-green-500');
             target.classList.add('border-red-500');
         }
@@ -152,7 +152,7 @@ function validate(e) {
 
     if(target.name == "card_exp_year") {
         const yearNow = new Date().getFullYear();
-        if(target.value == "" || target.value.length != 4 || target.value < yearNow) {
+        if(target.value == "" || target.value.length != 4 || (target.value < yearNow || target.value > yearNow + 100)) {
             target.classList.remove('border-green-500');
             target.classList.add('border-red-500');
         }
