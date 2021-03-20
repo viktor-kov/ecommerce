@@ -158,7 +158,7 @@ class PagesController extends Controller
 
     public function orders() {
         return view('admin.orders', [
-            'orders' => Invoice::all()->where('active', 1),
+            'orders' => Invoice::orderBy('created_at', 'DESC')->where('active', 1)->get(),
         ]);
     }
 }
