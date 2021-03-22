@@ -15,6 +15,7 @@
                 <li class="mb-1"><a href="{{route('allusers')}}" class="block p-4 border border-black hover:bg-gray-100">{{__('admin.users')}}</a></li>
                 <li class="mb-1"><a href="{{route('orders')}}" class="block p-4 border border-black hover:bg-gray-100">{{__('admin.orders')}}</a></li>
                 <li class="mb-1"><a href="{{route('review.index')}}" class="block p-4 border border-black hover:bg-gray-100">{{__('admin.see-reviews')}}</a></li>
+                <li class="mb-1"><a href="{{route('review.index')}}" class="block p-4 border border-black hover:bg-gray-100">Tickets</a></li>
             </ul>
         </nav>
         <aside class="col-span-3">

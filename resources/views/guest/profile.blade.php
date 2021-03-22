@@ -57,6 +57,9 @@
                     <a href="{{route('adminpanel')}}" class="p-2 bg-red-500 text-white block text-center mt-4 uppercase">{{__('admin.admin-panel')}}</a>
                 </section>
             @endif
+            <section>
+                <a href="{{route('tickets.index')}}" class="p-2 bg-purple-400 text-white block text-center mt-4 uppercase">Tickets</a>
+            </section>
         </aside>
     </section>
     <div class="line border border-black"></div>

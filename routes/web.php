@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Message;
+use App\Models\TicketMessage;
+use App\Events\TicketMessageEvent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -13,8 +16,10 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
+use App\Http\Controllers\UserTicketController;
 use App\Http\Controllers\InformationsController;
 use App\Http\Controllers\SpecificationController;
+use App\Models\UserTicket;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,3 +91,10 @@ Route::get('/specifications/{category_id}/{product_id?}', [SpecificationControll
 Route::post('/review', [ReviewController::class, 'store'])->middleware('auth')->name('review.store');
 Route::get('/review', [ReviewController::class, 'index'])->middleware('admin')->name('review.index');
 Route::delete('/review/{id}', [ReviewController::class, 'delete'])->middleware('admin')->name('review.destroy');
+
+Route::get('/tickets', [UserTicketController::class, 'index'])->middleware('auth')->name('tickets.index');
+Route::get('/tickets/new', [UserTicketController::class, 'newTicket'])->middleware('auth')->name('ticket.new');
+Route::post('/ticket/save', [UserTicketController::class, 'saveTicket'])->middleware('auth')->name('ticket.save');
+Route::get('/ticket/{ticket_id}/show', [UserTicketController::class, 'showTicket'])->middleware('auth')->name('ticket.show');
+Route::post('/ticket/{ticket_id}/message', [UserTicketController::class, 'storeTicketMesage'])->middleware('auth')->name('message.store');
+Route::put('/ticket/{ticket_id}/status', [UserTicketController::class, 'ticketStatus'])->middleware(['auth', 'admin'])->name('ticket.status');
