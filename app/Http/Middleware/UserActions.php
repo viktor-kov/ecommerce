@@ -22,6 +22,10 @@ class UserActions
         //exploding the path on /
         $exploded = explode('/', $url);
 
+        //if someone is in ticket, we dont want to log the action
+        if(isset($exploded[0]) == 'ticket' && isset($exploded[2]) == 'show') {
+            return $next($request);
+        }
 
         //logging the user actions to db
         //homepage
