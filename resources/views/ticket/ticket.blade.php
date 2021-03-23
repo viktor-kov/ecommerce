@@ -53,6 +53,12 @@
 
     const channel = pusher.subscribe('ticket-channel.{{$ticket->id}}');
     channel.bind('message-event', function(data) {
+        
+        if(data.ticket_status === "closed") {
+            location.reload();
+            return 0;
+        }
+
         let existingMessages = ticketMessages.html();
         let newMessageHTML = `<li class="w-full p-2 bg-gray-200 mb-1">`+data.message+`</li>`;
         ticketMessages.html(existingMessages + newMessageHTML);

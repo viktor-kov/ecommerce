@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TicketClosed;
+use App\Events\TicketClosedEvent;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Models\TicketMessage;
@@ -88,6 +90,9 @@ class UserTicketController extends Controller
         UserTicket::where('id', $ticket_id)->update([
             'status' => '0',
         ]);
+        
+        //make event for page realod when ticket is closed
+        event(new TicketClosedEvent($ticket_id));
 
         return redirect()->route('tickets.index');
     }
