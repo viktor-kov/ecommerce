@@ -9,9 +9,10 @@
             @forelse ($tickets as $ticket)
                 <li class="p-2 w-full bg-gray-300 mt-1">
                     <a href="{{route('ticket.show', ['ticket_id' => $ticket->id])}}">
-                        <span class="flex justify-between">
+                        <span class="grid grid-cols-3">
                             <p>{{$ticket->title}}</p>
-                            <p>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $ticket->created_at)->format('H:i | d.m.Y') }}</p>
+                            <p class="flex justify-center">@if ($ticket->status == 1) Ticket is open @else Ticket is closed @endif</p>
+                            <p class="flex justify-end">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $ticket->created_at)->format('H:i | d.m.Y') }}</p>
                         </span>
                     </a>
                 </li>

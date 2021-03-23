@@ -64,7 +64,7 @@ class UserTicketController extends Controller
 
         //retrieving all messages in ticket
         $messages = TicketMessage::all()->where('ticket_id', $ticket_id);
-        return view('ticket.ticket', ['messages' => $messages, 'ticket_id' => $ticket_id, 'ticket_status' => $ticket_status]);
+        return view('ticket.ticket', ['messages' => $messages, 'ticket' => $ticket]);
     }
 
     //saving ticket message
