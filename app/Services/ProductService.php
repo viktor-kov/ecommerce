@@ -17,7 +17,7 @@ use App\Models\MotherboardSpecification;
 class ProductService {
 
     //save the new added product
-    public function saveProduct($request, $product_id) {
+    public function saveProductSpecifications($request, $product_id) {
         switch($request->product_category) {
             //ram memory specification insert
             case 1: 

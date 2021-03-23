@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductDeleteRequest;
 use App\Services\ProductService;
+use Exception;
 
 class ProductController extends Controller
 {   
@@ -44,8 +45,13 @@ class ProductController extends Controller
 
         $save_product = new ProductService;
 
-        //saving the product
-        $save_product->saveProduct($request, $product_id);
+        //trying to save the product, if we can not save the product specifications, we wil delete the saved product 
+        try {
+            $save_product->saveProductSpecifications($request, $product_id);
+        } catch(Exception $e) {
+            $new_product->delete();
+            return back();
+        }
     
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Pridali ste produkt');
     }
