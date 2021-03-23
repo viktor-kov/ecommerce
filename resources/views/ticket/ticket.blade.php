@@ -14,20 +14,14 @@
                 </tr>
             </table>
             <ul id="ticketMessages">
-                @forelse ($messages as $message)
+                @foreach ($messages as $message)
                     <li class="w-full p-2 bg-gray-200 mb-1">{{$message->ticket_message}}</li>
-                @empty
-                    <li class="w-full text-2xl text-gray-300">nothing</li>
-                @endforelse
+                @endforeach
             </ul>
         </section>
         <section class="w-full mt-8">
             @if ($ticket->status == 1)
-                <form action="{{route('message.store', ['ticket_id' => $ticket->id])}}" method="POST" class="w-full">
-                    @csrf
-                    <textarea name="ticket_text" rows="10" class="w-full border border-black p-2"></textarea>
-                    <button type="submit" class="p-2 bg-green-500 text-white block mt-2 cursor-pointer w-full">Submit</button>
-                </form>
+                @livewire('add-ticket-message', ['ticket_id' => $ticket->id])
             @else
                 <p class="w-full p-4 text-3xl text-white bg-red-700">This ticket is Closed</p>
             @endif

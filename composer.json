@@ -21,7 +21,7 @@
         "laravel/jetstream": "^1.5",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
-        "livewire/livewire": "^2.0",
+        "livewire/livewire": "^2.4",
         "pusher/pusher-php-server": "^4.1",
         "stripe/stripe-php": "^7.72"
     },
