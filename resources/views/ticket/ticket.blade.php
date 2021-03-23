@@ -7,7 +7,7 @@
                 @forelse ($messages as $message)
                     <li class="w-full p-2 bg-gray-200 mb-1">{{$message->ticket_message}}</li>
                 @empty
-                    <li>nothing</li>
+                    <li class="w-full text-2xl text-gray-300">nothing</li>
                 @endforelse
             </ul>
         </section>
@@ -21,7 +21,7 @@
             @else
                 <p class="w-full p-4 text-3xl text-white bg-red-700">This ticket is Closed</p>
             @endif
-            @if (auth()->user()->current_team_id == 1)
+            @if (auth()->user()->current_team_id == 1 && $ticket_status == 1)
                 <form action="{{route('ticket.status', ['ticket_id' => $ticket_id])}}" method="POST" class="w-full">
                     @csrf
                     @method('PUT')

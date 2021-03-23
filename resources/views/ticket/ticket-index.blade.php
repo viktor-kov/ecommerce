@@ -16,7 +16,7 @@
                     </a>
                 </li>
             @empty
-                <li>no tickets</li>
+                <li class="w-full text-2xl text-gray-300">no tickets</li>
             @endforelse
         </ul>
     </section>
