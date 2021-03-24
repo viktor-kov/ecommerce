@@ -10,19 +10,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\UserAction;
 use App\Models\Informations;
-use Illuminate\Http\Request;
-use App\Models\Subscriptions;
 use App\Services\AdminServices;
-use App\Models\CpuSpecification;
-use App\Models\GpuSpecification;
 use App\Services\ProductService;
-use App\Models\CaseSpecification;
-use App\Models\DiskSpecification;
 use App\Models\EmailSubscription;
-use App\Models\MemorySpecification;
-use App\Models\SupplySpecification;
-use App\Models\CoolingSpecification;
-use App\Models\MotherboardSpecification;
+
 
 class PagesController extends Controller
 {
@@ -54,10 +45,16 @@ class PagesController extends Controller
             
             //trying to get random 4 products from the current product category, but when there is an error, 
             //we will choose 4 random products from all of the products
+            //but when we dont have 4 random products, we will choose all products (with different slug) 
+            //which are avaliable or return empty array
             try {
                 $featured_products = Product::where('category', $product_category)->where('slug', '!=', $slug)->get()->random(4);
             } catch(\Exception $e) {
-                $featured_products = Product::where('slug', '!=', $slug)->get()->random(4);
+                try {
+                    $featured_products = Product::where('slug', '!=', $slug)->get()->random(4);
+                } catch(\Exception $e) {
+                    $featured_products = Product::where('slug', '!=', $slug)->get() ?: [];
+                }
             }
 
             //get all reviews belongs to the product
