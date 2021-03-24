@@ -16,6 +16,7 @@ class TicketMessageEvent implements ShouldBroadcast
 
     public $message;
     public $ticket_id;
+    public $user_id;
     /**
      * Create a new event instance.
      *
@@ -25,6 +26,7 @@ class TicketMessageEvent implements ShouldBroadcast
     {
         $this->message = $message;
         $this->ticket_id = $ticket_id;
+        $this->user_id = auth()->id();
     }
 
     /**

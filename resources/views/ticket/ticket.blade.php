@@ -15,7 +15,7 @@
             </table>
             <ul id="ticketMessages">
                 @foreach ($messages as $message)
-                    <li class="w-full p-2 bg-gray-200 mb-1">{{$message->ticket_message}}</li>
+                    <li @if ($message->user_id == auth()->id()) class="w-full p-4 bg-green-100 mb-1 border border-black border-opacity-50"  @else class="w-full p-4 bg-gray-100 mb-1 border border-black border-opacity-50" @endif>{{$message->ticket_message}}</li>
                 @endforeach
             </ul>
         </section>
@@ -23,7 +23,7 @@
             @if ($ticket->status == 1)
                 @livewire('add-ticket-message', ['ticket_id' => $ticket->id])
             @else
-                <p class="w-full p-4 text-3xl text-white bg-red-700">This ticket is Closed</p>
+                <p class="w-full p-4 text-3xl text-white bg-red-700">{{__('ticket.ticket-closed')}}</p>
             @endif
             @if (auth()->user()->current_team_id == 1 && $ticket->status == 1)
                 <form action="{{route('ticket.status', ['ticket_id' => $ticket->id])}}" method="POST" class="w-full">
@@ -38,7 +38,7 @@
 
 @section('footer-js')
 <script>
-
+    const logged_in = {{auth()->id()}}
     let ticketMessages = $('#ticketMessages');
 
     const pusher = new Pusher('1a6ad2db43fc05aa4fe4', {
@@ -47,14 +47,25 @@
 
     const channel = pusher.subscribe('ticket-channel.{{$ticket->id}}');
     channel.bind('message-event', function(data) {
-        
         if(data.ticket_status === "closed") {
             location.reload();
             return 0;
         }
 
+        let message_from = data.user_id;
+        let newMessageHTML;
+
+        if(logged_in == message_from) {
+
+            newMessageHTML = `<li class="w-full p-4 bg-green-100 mb-1 border border-black border-opacity-50">`+data.message+`</li>`;
+        }
+        else {
+
+            newMessageHTML = `<li class="w-full p-4 bg-gray-100 mb-1 border border-black border-opacity-50">`+data.message+`</li>`;
+        }
+       
         let existingMessages = ticketMessages.html();
-        let newMessageHTML = `<li class="w-full p-2 bg-gray-200 mb-1">`+data.message+`</li>`;
+
         ticketMessages.html(existingMessages + newMessageHTML);
     });
   </script>
