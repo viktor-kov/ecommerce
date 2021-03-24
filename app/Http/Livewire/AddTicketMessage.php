@@ -11,11 +11,13 @@ class AddTicketMessage extends Component
     public $ticket_text;
     public $ticket_id;
 
+    protected $rules = [
+        'ticket_text' => 'required',
+    ];
+
     public function saveMessage()
     {   
-        $this->validate([
-            'ticket_text' => 'required',
-        ]);
+        $this->validate();
 
         TicketMessage::create([
             'ticket_id' => $this->ticket_id,

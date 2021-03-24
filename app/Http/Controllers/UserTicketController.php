@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TicketClosed;
 use App\Events\TicketClosedEvent;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Models\TicketMessage;
 use App\Events\TicketMessageEvent;
+use App\Http\Requests\NewTicketRequest;
 
 class UserTicketController extends Controller
 {
@@ -28,7 +28,7 @@ class UserTicketController extends Controller
     }
 
     //save the new ticket
-    public function saveTicket(Request $request) {
+    public function saveTicket(NewTicketRequest $request) {
 
         $ticket_title = $request->ticket_title;
         $ticket_message = $request->ticket_text;

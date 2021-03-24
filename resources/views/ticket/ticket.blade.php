@@ -5,8 +5,8 @@
         <section>
             <table class="w-full table-fixed mb-8">
                 <tr>
-                    <th class="w-1/2 border border-black p-2">Ticket ID</th>
-                    <th class="w-1/2 border border-black p-2">Ticket Title</th>
+                    <th class="w-1/2 border border-black p-2">{{__('ticket.ticket-id')}}</th>
+                    <th class="w-1/2 border border-black p-2">{{__('ticket.ticket-title')}}</th>
                 </tr>
                 <tr>
                     <td class="w-1/2 border border-black p-2">#{{$ticket->id}}</td>
@@ -29,7 +29,7 @@
                 <form action="{{route('ticket.status', ['ticket_id' => $ticket->id])}}" method="POST" class="w-full">
                     @csrf
                     @method('PUT')
-                    <button type="submit" class="p-2 bg-gray-500 text-white block mt-2 cursor-pointer w-full">Ticket Status Update</button>
+                    <button type="submit" class="p-2 bg-gray-500 text-white block mt-2 cursor-pointer w-full">{{__('ticket.update-status')}}</button>
                 </form>
             @endif
         </section>
