@@ -20,7 +20,9 @@ class ProductController extends Controller
         return view('guest.products')->with(['products' => $products]);
     }
 
+    //storing the product + specifications
     public function store(ProductStoreRequest $request) {
+        //validate inputs from form
         $productService = new ProductService;
         $input_validated = $productService->specificationsValidation($request, $request->product_category);
 
@@ -47,6 +49,7 @@ class ProductController extends Controller
         $product_id = $new_product->id;
 
         
+        //save product specifications
         $productService->saveProductSpecifications($input_validated, $product_id, $request->product_category);
         
     
@@ -56,6 +59,7 @@ class ProductController extends Controller
     //update the product
     public function update(UpdateProductRequest $request, ProductService $productService) {
 
+        //validate product specifications
         $productService->specificationsValidation($request, $request->product_category);
 
         $product_id = $request->id;
