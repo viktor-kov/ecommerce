@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\TicketMessage;
 use App\Events\TicketMessageEvent;
 use App\Http\Requests\NewTicketRequest;
+use App\Http\Requests\TicketMessageRequest;
 
 class UserTicketController extends Controller
 {
@@ -70,7 +71,7 @@ class UserTicketController extends Controller
     }
 
     //saving ticket message
-    public function storeTicketMesage($ticket_id, Request $request) {
+    public function storeTicketMesage($ticket_id, TicketMessageRequest $request) {
         $message = $request->ticket_text;
 
         //inserting the message to db

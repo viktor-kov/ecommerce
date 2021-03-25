@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
-    public function update(Request $request)
+    public function update(PasswordUpdateRequest $request)
     {
         //get the user
         $user = auth()->user();

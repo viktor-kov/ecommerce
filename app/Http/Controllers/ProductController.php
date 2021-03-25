@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductDeleteRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Services\ProductService;
 use Exception;
 
@@ -57,7 +58,7 @@ class ProductController extends Controller
     }
 
     //update the product
-    public function update(Request $request, ProductService $productService) {
+    public function update(UpdateProductRequest $request, ProductService $productService) {
 
         $product_id = $request->id;
 
