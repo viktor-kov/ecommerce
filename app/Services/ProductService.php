@@ -17,18 +17,10 @@ use App\Models\MotherboardSpecification;
 class ProductService {
 
     //save the new added product
-    public function saveProductSpecifications($request, $product_id) {
-        switch($request->product_category) {
+    public function saveProductSpecifications($validated, $product_id, $product_category) {
+        switch($product_category) {
             //ram memory specification insert
             case 1: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'ram_type' => 'required',
-                    'ram_memory' => 'required',
-                    'ram_frequency' => 'required',
-                    'ram_module_count' => 'required',
-                ]);
-                
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
@@ -38,23 +30,6 @@ class ProductService {
                 break;
             //cpu specification insert
             case 2: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'cpu_series' => 'required',
-                    'cpu_socket' => 'required',
-                    'cpu_cores' => 'required',
-                    'cpu_threads' => 'required',
-                    'cpu_frequency' => 'required',
-                    'cpu_max_frequency' => 'required',
-                    'cpu_ram' => 'required',
-                    'cpu_max_channels' => 'required',
-                    'cpu_functions' => 'required',
-                    'cpu_tdp' => 'required',
-                    'cpu_technology' => 'required',
-                    'cpu_cache' => 'required',
-                    'cpu_chipset' => 'required',
-                ]);
-
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
@@ -64,27 +39,6 @@ class ProductService {
                 break;
             //motherboard specification insert
             case 3: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'motherboard_socket' => 'required',
-                    'motherboard_chipset' => 'required',
-                    'motherboard_format' => 'required',
-                    'motherboard_functions' => 'required',
-                    'motherboard_memory' => 'required',
-                    'motherboard_memory_slots' => 'required',
-                    'motherboard_memory_insertion' => 'required',
-                    'motherboard_memory_frequency' => 'required',
-                    'motherboard_extern' => 'required',
-                    'motherboard_intern' => 'required',
-                    'motherboard_pci_x16' => 'required',
-                    'motherboard_pci_x1' => 'required',
-                    'motherboard_m2' => 'required',
-                    'motherboard_usb20' => 'required',        
-                    'motherboard_usb32' => 'required',         
-                    'motherboard_usb31' => 'required',         
-                    'motherboard_sata' => 'required', 
-                ]);
-
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
 
@@ -94,19 +48,7 @@ class ProductService {
                 break;
             //case specification insert
             case 4: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'case_size' => 'required',
-                    'case_color' => 'required',
-                    'case_motherboard_format' => 'required',
-                    'case_supply' => 'required',
-                    'case_width' => 'required',
-                    'case_height' => 'required',
-                    'case_depth' => 'required',
-                    'case_weight' => 'required',
-                ]);
-                
-                //adding product_id to validated array for better inserting data tu db table
+               //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
                 //creating the db record by validated fields and thier values from inputs
@@ -115,14 +57,6 @@ class ProductService {
                 break;
             //supply specification insert  
             case 5:    
-                //validating the request fields
-                $validated = $request->validate([
-                    'supply_power' => 'required',
-                    'supply_format' => 'required',
-                    'supply_equipment' => 'required',
-                    'supply_protection' => 'required',
-                ]);
-
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
@@ -132,23 +66,6 @@ class ProductService {
                 break; 
             //disk specification insert
             case 6: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'disk_type' => 'required',
-                    'disk_format' => 'required',
-                    'disk_memory' => 'required',
-                    'disk_capacity' => 'required',
-                    'disk_width' => 'required',
-                    'disk_height' => 'required',
-                    'disk_depth' => 'required',
-                    'disk_weight' => 'required',
-                    'disk_usage' => 'required',
-                    'disk_read_speed' => 'required',
-                    'disk_write_speed' => 'required',
-                    'disk_consumption' => 'required',
-                    'disk_life' => 'required',
-                ]);
-                
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
@@ -158,21 +75,6 @@ class ProductService {
                 break; 
             //cooling specification insert
             case 7: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'cooling_type' => 'required',
-                    'cooling_weight' => 'required',
-                    'cooling_max_tdp' => 'required',
-                    'cooling_min_speed' => 'required',
-                    'cooling_max_speed' => 'required',
-                    'cooling_average_fan' => 'required',
-                    'cooling_intel_socket' => 'required',
-                    'cooling_amd_socket' => 'required',
-                    'cooling_height' => 'required',
-                    'cooling_width' => 'required',
-                    'cooling_depth' => 'required',
-                ]);
-                
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
                 
@@ -182,25 +84,6 @@ class ProductService {
                 break; 
             //gpu specification insert
             case 8: 
-                //validating the request fields
-                $validated = $request->validate([
-                    'gpu_chip_manufacturer' => 'required',
-                    'gpu_model' => 'required',
-                    'gpu_processor' => 'required',
-                    'gpu_architecture' => 'required',
-                    'gpu_stream' => 'required',
-                    'gpu_technology' => 'required',
-                    'gpu_usage' => 'required',
-                    'gpu_memory_type' => 'required',
-                    'gpu_directx' => 'required',
-                    'gpu_opengl' => 'required',
-                    'gpu_cooling' => 'required',
-                    'gpu_width' => 'required',
-                    'gpu_height' => 'required',
-                    'gpu_depth' => 'required',
-                    'gpu_supply_power' => 'required',
-                ]);
-                
                 //adding product_id to validated array for better inserting data tu db table
                 $validated['product_id'] = $product_id;
 
@@ -474,5 +357,135 @@ class ProductService {
                 $product_data['product_view'] = 'specifications.gpu';
                 return  $product_data;
         }
+    }
+
+    //validating the product specification inputs
+    public function specificationsValidation($request, $category) {
+        if($category == 1) {
+            $validated = $request->validate([
+                'ram_type' => 'required',
+                'ram_memory' => 'required',
+                'ram_frequency' => 'required',
+                'ram_module_count' => 'required',
+            ]);
+        }
+
+        if($category == 2) {
+            $validated = $request->validate([
+                'cpu_series' => 'required',
+                'cpu_socket' => 'required',
+                'cpu_cores' => 'required',
+                'cpu_threads' => 'required',
+                'cpu_frequency' => 'required',
+                'cpu_max_frequency' => 'required',
+                'cpu_ram' => 'required',
+                'cpu_max_channels' => 'required',
+                'cpu_functions' => 'required',
+                'cpu_tdp' => 'required',
+                'cpu_technology' => 'required',
+                'cpu_cache' => 'required',
+                'cpu_chipset' => 'required',
+            ]);
+        }
+
+        if($category == 3) {
+            $validated = $request->validate([
+                'motherboard_socket' => 'required',
+                'motherboard_chipset' => 'required',
+                'motherboard_format' => 'required',
+                'motherboard_functions' => 'required',
+                'motherboard_memory' => 'required',
+                'motherboard_memory_slots' => 'required',
+                'motherboard_memory_insertion' => 'required',
+                'motherboard_memory_frequency' => 'required',
+                'motherboard_extern' => 'required',
+                'motherboard_intern' => 'required',
+                'motherboard_pci_x16' => 'required',
+                'motherboard_pci_x1' => 'required',
+                'motherboard_m2' => 'required',
+                'motherboard_usb20' => 'required',        
+                'motherboard_usb32' => 'required',         
+                'motherboard_usb31' => 'required',         
+                'motherboard_sata' => 'required', 
+            ]);
+        }
+
+        if($category == 4) {
+            $validated = $request->validate([
+                'case_size' => 'required',
+                'case_color' => 'required',
+                'case_motherboard_format' => 'required',
+                'case_supply' => 'required',
+                'case_width' => 'required',
+                'case_height' => 'required',
+                'case_depth' => 'required',
+                'case_weight' => 'required',
+            ]);
+        }
+
+        if($category == 5) {
+            $validated = $request->validate([
+                'supply_power' => 'required',
+                'supply_format' => 'required',
+                'supply_equipment' => 'required',
+                'supply_protection' => 'required',
+            ]);
+        }
+
+        if($category == 6) {
+            $validated = $request->validate([
+                'disk_type' => 'required',
+                'disk_format' => 'required',
+                'disk_memory' => 'required',
+                'disk_capacity' => 'required',
+                'disk_width' => 'required',
+                'disk_height' => 'required',
+                'disk_depth' => 'required',
+                'disk_weight' => 'required',
+                'disk_usage' => 'required',
+                'disk_read_speed' => 'required',
+                'disk_write_speed' => 'required',
+                'disk_consumption' => 'required',
+                'disk_life' => 'required',
+            ]);
+        }
+
+        if($category == 7) {
+            $validated = $request->validate([
+                'cooling_type' => 'required',
+                'cooling_weight' => 'required',
+                'cooling_max_tdp' => 'required',
+                'cooling_min_speed' => 'required',
+                'cooling_max_speed' => 'required',
+                'cooling_average_fan' => 'required',
+                'cooling_intel_socket' => 'required',
+                'cooling_amd_socket' => 'required',
+                'cooling_height' => 'required',
+                'cooling_width' => 'required',
+                'cooling_depth' => 'required',
+            ]);
+        }
+
+        if($category == 8) {
+            $validated = $request->validate([
+                'gpu_chip_manufacturer' => 'required',
+                'gpu_model' => 'required',
+                'gpu_processor' => 'required',
+                'gpu_architecture' => 'required',
+                'gpu_stream' => 'required',
+                'gpu_technology' => 'required',
+                'gpu_usage' => 'required',
+                'gpu_memory_type' => 'required',
+                'gpu_directx' => 'required',
+                'gpu_opengl' => 'required',
+                'gpu_cooling' => 'required',
+                'gpu_width' => 'required',
+                'gpu_height' => 'required',
+                'gpu_depth' => 'required',
+                'gpu_supply_power' => 'required',
+            ]);
+        }
+
+        return $validated;
     }
 }

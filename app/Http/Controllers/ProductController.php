@@ -21,6 +21,8 @@ class ProductController extends Controller
     }
 
     public function store(ProductStoreRequest $request) {
+        $productService = new ProductService;
+        $input_validated = $productService->specificationsValidation($request, $request->product_category);
 
         $new_product = new Product;
 
@@ -44,21 +46,17 @@ class ProductController extends Controller
 
         $product_id = $new_product->id;
 
-        $save_product = new ProductService;
-
-        //trying to save the product, if we can not save the product specifications, we wil delete the saved product 
-        try {
-            $save_product->saveProductSpecifications($request, $product_id);
-        } catch(Exception $e) {
-            $new_product->delete();
-            return back();
-        }
+        
+        $productService->saveProductSpecifications($input_validated, $product_id, $request->product_category);
+        
     
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-added'));
     }
 
     //update the product
     public function update(UpdateProductRequest $request, ProductService $productService) {
+
+        $productService->specificationsValidation($request, $request->product_category);
 
         $product_id = $request->id;
 
