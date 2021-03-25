@@ -9,6 +9,9 @@ return [
     'career' => 'Career',
     'subscribe-text' => 'Add your email for subscribe newsletter',
     'subscribe-btn' => 'Subscribe',
+    'address-updated' => 'Your address has been updated!',
+    'language-set' => 'Language changed!',
+    'thankyou-for-subscribing' => 'Thank your for subscribing',
 ];
 
 ?>

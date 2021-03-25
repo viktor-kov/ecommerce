@@ -15,7 +15,7 @@ class PasswordController extends Controller
         //check if the current_password filled in profile is the same as when the user registered, if not, redirect to profile page
         //if yes, than redirect to home.index
         if(! Hash::check($request->current_password, $user->password)) {
-            return redirect()->route('profile')->with('error', 'Nesprávne heslo');
+            return redirect()->route('profile')->with('error', __('passwords.bad-password'));
         }
         else {
             //update the password
@@ -24,6 +24,6 @@ class PasswordController extends Controller
             ])->save();
         }
 
-        return redirect()->route('profile')->with('success', 'Heslo zmenené');
+        return redirect()->route('profile')->with('success', __('passwords.password-changed'));
     }
 }

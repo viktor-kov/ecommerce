@@ -13,4 +13,5 @@ return [
     'update-avatar' => 'Update avatar',
     'update-pwd' => 'Update password',
     'adminpanel' => 'Adminpanel',
+    'new-avatar' => 'Avatar was changed',
 ];

@@ -74,4 +74,7 @@ return [
     'product-opengl' => 'OpenGL version',
     'product-gpu-supply-power' => 'Recommended power of supply',
     'product-gpu-stream' => 'The number of stream processors',
+    'product-added' => 'Product added',
+    'product-updated' => 'Product updated',
+    'product-deleted' => 'Product deleted',
 ]; 

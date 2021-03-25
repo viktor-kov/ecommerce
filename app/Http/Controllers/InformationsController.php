@@ -28,6 +28,6 @@ class InformationsController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
-        return redirect()->route('profile')->with('success', 'Dodacie informácie sa uložili!');
+        return redirect()->route('profile')->with('success', __('other.address-updated'));
     }
 }

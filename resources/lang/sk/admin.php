@@ -21,6 +21,8 @@ return [
     'orders' => 'Objednávky',
     'show-order' => 'Načítať objednávku',
     'see-reviews' => 'Načítať všetky recenzie',
+    'order-completed' => 'Objednávka bola vybavená',
+    'user-role-updated' => 'Rola bola zmenená',
 ];
 
 ?>

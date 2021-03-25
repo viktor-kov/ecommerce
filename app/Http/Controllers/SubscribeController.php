@@ -15,6 +15,6 @@ class SubscribeController extends Controller
             ['email' => $request->email]
         );
 
-        return back()->with('success', 'Ďakujeme za odoberanie noviniek');
+        return back()->with('success', __('other.thankyou-for-subscribing'));
     }
 }

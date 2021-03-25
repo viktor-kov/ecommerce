@@ -31,6 +31,6 @@ class InvoiceController extends Controller
     //update the invoice status
     public function updateStatus($id) {
         $invoice = Invoice::where('id', $id)->update(['active' => 0]);
-        return redirect()->route('orders')->with('success', 'Objednávka vybavená!');
+        return redirect()->route('orders')->with('success', __('admin.order-completed'));
     }
 }

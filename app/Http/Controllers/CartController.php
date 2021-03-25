@@ -47,14 +47,14 @@ class CartController extends Controller
         ])->associate('App\Models\Product');
     
 
-        return redirect()->route('cart.index')->with('success', 'Pridali ste položku do košíka!');
+        return redirect()->route('cart.index')->with('success', __('cart.added-to-cart'));
     }
 
     //remove item from cart
     public function destroy($row_id) {
         Cart::remove($row_id);
 
-        return redirect()->route('cart.index')->with('success', 'Odstránili ste produkt zo košíka');
+        return redirect()->route('cart.index')->with('success', __('cart.deleted-from-cart'));
     }
 
     //update the cart quantity
@@ -62,6 +62,6 @@ class CartController extends Controller
 
         $qty = $request->qty;
         Cart::update($row_id, $qty);
-        return redirect()->route('cart.index')->with('success', 'Aktualizovali sme počet kusov!');
+        return redirect()->route('cart.index')->with('success', __('cart.updated-product-qty'));
     }
 }

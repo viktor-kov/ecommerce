@@ -16,7 +16,7 @@ class UserRoleController extends Controller
 
             $update_user = User::where('id', $id)->update(['current_team_id' => $role]);
     
-            return back()->with('success', 'Oprávnenia boli zmené');
+            return back()->with('success', __('admin.user-role-updated'));
         }
 
         return back();

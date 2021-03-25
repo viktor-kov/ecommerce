@@ -18,5 +18,7 @@ return [
     'throttled' => 'Please wait before retrying.',
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that email address.",
+    'bad-password' => 'Zlé heslo',
+    'password-changed' => 'Heslo bolo zmenené',
 
 ];

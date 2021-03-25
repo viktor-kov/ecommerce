@@ -29,13 +29,13 @@ class ReviewController extends Controller
             'text' => $request->review_text,
         ]);
 
-        return back()->with('success', 'Pridali ste nový recenziu!');
+        return back()->with('success', __('review.review-added'));
     }
 
     //deleting the review
     public function delete($id) {
         Review::where('id', $id)->delete();
 
-        return back()->with('success', 'Recenzia bola zmazaná');
+        return back()->with('success', __('review.review-deleted'));
     }
 }

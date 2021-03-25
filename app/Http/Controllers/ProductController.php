@@ -53,7 +53,7 @@ class ProductController extends Controller
             return back();
         }
     
-        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Pridali ste produkt');
+        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-added'));
     }
 
     //update the product
@@ -87,7 +87,7 @@ class ProductController extends Controller
         //update new specifications
         $productService->updateProductSpecification($request, $product_id);
 
-        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', 'Upravili ste produkt');
+        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-updated'));
     }
 
     public function delete(ProductDeleteRequest $request) {
@@ -99,6 +99,6 @@ class ProductController extends Controller
 
         $delete_product_photo = Storage::disk('public')->delete($photo_path);
 
-        return redirect('allproducts')->with('error', 'Zmazali ste produkt');
+        return redirect('allproducts')->with('error', __('products.product-deleted'));
     }
 }

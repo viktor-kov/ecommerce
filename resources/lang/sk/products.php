@@ -74,4 +74,7 @@ return [
     'product-opengl' => 'Verzia OpenGL',
     'product-gpu-supply-power' => 'Odporúčaný výkon zdroja',
     'product-gpu-stream' => 'Počet stream procesora',
+    'product-added' => 'Produkt pridaný',
+    'product-updated' => 'Produkt aktualizovaný',
+    'product-deleted' => 'Produkt zmazaný',
 ];

@@ -13,4 +13,5 @@ return [
     'update-avatar' => 'Nahrať avatar',
     'update-pwd' => 'Zmeniť heslo',
     'adminpanel' => 'Adminpanel',
+    'new-avatar' => 'Avatar bol nahraný!',
 ];
