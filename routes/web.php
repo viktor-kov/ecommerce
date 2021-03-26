@@ -98,3 +98,8 @@ Route::post('/ticket/save', [UserTicketController::class, 'saveTicket'])->middle
 Route::get('/ticket/{ticket_id}/show', [UserTicketController::class, 'showTicket'])->middleware('auth')->name('ticket.show');
 Route::post('/ticket/{ticket_id}/message', [UserTicketController::class, 'storeTicketMesage'])->middleware('auth')->name('message.store');
 Route::put('/ticket/{ticket_id}/status', [UserTicketController::class, 'ticketStatus'])->middleware(['auth', 'admin'])->name('ticket.status');
+
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::get('/whyus', [PagesController::class, 'whyus'])->name('whyus');
+Route::get('/delivery', [PagesController::class, 'delivery'])->name('delivery');
+Route::get('/career', [PagesController::class, 'career'])->name('career');

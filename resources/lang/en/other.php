@@ -12,6 +12,8 @@ return [
     'address-updated' => 'Your address has been updated!',
     'language-set' => 'Language changed!',
     'thankyou-for-subscribing' => 'Thank your for subscribing',
+    'delivery-time' => 'Delivery time is 3 days!',
+    'work-with-us' => 'Work with us!',
 ];
 
 ?>

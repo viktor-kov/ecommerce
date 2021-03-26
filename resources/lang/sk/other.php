@@ -12,6 +12,8 @@ return [
     'address-updated' => 'Vaša dodacia adresa bola aktualizovaná!',
     'language-set' => 'Jazyk sa zmenil!',
     'thankyou-for-subscribing' => 'Ďakujeme za odoberanie noviniek!',
+    'delivery-time' => 'Čas dodania zásielky sú 3 dni!',
+    'work-with-us' => 'Pracuj s nami!',
 ];
 
 

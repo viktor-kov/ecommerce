@@ -2,8 +2,8 @@
     <div class="list-none grid justify-around">
         <nav>
             <ul>
-                <li><a href="">{{__('other.home-page')}}</a></li>
-                <li><a href="">{{__('other.contact')}}</a></li>
+                <li><a href="{{route('home.index')}}">{{__('other.home-page')}}</a></li>
+                <li><a href="{{route('contact')}}">{{__('other.contact')}}</a></li>
                 <li><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
                 <li><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
             </ul>
@@ -12,9 +12,9 @@
     <div class="list-none grid justify-around">
         <nav>
            <ul>
-                <li><a href="">{{__('other.why-us')}}</a></li>
-                <li><a href="">{{__('other.delivery')}}</a></li>
-                <li><a href="">{{__('other.career')}}</a></li>
+                <li><a href="{{route('whyus')}}">{{__('other.why-us')}}</a></li>
+                <li><a href="{{route('delivery')}}">{{__('other.delivery')}}</a></li>
+                <li><a href="{{route('career')}}">{{__('other.career')}}</a></li>
            </ul>
         </nav>
     </div>

@@ -25,7 +25,19 @@ class PagesController extends Controller
     }
 
     public function contact() {
-        return 'kontakt';
+        return view('guest.contact');
+    }
+
+    public function whyus() {
+        return view('guest.whyus');
+    }
+
+    public function delivery() {
+        return view('guest.delivery');
+    }
+
+    public function career() {
+        return view('guest.career');
     }
 
     public function products($id, $slug = null) {
