@@ -26,4 +26,7 @@
             @include('admin.product-edit-preview')
         @endforeach
     </ul>
+    <p class="mt-8">
+        {{$products->links()}}
+    </p>
 @endsection

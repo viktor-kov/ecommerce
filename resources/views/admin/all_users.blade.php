@@ -22,10 +22,9 @@
 
 
 @section('stats')
-<ul class="m-4">
+<ul class="w-full">
     @foreach ($users as $user)
-        @if ($user->id != auth()->user()->id)
-            <li class="w-1/4 mt-1 bg-green-300">
+            <li class="w-full mt-1 bg-gray-200 border border-black">
                 <a href="allusers/{{$user->id}}">
                     <section class="flex justify-between p-4">
                         <h1>{{$user->email}}</h1>
@@ -33,7 +32,9 @@
                     </section>
                 </a>
             </li>
-        @endif
     @endforeach
 </ul>
+<p class="mt-8">
+    {{$users->links()}}
+</p>
 @endsection

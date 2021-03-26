@@ -124,7 +124,7 @@ class PagesController extends Controller
         }
         else {
             return view('admin.all_users', [
-                'users' => User::all()
+                'users' => User::where('id', '!=', auth()->id())->paginate(14),
             ]);
         }
     }
@@ -139,8 +139,9 @@ class PagesController extends Controller
                 'product' => Product::where('slug', $slug)->first(),
             ]);
         }
+        $products = Product::paginate(8);
         return view('admin.all_products', [
-            'products' => Product::all(),
+            'products' => $products,
             'category_name' => 'Všetky produkty'
         ]);
     }
