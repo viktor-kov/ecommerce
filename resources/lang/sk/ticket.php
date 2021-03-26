@@ -11,4 +11,5 @@ return [
     'support' => 'Podpora',
     'new-ticket' => 'Vytvoriť nový ticket',
     'is-open' => 'Ticket je otvorený',
+    'no-tickets' => 'Žiadne tickety...',
 ];

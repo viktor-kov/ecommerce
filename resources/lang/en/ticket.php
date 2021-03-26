@@ -11,5 +11,6 @@ return [
     'support' => 'Support',
     'new-ticket' => 'Create new ticket',
     'is-open' => 'Ticket is open',
-    
+    'no-tickets' => 'No tickets...',
+
 ];
