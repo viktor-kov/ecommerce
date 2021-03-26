@@ -8,4 +8,8 @@ return [
     'update-status' => 'Close ticket',
     'ticket-id' => 'Ticket ID',
     'ticket-closed' => 'This ticket is closed',
+    'support' => 'Support',
+    'new-ticket' => 'Create new ticket',
+    'is-open' => 'Ticket is open',
+    
 ];

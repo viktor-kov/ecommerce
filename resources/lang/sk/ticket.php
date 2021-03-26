@@ -8,4 +8,7 @@ return [
     'update-status' => 'Označiť ako vybavené',
     'ticket-id' => 'Ticket ID',
     'ticket-closed' => 'Ticket je uzatvorený',
+    'support' => 'Podpora',
+    'new-ticket' => 'Vytvoriť nový ticket',
+    'is-open' => 'Ticket je otvorený',
 ];
