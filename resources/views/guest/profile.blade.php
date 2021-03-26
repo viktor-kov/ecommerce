@@ -58,7 +58,7 @@
                 </section>
             @else 
                 <section>
-                    <a href="{{route('tickets.index')}}" class="p-2 bg-purple-400 text-white block text-center mt-4 uppercase">Tickets</a>
+                    <a href="{{route('tickets.index')}}" class="p-4 bg-green-500 text-white block text-center mt-4 text-xl">{{__('ticket.support')}}</a>
                 </section>
             @endif
             
