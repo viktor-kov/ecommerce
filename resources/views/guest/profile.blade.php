@@ -56,12 +56,10 @@
                 <section>
                     <a href="{{route('adminpanel')}}" class="p-2 bg-red-500 text-white block text-center mt-4 uppercase">{{__('admin.admin-panel')}}</a>
                 </section>
-            @else 
+            @endif
                 <section>
                     <a href="{{route('tickets.index')}}" class="p-4 bg-green-500 text-white block text-center mt-4 text-xl">{{__('ticket.support')}}</a>
                 </section>
-            @endif
-            
         </aside>
     </section>
     <div class="line border border-black"></div>
