@@ -58,9 +58,6 @@ class UserTicketController extends Controller
             abort(403);
         }
 
-        //ticket status
-        $ticket_status = $ticket->status;
-
         //retrieving all messages in ticket
         $messages = TicketMessage::all()->where('ticket_id', $ticket_id);
         return view('ticket.ticket', ['messages' => $messages, 'ticket' => $ticket]);
