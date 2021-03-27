@@ -12,5 +12,6 @@ return [
     'new-ticket' => 'Create new ticket',
     'is-open' => 'Ticket is open',
     'no-tickets' => 'No tickets...',
+    'all-active-tickets' => 'All active tickets',
 
 ];

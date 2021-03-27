@@ -90,6 +90,7 @@ Route::get('/review', [ReviewController::class, 'index'])->middleware('admin')->
 Route::delete('/review/{id}', [ReviewController::class, 'delete'])->middleware('admin')->name('review.destroy');
 
 Route::get('/tickets', [UserTicketController::class, 'index'])->middleware('auth')->name('tickets.index');
+Route::get('/alltickets', [UserTicketController::class, 'allTickets'])->middleware(['auth', 'admin'])->name('tickets.all');
 Route::get('/tickets/new', [UserTicketController::class, 'newTicket'])->middleware('auth')->name('ticket.new');
 Route::post('/ticket/save', [UserTicketController::class, 'saveTicket'])->middleware('auth')->name('ticket.save');
 Route::get('/ticket/{ticket_id}/show', [UserTicketController::class, 'showTicket'])->middleware('auth')->name('ticket.show');

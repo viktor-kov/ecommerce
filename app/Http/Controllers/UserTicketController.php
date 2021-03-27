@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewTicketEvent;
 use App\Events\TicketClosedEvent;
 use App\Models\UserTicket;
-use Illuminate\Http\Request;
 use App\Models\TicketMessage;
 use App\Events\TicketMessageEvent;
 use App\Http\Requests\NewTicketRequest;
@@ -12,13 +12,8 @@ use App\Http\Requests\TicketMessageRequest;
 
 class UserTicketController extends Controller
 {
-    //show all tickets to admin or all tickets belongs to logged in user
+    //show all tickets for user
     public function index() {
-        if(auth()->user()->current_team_id == 1) {
-            $tickets = UserTicket::where('status', 1)->orderBy('created_at', 'DESC')->get();
-            return view('ticket.ticket-index', ['tickets' => $tickets]);
-        }
-
         $tickets = UserTicket::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->get();
         return view('ticket.ticket-index', ['tickets' => $tickets]);
     }
@@ -47,6 +42,7 @@ class UserTicketController extends Controller
             'ticket_message' => $ticket_message,
         ]);
         
+        event(new NewTicketEvent());
         //redireckting to the ticket
         return redirect()->route('ticket.show', ['ticket_id' => $new_ticket->id]);
     }
@@ -96,5 +92,11 @@ class UserTicketController extends Controller
         event(new TicketClosedEvent($ticket_id));
 
         return redirect()->route('tickets.index');
+    }
+
+    //show all tickets for admin
+    public function allTickets() {
+        $tickets = UserTicket::where('status', 1)->orderBy('created_at', 'DESC')->get();
+        return view('ticket.tickets-all', ['tickets' => $tickets]);
     }
 }

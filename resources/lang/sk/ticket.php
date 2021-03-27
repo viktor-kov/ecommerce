@@ -12,4 +12,5 @@ return [
     'new-ticket' => 'Vytvoriť nový ticket',
     'is-open' => 'Ticket je otvorený',
     'no-tickets' => 'Žiadne tickety...',
+    'all-active-tickets' => 'Všetky aktívne tickety',
 ];
