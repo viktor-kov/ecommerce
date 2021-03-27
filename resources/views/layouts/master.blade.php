@@ -29,6 +29,7 @@
         <header class="h-20 md:h-10 bg-black">
             @include('header')
         </header>
+        @include('search-input')
         @if ($errors->any())
             @include('messages.validation-error')
         @endif

@@ -14,6 +14,8 @@ return [
     'thankyou-for-subscribing' => 'Thank your for subscribing',
     'delivery-time' => 'Delivery time is 3 days!',
     'work-with-us' => 'Work with us!',
+    'searched-for' => 'Searched for ',
+    'no-search' => 'No results for ',
 ];
 
 ?>

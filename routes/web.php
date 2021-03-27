@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Message;
-use App\Models\TicketMessage;
-use App\Events\TicketMessageEvent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -18,8 +15,8 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserTicketController;
 use App\Http\Controllers\InformationsController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SpecificationController;
-use App\Models\UserTicket;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,3 +100,5 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/whyus', [PagesController::class, 'whyus'])->name('whyus');
 Route::get('/delivery', [PagesController::class, 'delivery'])->name('delivery');
 Route::get('/career', [PagesController::class, 'career'])->name('career');
+
+Route::get('/search', [SearchController::class, 'productSearch'])->name('product.search');

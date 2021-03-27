@@ -26,6 +26,7 @@
         <header class="h-20 md:h-10 bg-black">
             @include('header')
         </header>
+        @include('search-input')
         @if ($errors->any())
             @include('messages.validation-error')
         @endif
@@ -33,9 +34,6 @@
         <section>
             @yield('category-name')
         </section>
-        <nav class="mb-10 h-12 bg-gray-400">
-
-        </nav>
         <main class="min-h-screen">
             @yield('content')
         </main>

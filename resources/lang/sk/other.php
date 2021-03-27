@@ -14,6 +14,8 @@ return [
     'thankyou-for-subscribing' => 'Ďakujeme za odoberanie noviniek!',
     'delivery-time' => 'Čas dodania zásielky sú 3 dni!',
     'work-with-us' => 'Pracuj s nami!',
+    'searched-for' => 'Hľadali ste výraz ',
+    'no-search' => 'Žiadne výsledky pre ',
 ];
 
 
