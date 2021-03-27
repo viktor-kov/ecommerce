@@ -77,6 +77,3 @@
 </section>
 @endsection
 
-@section('extra-stuff')
-    <script src="{{asset('js/checkout.js')}}"></script>
-@endsection
