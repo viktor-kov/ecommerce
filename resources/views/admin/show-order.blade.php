@@ -35,8 +35,6 @@
         <td class="border border-black w-3/4 p-2 text-right">{{$total_sum}}€</td>
     </tr>
 </table>
-<a href="{{route('order-status.update', [
-    'id' => $product->invoice_id,
-])}}" class="w-full block p-4 bg-green-400 text-center">{{__('order.update-status')}}</a>
+<a href="{{route('order-status.update', ['id' => $product->invoice_id,])}}" class="w-full block p-4 bg-green-400 text-center">{{__('order.update-status')}}</a>
 
 @endsection
