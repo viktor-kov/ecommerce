@@ -71,14 +71,16 @@
                 <a href="{{route('home.index')}}" class="p-4 border border-black text-center">{{__('checkout.start-shopping')}}</a>
             </section>
     @endif
-    <section class="mt-20">
-        <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
-        <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10">
-            @foreach ($featured_products as $product) 
-                @include('product-preview.product-show-section')
-            @endforeach
-        </ul>
-    </section>
+    @if ($featured_products->isNotEmpty())
+        <section class="mt-20">
+            <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
+            <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10">
+                @foreach ($featured_products as $product) 
+                    @include('product-preview.product-show-section')
+                @endforeach
+            </ul>
+        </section>
+    @endif
 </section>
 
 @endsection

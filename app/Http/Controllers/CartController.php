@@ -9,8 +9,24 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function index() {
+
+        //trying to get 4 random products
+        //if fail, then try to return products
+        //if fail then return empty array
+        try {
+            $products = Product::get()->random(4);
+        }
+        catch(\Exception $e) {
+            try {
+                $products = Product::get();
+            }
+            catch(\Exception $e) {
+                $products = [];
+            }
+        }
+
         return view('guest.cart', [
-            'featured_products' => Product::get()->random(4),
+            'featured_products' => $products,
         ]);
     }
 
