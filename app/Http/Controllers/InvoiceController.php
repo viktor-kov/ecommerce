@@ -12,11 +12,11 @@ class InvoiceController extends Controller
     //show the requested invoice
     public function show($id) {
         
-        //only  the logged in users can see their invoices
+        //only  the logged in users can see their invoices or admin
         if(auth()->user()) {
             $invoice = Invoice::where('invoice_name', $id)->first();
 
-            if($invoice->user_id == auth()->user()->id) {
+            if($invoice->user_id == auth()->user()->id || auth()->user()->current_team_id) {
                 return response()->file(storage_path('app/invoices/').$id);
             }
             else {
@@ -29,8 +29,15 @@ class InvoiceController extends Controller
     }
 
     //update the invoice status
-    public function updateStatus($id) {
-        $invoice = Invoice::where('id', $id)->update(['active' => 0]);
-        return redirect()->route('orders')->with('success', __('admin.order-completed'));
+    public function updateStatus($id, $status) {
+        
+        $invoice = Invoice::where('id', $id)->first();
+
+        //cant go back on product status, if we are trying to go from "home" to "packed" nothing will happen
+        if($invoice->status < $status) {
+            $invoice->update(['status' => $status]);
+        }
+
+        return back();
     }
 }

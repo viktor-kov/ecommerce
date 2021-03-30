@@ -9,8 +9,12 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status'
+    ];
+
     protected $hidden = [
         'user_id',
-        'invoice_name'
+        'invoice_name',
     ];
 }

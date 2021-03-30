@@ -13,7 +13,7 @@ class OrderController extends Controller
     //show the order by id in invoice table
     public function showOrder($id) {
         //find or fail to find the invoice
-        Invoice::findOrFail($id);
+        $invoice = Invoice::findOrFail($id);
 
         //getting all the products in order to display them
         $all_products = Order::all()->where('invoice_id', $id);
@@ -24,6 +24,7 @@ class OrderController extends Controller
         return view('admin.show-order', [
             'order' => $all_products,
             'total_sum' => $all_products_price,
+            'invoice' => $invoice,
         ]);
     }
 }

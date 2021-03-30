@@ -78,7 +78,7 @@ Route::fallback(function () {
 Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
-Route::get('/orders/{id}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
+Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
 Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 
 Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
