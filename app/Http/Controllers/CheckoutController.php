@@ -57,8 +57,8 @@ class CheckoutController extends Controller
                 "description" => $description
             ));
 
-            //create the PDF based on time
-            $pdf_name = time() . ".pdf";
+            //create the PDF based on time + add randum number for avoid duplicating pdf name
+            $pdf_name = time() . '_' . rand(1, 99) . ".pdf";
             $path = storage_path('app/invoices/' . $pdf_name);
             //getting the all data from request and putting them tu invoice view for creting and saving the invoice
             $data = $request->all();
