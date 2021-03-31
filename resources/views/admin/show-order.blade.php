@@ -90,7 +90,8 @@
         </button>
     </form>
 </section>
-@else 
+@endif
+@if ($invoice->active == 0)
 <section class="w-full p-2 bg-green-400 text-white text-center">
     <p>{{__('order.completed')}}</p>
 </section>
