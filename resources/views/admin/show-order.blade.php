@@ -90,6 +90,10 @@
         </button>
     </form>
 </section>
+@else 
+<section class="w-full p-2 bg-green-400 text-white text-center">
+    <p>{{__('order.completed')}}</p>
+</section>
 @endif
 <section class="bg-gray-300  p-2 border border-black mb-1 flex justify-end mt-4">
     <a href="{{route('invoice.show', ['id' => $invoice->invoice_name])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>

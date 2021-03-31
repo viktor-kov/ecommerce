@@ -6,4 +6,5 @@ return [
     'packed' => 'Packed',
     'shipped' => 'Shipped',
     'is-home' => 'At your place', 
+    'completed' => 'Order is completed', 
 ];
