@@ -104,7 +104,7 @@
         style="border:0"
         loading="lazy"
         allowfullscreen
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCSMcYwsRoGYqEd3Wj5TWPawExTVkRv1IY&q={{$invoice->town_name}}">
+        src="https://www.google.com/maps/embed/v1/place?key={{env('GOOGLE_API')}}&q={{$invoice->town_name}}">
     </iframe>
 </section>
 
