@@ -2,5 +2,8 @@
 
 return [
     'total-sum' => 'Celková cena',
-    'update-status' => 'Aktualizovať status',
+    'update-status' => 'Vybaviť',
+    'packed' => 'Zabalené',
+    'shipped' => 'Odoslané',
+    'is-home' => 'U Vás!', 
 ];

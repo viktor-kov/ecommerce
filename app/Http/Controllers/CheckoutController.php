@@ -71,6 +71,7 @@ class CheckoutController extends Controller
                 $new_invoice->user_id = auth()->user()->id;
             }
             $new_invoice->invoice_name = $pdf_name;
+            $new_invoice->town_name = $request->town;
             $new_invoice->save();
 
             //inserting bought products to DB

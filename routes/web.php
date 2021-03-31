@@ -80,6 +80,7 @@ Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.s
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
 Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
 Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
+Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware('admin')->name('order.finish');
 
 Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
 

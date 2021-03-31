@@ -2,7 +2,6 @@
 
 
 @section('stats')
-
 <table class="w-full mt-4">
     <tr class="text-left bg-green-300 text-xl">
         <th class="p-2">
@@ -44,7 +43,7 @@
                     @method('PUT')
                     <button type="submit" @if($invoice->status == 200 || $invoice->status >= 300) class="text-green-400" @else class="text-red-500" @endif>
                         <p>
-                            Zabalené
+                            {{__('order.packed')}}
                         </p>
                         <i class="far fa-check-circle"></i>
                     </button>
@@ -58,7 +57,7 @@
                     @method('PUT')
                     <button type="submit" @if($invoice->status == 300 || $invoice->status >= 400) class="text-green-400" @else class="text-red-500" @endif>
                         <p>
-                            Odoslané
+                            {{__('order.shipped')}}
                         </p>
                         <i class="far fa-check-circle"></i>
                     </button>
@@ -72,7 +71,7 @@
                     @method('PUT')
                     <button type="submit" @if($invoice->status == 400) class="text-green-400" @else class="text-red-500" @endif>
                         <p>
-                            Doma!
+                            {{__('order.is-home')}}
                         </p>
                         <i class="far fa-check-circle"></i>
                     </button>
@@ -81,7 +80,27 @@
         </li>
     </ul>
 </section>
-<section class="bg-gray-300  p-2 border border-black mb-1 flex justify-end mt-16">
+@if ($invoice->status == 400 && $invoice->active == 1)
+<section>
+    <form action="{{route('order.finish', ['id' => $invoice->id])}}" method="POST" class="w-full">
+        @csrf
+        @method('PUT')
+        <button type="submit" class="w-full p-2 bg-green-400 text-white">
+            {{__('order.update-status')}}
+        </button>
+    </form>
+</section>
+@endif
+<section class="bg-gray-300  p-2 border border-black mb-1 flex justify-end mt-4">
     <a href="{{route('invoice.show', ['id' => $invoice->invoice_name])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>
 </section>
+<section class="w-full">
+    <iframe class="w-full h-96 p-2"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCSMcYwsRoGYqEd3Wj5TWPawExTVkRv1IY&q={{$invoice->town_name}}">
+    </iframe>
+</section>
+
 @endsection

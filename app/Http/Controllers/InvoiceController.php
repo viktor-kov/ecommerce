@@ -31,13 +31,23 @@ class InvoiceController extends Controller
     //update the invoice status
     public function updateStatus($id, $status) {
         
-        $invoice = Invoice::where('id', $id)->first();
+        $invoice = Invoice::findOrFail($id);
 
         //cant go back on product status, if we are trying to go from "home" to "packed" nothing will happen
         if($invoice->status < $status) {
             $invoice->update(['status' => $status]);
         }
 
+        return back();
+    }
+
+    //function for finishing the order
+    public function finishOrder($id) {
+        $invoice = Invoice::findOrFail($id);
+        $invoice->update([
+            'active' => 0,
+        ]);
+        
         return back();
     }
 }

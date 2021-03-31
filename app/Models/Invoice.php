@@ -10,7 +10,8 @@ class Invoice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'status'
+        'status',
+        'active'
     ];
 
     protected $hidden = [

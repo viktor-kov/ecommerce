@@ -2,5 +2,8 @@
 
 return [
     'total-sum' => 'Total price',
-    'update-status' => 'Update order status',
+    'update-status' => 'Finish',
+    'packed' => 'Packed',
+    'shipped' => 'Shipped',
+    'is-home' => 'At your place', 
 ];
