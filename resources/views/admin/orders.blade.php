@@ -35,7 +35,22 @@
 @endsection
 
 @section('stats')
-
+<section>
+    <ul class="flex justify-around text-xl p-2 bg-green-400">
+        <li>
+            <a href="{{route('orders')}}">{{__('order.order-active')}}</a>
+        </li>
+        <li class="">
+            <a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a>
+        </li>
+        <li class="">
+            <a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a>
+        </li>
+        <li class="">
+            <a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a>
+        </li>
+    </ul>
+</section>
 <h1 class="text-center text-3xl">{{__('admin.orders')}}</h1>
 <ul id="order-list">
     @foreach ($orders as $order)

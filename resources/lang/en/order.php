@@ -7,4 +7,5 @@ return [
     'shipped' => 'Shipped',
     'is-home' => 'At your place', 
     'completed' => 'Order is completed', 
+    'order-active' => 'Active orders',
 ];

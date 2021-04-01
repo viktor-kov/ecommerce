@@ -52,4 +52,12 @@ class OrderController extends Controller
             return abort(403);
         }
     }
+
+    public function showOrderCategory($category) {
+        $orders = Invoice::where('status', $category)->get();
+
+        return view('admin.orders', [
+            'orders' => $orders,
+        ]);
+    }
 }

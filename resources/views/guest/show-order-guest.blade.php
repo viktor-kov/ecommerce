@@ -3,7 +3,7 @@
 
 @section('stats')
 <section class="w-full h-24 mt-16">
-    <ul class="flex justify-center text-2xl">
+    <ul class="flex justify-around text-2xl">
         <li class="pr-4">
             <section>
                 <aside @if($invoice->status == 400) class="text-green-400 text-center" @else class="text-red-500 text-center" @endif>

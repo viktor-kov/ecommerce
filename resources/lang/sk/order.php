@@ -7,4 +7,5 @@ return [
     'shipped' => 'Odoslané',
     'is-home' => 'U Vás!', 
     'completed' => 'Objednávka je dokončená',
+    'order-active' => 'Aktívne objednávky',
 ];

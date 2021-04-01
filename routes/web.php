@@ -79,6 +79,7 @@ Route::get('/order/{id}/show', [OrderController::class, 'showOrderGuest'])->name
 Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
+Route::get('/orders/{category}', [OrderController::class, 'showOrderCategory'])->middleware('admin')->name('orders.category');
 Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
 Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware('admin')->name('order.finish');
