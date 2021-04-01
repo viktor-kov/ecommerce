@@ -75,6 +75,7 @@ Route::fallback(function () {
     abort(403);
 });
 
+Route::get('/order/{id}/show', [OrderController::class, 'showOrderGuest'])->name('orderguest.show');
 Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');

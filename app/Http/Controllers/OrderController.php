@@ -27,4 +27,29 @@ class OrderController extends Controller
             'invoice' => $invoice,
         ]);
     }
+
+    //show the order
+    public function showOrderGuest($id) {
+        //only  the logged in users can see their order
+        if(auth()->user()) {
+            
+            $invoice = Invoice::where('id', $id)->first();
+            $order = Order::where('invoice_id', $id)->get();
+            $total_sum = Order::where('invoice_id', $id)->sum(DB::raw('price * quantity'));
+
+            if($invoice->user_id == auth()->user()->id) {
+                return view('guest.show-order-guest', [
+                    'invoice' => $invoice, 
+                    'order' => $order, 
+                    'total_sum' => $total_sum,
+                ]);
+            }
+            else {
+                abort(403);
+            }
+        }
+        else {
+            return abort(403);
+        }
+    }
 }

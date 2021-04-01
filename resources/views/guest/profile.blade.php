@@ -102,7 +102,7 @@
         <ul>
         @foreach ($invoices as $invoice)
             <li class="bg-gray-300  p-2 border border-black mb-1 flex justify-end">
-                <a href="{{route('invoice.show', ['id' => $invoice->invoice_name])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>
+                <a href="{{route('orderguest.show', ['id' => $invoice->id])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>
             </li>
         @endforeach
         </ul>
