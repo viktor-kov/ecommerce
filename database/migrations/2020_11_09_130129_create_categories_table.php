@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->index('id');
             $table->string('category_name', 200);
+            $table->string('category_photo', 200);
         });
     }
 

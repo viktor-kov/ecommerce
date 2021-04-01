@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->bigInteger('category')->unsigned();
             $table->index('category');
             $table->decimal('price');
+            $table->decimal('without_dph');
+            $table->string('photo_path');
             $table->foreign('category')->references('id')->on('categories');
         });
     }

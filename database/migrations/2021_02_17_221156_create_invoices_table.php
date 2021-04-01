@@ -17,6 +17,9 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('invoice_name');
+            $table->smallInteger('active')->default('1');
+            $table->smallInteger('status')->default('0');
+            $table->string('town_name')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

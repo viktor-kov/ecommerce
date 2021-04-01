@@ -27,8 +27,8 @@ class CreateDiskSpecificationsTable extends Migration
             $table->text('disk_usage');
             $table->text('disk_read_speed');
             $table->text('disk_write_speed');
-            $table->text('disk_disk_consumption');
-            $table->text('disk_disk_life');
+            $table->text('disk_consumption');
+            $table->text('disk_life');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }

@@ -16,7 +16,7 @@ class CreateUserTicketsTable extends Migration
         Schema::create('user_tickets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title', 255);
+            $table->string('title');
             $table->smallInteger('status')->default('1');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

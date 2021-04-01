@@ -22,7 +22,7 @@ class CreateCoolingSpecificationsTable extends Migration
             $table->text('cooling_min_speed');
             $table->text('cooling_max_speed');
             $table->text('cooling_average_fan');
-            $table->text('coling_intel_socket');
+            $table->text('cooling_intel_socket');
             $table->text('cooling_amd_socket');
             $table->text('cooling_height');
             $table->text('cooling_width');
