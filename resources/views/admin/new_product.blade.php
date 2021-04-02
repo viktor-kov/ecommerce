@@ -4,7 +4,7 @@
     <script>
         function show(selected) {
             let product_category = selected.value;
-            let url = 'http://localhost/www/ecommerce/public/specifications/' + product_category;
+            let url = '{{env('APP_URL')}}specifications/' + product_category;
             
             $("#parameters").load(url);
         }
