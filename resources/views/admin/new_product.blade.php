@@ -27,7 +27,7 @@
     <section>
         <h1 class="text-center text-3xl">{{__('admin.add-product')}}</h1>    
         <section class="bg-gray-200 p-4">
-            <form action="./addproduct" method="post" enctype="multipart/form-data">
+            <form action="{{route('addproduct')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <p class="flex justify-between">
                     {{__('admin.product-name')}} <input type="text" name="product_name" id="product_name" class="w-3/4">

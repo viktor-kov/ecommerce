@@ -25,7 +25,7 @@
 <ul class="w-full">
     @foreach ($users as $user)
             <li class="w-full mt-1 bg-gray-200 border border-black">
-                <a href="allusers/{{$user->id}}">
+                <a href="{{route('allusers', ['id' => $user->id])}}">
                     <section class="flex justify-between p-4">
                         <h1>{{$user->email}}</h1>
                         <small>{{$user->created_at}}</small>

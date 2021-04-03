@@ -102,6 +102,6 @@ class ProductController extends Controller
 
         $delete_product_photo = Storage::disk('public')->delete($photo_path);
 
-        return redirect('allproducts')->with('error', __('products.product-deleted'));
+        return redirect()->route('allproducts')->with('error', __('products.product-deleted'));
     }
 }

@@ -36,20 +36,20 @@ Route::get('/admin', [PagesController::class, 'admin'])->middleware('admin')->na
 Route::get('/products/{id}/{slug?}', [PagesController::class, 'products'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 //product routes
-Route::get('/allproducts/{slug?}', [PagesController::class, 'all_products'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
-Route::get('/newproduct', [PagesController::class, 'new_product'])->middleware('admin')->name('newproduct');
-Route::post('/addproduct', [ProductController::class, 'store'])->middleware('admin')->name('addproduct');
-Route::get('/edit/{id?}', [PagesController::class, 'edit_product'])->middleware('admin')->name('editproduct');
-Route::put('/editproduct/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
-Route::delete('/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
+Route::get('/products/show/{slug?}', [PagesController::class, 'all_products'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
+Route::get('/product/new', [PagesController::class, 'new_product'])->middleware('admin')->name('newproduct');
+Route::post('/product/add', [ProductController::class, 'store'])->middleware('admin')->name('addproduct');
+Route::get('/product/edit/{id?}', [PagesController::class, 'edit_product'])->middleware('admin')->name('editproduct');
+Route::put('/product/edit/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
+Route::delete('/product/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
 
 
 
 //user info routes
-Route::post('/userupdate/{id}', [UserRoleController::class, 'update'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
-Route::get('/allusers/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
-Route::put('/informations_update', [InformationsController::class, 'store'])->middleware('auth')->name('informations.update');
-Route::put('/avatar_update', [UserAvatarController::class, 'update'])->middleware('auth')->name('avatar.update');
+Route::put('/user/role/{id}', [UserRoleController::class, 'update'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
+Route::get('/users/show/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
+Route::put('/user/informations', [InformationsController::class, 'store'])->middleware('auth')->name('informations.update');
+Route::put('/avatar', [UserAvatarController::class, 'update'])->middleware('auth')->name('avatar.update');
 
 //subscribe route
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.update');
@@ -59,7 +59,7 @@ Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscrib
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
-Route::put('/cartupdate/{row_id}', [CartController::class, 'update'])->name('cart.update');
+Route::put('/cart/{row_id}', [CartController::class, 'update'])->name('cart.update');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/thankyou', [PagesController::class, 'thankyou'])->name('thankyou.index');
@@ -69,19 +69,19 @@ Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('la
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
 
 //user password update
-Route::post('/updatepassword', [PasswordController::class, 'update'])->middleware('auth')->name('password.update');
+Route::put('/password', [PasswordController::class, 'update'])->middleware('auth')->name('password.update');
 
 Route::fallback(function () {
     abort(403);
 });
 
-Route::get('/order/{id}/show', [OrderController::class, 'showOrderGuest'])->name('orderguest.show');
-Route::get('/invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
+Route::get('/order/show/{id}', [OrderController::class, 'showOrderGuest'])->name('orderguest.show');
+Route::get('/invoice/show/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
-Route::get('/orders', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
+Route::get('/orders/show', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
 Route::get('/orders/{category}', [OrderController::class, 'showOrderCategory'])->middleware('admin')->name('orders.category');
 Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
-Route::get('/orders/{id}/show', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
+Route::get('/orders/show/{id}', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware('admin')->name('order.finish');
 
 Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
@@ -89,14 +89,14 @@ Route::get('/specifications/{category_id}/{product_id?}', [SpecificationControll
 
 //routes for storing reviews, getting and deleting them
 Route::post('/review', [ReviewController::class, 'store'])->middleware('auth')->name('review.store');
-Route::get('/review', [ReviewController::class, 'index'])->middleware('admin')->name('review.index');
+Route::get('/reviews/show', [ReviewController::class, 'index'])->middleware('admin')->name('review.index');
 Route::delete('/review/{id}', [ReviewController::class, 'delete'])->middleware('admin')->name('review.destroy');
 
 Route::get('/tickets', [UserTicketController::class, 'index'])->middleware('auth')->name('tickets.index');
-Route::get('/alltickets', [UserTicketController::class, 'allTickets'])->middleware(['auth', 'admin'])->name('tickets.all');
+Route::get('/tickets/admin', [UserTicketController::class, 'allTickets'])->middleware(['auth', 'admin'])->name('tickets.all');
 Route::get('/tickets/new', [UserTicketController::class, 'newTicket'])->middleware('auth')->name('ticket.new');
 Route::post('/ticket/save', [UserTicketController::class, 'saveTicket'])->middleware('auth')->name('ticket.save');
-Route::get('/ticket/{ticket_id}/show', [UserTicketController::class, 'showTicket'])->middleware('auth')->name('ticket.show');
+Route::get('/ticket/show/{ticket_id}', [UserTicketController::class, 'showTicket'])->middleware('auth')->name('ticket.show');
 Route::post('/ticket/{ticket_id}/message', [UserTicketController::class, 'storeTicketMesage'])->middleware('auth')->name('message.store');
 Route::put('/ticket/{ticket_id}/status', [UserTicketController::class, 'ticketStatus'])->middleware(['auth', 'admin'])->name('ticket.status');
 

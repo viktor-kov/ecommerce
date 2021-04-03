@@ -30,6 +30,7 @@
         <aside>
             <form action="{{route('userupdate', ['id' => $user->id])}}" method="post" class="flex bg-gray-300">
                 @csrf
+                @method('PUT')
                 <select name="role" id="role" class=" bg-gray-300 w-full">
                     <option value="1" <?php echo ($user->current_team_id == 1) ? 'selected' : ''?>>Admin</option>     
                     <option value="0" <?php echo ($user->current_team_id == 0) ? 'selected' : ''?>>Customer</option>

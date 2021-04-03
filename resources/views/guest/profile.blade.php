@@ -39,6 +39,7 @@
             <section>
                 <form action="{{ route('password.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <aside class="mt-4">
                         <p class="md:flex md:justify-between m-1">
                             <span class="break-words">Staré heslo:</span> <input type="password" name="current_password" class="w-full md:w-3/4 border border-black p-1">
