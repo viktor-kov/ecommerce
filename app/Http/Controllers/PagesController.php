@@ -100,7 +100,7 @@ class PagesController extends Controller
 
     public function adminPanel() {
         //deleting all records older than 8 days
-        UserAction::whereDay('created_at', '<', today()->subDays(7))->delete();
+        UserAction::whereDate('created_at', '<', today()->subDays(7)->toDateString())->delete();
 
         $user_actions = new AdminServices;
 
