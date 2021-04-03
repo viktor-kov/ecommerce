@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class InvoiceController extends Controller
 {   
     //show the requested invoice
-    public function show($id) {
+    public function invoiceShow($id) {
         
         //only  the logged in users can see their invoices or admin
         if(auth()->user()) {

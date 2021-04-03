@@ -31,68 +31,62 @@ use App\Http\Controllers\SpecificationController;
 
 //main routes
 Route::get('/', [PagesController::class, 'home'])->name('home.index');
-Route::get('/profile', [PagesController::class, 'profile'])->name('profile.show');
-Route::get('/admin', [PagesController::class, 'admin'])->middleware('admin')->name('adminpanel');
-Route::get('/products/{id}/{slug?}', [PagesController::class, 'products'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
+Route::get('/profile', [PagesController::class, 'userProfile'])->name('profile.show');
+Route::get('/admin', [PagesController::class, 'adminPanel'])->middleware('admin')->name('adminpanel');
+Route::get('/products/{id}/{slug?}', [PagesController::class, 'productsShow'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 //product routes
-Route::get('/products/show/{slug?}', [PagesController::class, 'all_products'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
-Route::get('/product/new', [PagesController::class, 'new_product'])->middleware('admin')->name('newproduct');
-Route::post('/product/add', [ProductController::class, 'store'])->middleware('admin')->name('addproduct');
-Route::get('/product/edit/{id?}', [PagesController::class, 'edit_product'])->middleware('admin')->name('editproduct');
-Route::put('/product/edit/{id}', [ProductController::class, 'update'])->middleware('admin')->name('updateproduct');
-Route::delete('/product/delete/{id}', [ProductController::class, 'delete'])->middleware('admin')->name('deleteproduct');
+Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
+Route::get('/product/new', [PagesController::class, 'newProduct'])->middleware('admin')->name('newproduct');
+Route::post('/product/add', [ProductController::class, 'productStore'])->middleware('admin')->name('addproduct');
+Route::get('/product/edit/{id?}', [PagesController::class, 'editProduct'])->middleware('admin')->name('editproduct');
+Route::put('/product/edit/{id}', [ProductController::class, 'productUpdate'])->middleware('admin')->name('updateproduct');
+Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete'])->middleware('admin')->name('deleteproduct');
 
 
 
 //user info routes
-Route::put('/user/role/{id}', [UserRoleController::class, 'update'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
-Route::get('/users/show/{id?}', [PagesController::class, 'all_users'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
-Route::put('/user/informations', [InformationsController::class, 'store'])->middleware('auth')->name('informations.update');
-Route::put('/avatar', [UserAvatarController::class, 'update'])->middleware('auth')->name('avatar.update');
+Route::put('/user/role/{id}', [UserRoleController::class, 'updateUserRole'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
+Route::get('/users/show/{id?}', [PagesController::class, 'showAllUsers'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
+Route::put('/user/informations', [InformationsController::class, 'informationsUpdate'])->middleware('auth')->name('informations.update');
+Route::put('/avatar', [UserAvatarController::class, 'avatarUpdate'])->middleware('auth')->name('avatar.update');
 
 //subscribe route
-Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.update');
+Route::post('/subscribe', [SubscribeController::class, 'subscribeStore'])->name('subscribe.update');
 
 
 //cart 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-Route::delete('/cart/{row_id}', [CartController::class, 'destroy'])->name('cart.destroy');
-Route::put('/cart/{row_id}', [CartController::class, 'update'])->name('cart.update');
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/cart', [CartController::class, 'cartIndex'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'cartStore'])->name('cart.store');
+Route::delete('/cart/{row_id}', [CartController::class, 'cartDestroy'])->name('cart.destroy');
+Route::put('/cart/{row_id}', [CartController::class, 'cartUpdate'])->name('cart.update');
+Route::get('/checkout', [CheckoutController::class, 'checkoutIndex'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'checkoutStore'])->name('checkout.store');
 Route::get('/thankyou', [PagesController::class, 'thankyou'])->name('thankyou.index');
 
-Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'profile'])->name('profile');
-
 //user password update
-Route::put('/password', [PasswordController::class, 'update'])->middleware('auth')->name('password.update');
+Route::put('/password', [PasswordController::class, 'passwordUpdate'])->middleware('auth')->name('password.update');
 
-Route::fallback(function () {
-    abort(403);
-});
-
+//routes for orders and invoices
 Route::get('/order/show/{id}', [OrderController::class, 'showOrderGuest'])->name('orderguest.show');
-Route::get('/invoice/show/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
+Route::get('/invoice/show/{id}', [InvoiceController::class, 'invoiceShow'])->name('invoice.show');
 
-Route::get('/orders/show', [PagesController::class, 'orders'])->middleware('admin')->name('orders');
+Route::get('/orders/show', [PagesController::class, 'ordersShow'])->middleware('admin')->name('orders');
 Route::get('/orders/{category}', [OrderController::class, 'showOrderCategory'])->middleware('admin')->name('orders.category');
 Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
 Route::get('/orders/show/{id}', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
 Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware('admin')->name('order.finish');
 
-Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'show'])->middleware('ajax')->name('spec.show');
+Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'specificationsShow'])->middleware('ajax')->name('spec.show');
 
 
 //routes for storing reviews, getting and deleting them
-Route::post('/review', [ReviewController::class, 'store'])->middleware('auth')->name('review.store');
-Route::get('/reviews/show', [ReviewController::class, 'index'])->middleware('admin')->name('review.index');
-Route::delete('/review/{id}', [ReviewController::class, 'delete'])->middleware('admin')->name('review.destroy');
+Route::post('/review', [ReviewController::class, 'reviewStore'])->middleware('auth')->name('review.store');
+Route::get('/reviews/show', [ReviewController::class, 'reviewIndex'])->middleware('admin')->name('review.index');
+Route::delete('/review/{id}', [ReviewController::class, 'reviewDelete'])->middleware('admin')->name('review.destroy');
 
-Route::get('/tickets', [UserTicketController::class, 'index'])->middleware('auth')->name('tickets.index');
+//routes for tickets
+Route::get('/tickets', [UserTicketController::class, 'ticketsIndex'])->middleware('auth')->name('tickets.index');
 Route::get('/tickets/admin', [UserTicketController::class, 'allTickets'])->middleware(['auth', 'admin'])->name('tickets.all');
 Route::get('/tickets/new', [UserTicketController::class, 'newTicket'])->middleware('auth')->name('ticket.new');
 Route::post('/ticket/save', [UserTicketController::class, 'saveTicket'])->middleware('auth')->name('ticket.save');
@@ -106,3 +100,12 @@ Route::get('/delivery', [PagesController::class, 'delivery'])->name('delivery');
 Route::get('/career', [PagesController::class, 'career'])->name('career');
 
 Route::get('/search', [SearchController::class, 'productSearch'])->name('product.search');
+
+Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'userProfile'])->name('profile');
+
+//fallback route
+Route::fallback(function () {
+    abort(403);
+});

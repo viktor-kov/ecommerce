@@ -16,7 +16,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CheckoutController extends Controller
 {
     //returning the checkout view
-    public function index()
+    public function checkoutIndex()
     {
         //if the user is logged in, get his informations. If not, return the view with nothing.
         if(auth()->user()) {
@@ -27,7 +27,7 @@ class CheckoutController extends Controller
         }
     }
 
-    public function store(InvoiceRequest $request)
+    public function checkoutStore(InvoiceRequest $request)
     {
         Stripe::setApiKey('sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo');
 

@@ -13,7 +13,7 @@ use App\Http\Requests\TicketMessageRequest;
 class UserTicketController extends Controller
 {
     //show all tickets for user
-    public function index() {
+    public function ticketsIndex() {
         $tickets = UserTicket::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->get();
         return view('ticket.ticket-index', ['tickets' => $tickets]);
     }

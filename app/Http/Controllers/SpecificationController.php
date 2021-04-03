@@ -14,7 +14,7 @@ use App\Models\MotherboardSpecification;
 class SpecificationController extends Controller
 {
     //showing the specifivations for adding the product by choosed category
-    public function show($id, $product_id = null) {
+    public function specificationsShow($id, $product_id = null) {
 
         //geeting the specifications for choosed category and if exist some specifications, we will push them to the specification, if not, we will push empty
         switch($id) {

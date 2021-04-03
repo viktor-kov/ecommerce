@@ -13,7 +13,7 @@ class UserAvatarController extends Controller
 {
 
     //update user avatar
-    public function update(AvatarUpdateRequest $request)
+    public function avatarUpdate(AvatarUpdateRequest $request)
     {
         //getting the users profile photo name
         $profile_photo_path = auth()->user()->profile_photo_path;

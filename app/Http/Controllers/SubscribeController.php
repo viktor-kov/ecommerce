@@ -9,7 +9,7 @@ use App\Models\Subscriptions;
 
 class SubscribeController extends Controller
 {
-    public function store(StoreSubscriptionRequest $request) {
+    public function subscribeStore(StoreSubscriptionRequest $request) {
 
         $subscription = EmailSubscription::firstOrCreate(
             ['email' => $request->email]

@@ -11,7 +11,7 @@ class InformationsController extends Controller
 
 
 
-    public function store(StoreInformationRequest $request) {
+    public function informationsUpdate(StoreInformationRequest $request) {
 
         //if we has inforamtions about the user, we will update them, if we dont have, we will create
         $information = Informations::updateOrCreate(

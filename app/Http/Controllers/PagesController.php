@@ -40,7 +40,7 @@ class PagesController extends Controller
         return view('guest.career');
     }
 
-    public function products($id, $slug = null) {
+    public function productsShow($id, $slug = null) {
         //if slug exist, than return view with product specifications
         if($slug) {
             //select product by slug from db
@@ -91,14 +91,14 @@ class PagesController extends Controller
         ]);
     }
 
-    public function profile() {   
+    public function userProfile() {   
         return view('guest.profile', [
             'informations' => Informations::where('user_id', auth()->user()->id)->first(),
             'invoices' => Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
         ]);
     }
 
-    public function admin() {
+    public function adminPanel() {
         //deleting all records older than 8 days
         UserAction::whereDay('created_at', '<', today()->subDays(7))->delete();
 
@@ -116,7 +116,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function all_users($id = null) {
+    public function showAllUsers($id = null) {
         if($id) {
             return view('admin.userprofile', [
                 'user' => User::where('id', $id)->first()
@@ -129,11 +129,11 @@ class PagesController extends Controller
         }
     }
 
-    public function new_product() {
+    public function newProduct() {
         return view('admin.new_product');
     }
 
-    public function all_products($slug = null) {
+    public function productsAdminShow($slug = null) {
         if($slug) {
             return view('guest.product-id', [
                 'product' => Product::where('slug', $slug)->first(),
@@ -146,7 +146,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function edit_product($id) {
+    public function editProduct($id) {
         //select product by slug from db
         $product = Product::where('id', $id)->first();
         //get the product id
@@ -166,7 +166,7 @@ class PagesController extends Controller
         return view('guest.thankyou');
     }
 
-    public function orders() {
+    public function ordersShow() {
         return view('admin.orders', [
             'orders' => Invoice::orderBy('created_at', 'DESC')->where('active', 1)->get(),
         ]);

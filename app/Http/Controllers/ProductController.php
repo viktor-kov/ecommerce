@@ -21,7 +21,7 @@ class ProductController extends Controller
     }
 
     //storing the product + specifications
-    public function store(ProductStoreRequest $request) {
+    public function productStore(ProductStoreRequest $request) {
         //validate inputs from form
         $productService = new ProductService;
         $input_validated = $productService->specificationsValidation($request, $request->product_category);
@@ -57,7 +57,7 @@ class ProductController extends Controller
     }
 
     //update the product
-    public function update(UpdateProductRequest $request, ProductService $productService) {
+    public function productUpdate(UpdateProductRequest $request, ProductService $productService) {
 
         //validate product specifications
         $productService->specificationsValidation($request, $request->product_category);
@@ -93,7 +93,7 @@ class ProductController extends Controller
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-updated'));
     }
 
-    public function delete(ProductDeleteRequest $request) {
+    public function productDelete(ProductDeleteRequest $request) {
 
         $id = $request->id;
         $photo_path = $request->product_photo_path;

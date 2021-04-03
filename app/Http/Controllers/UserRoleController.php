@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserRoleController extends Controller
 {
-    public function update(UserRoleUpdateRequest $request) {
+    public function updateUserRole(UserRoleUpdateRequest $request) {
         
         if($request['role'] == 0 || $request['role'] == 1 ) {
             $id = $request->id;

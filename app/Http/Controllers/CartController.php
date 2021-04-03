@@ -8,7 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
-    public function index() {
+    public function cartIndex() {
 
         //trying to get 4 random products
         //if fail, then try to return products
@@ -31,7 +31,7 @@ class CartController extends Controller
     }
 
     //store the product in cart
-    public function store(Request $request) {
+    public function cartStore(Request $request) {
 
         //checking for duplicates
         $duplicates = Cart::search(function($cartItem, $rowId) use ($request) {
@@ -67,14 +67,14 @@ class CartController extends Controller
     }
 
     //remove item from cart
-    public function destroy($row_id) {
+    public function cartDestroy($row_id) {
         Cart::remove($row_id);
 
         return redirect()->route('cart.index')->with('success', __('cart.deleted-from-cart'));
     }
 
     //update the cart quantity
-    public function update($row_id, Request $request) {
+    public function cartUpdate($row_id, Request $request) {
 
         $qty = $request->qty;
         Cart::update($row_id, $qty);

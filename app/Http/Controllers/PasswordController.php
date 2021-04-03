@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
-    public function update(PasswordUpdateRequest $request)
+    public function passwordUpdate(PasswordUpdateRequest $request)
     {
         //get the user
         $user = auth()->user();
