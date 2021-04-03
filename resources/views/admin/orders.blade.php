@@ -36,7 +36,7 @@
 
 @section('stats')
 <section>
-    <ul class="flex justify-around text-xl p-2 bg-green-400">
+    <ul class="grid grid-cols-4 text-center text-xl p-2 bg-green-400">
         <li>
             <a href="{{route('orders')}}">{{__('order.order-active')}}</a>
         </li>
