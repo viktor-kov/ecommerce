@@ -37,21 +37,7 @@
             <h1>{{__('profile.name')}}: <span>{{auth()->user()->name}}</span></h1>
             <h2>{{__('profile.email')}}: <span>{{auth()->user()->email}}</span></h2>
             <section>
-                <form action="{{ route('password.update') }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <aside class="mt-4">
-                        <p class="md:flex md:justify-between m-1">
-                            <span class="break-words">Staré heslo:</span> <input type="password" name="current_password" class="w-full md:w-3/4 border border-black p-1">
-                        </p>
-                        <p class="md:flex md:justify-between m-1">
-                            <span class="break-words">Nové heslo:</span> <input type="password" name="new_password" class="w-full md:w-3/4 border border-black p-1">
-                        </p>
-                        <p class="w-full">
-                            <input type="submit" value="{{__('profile.update-pwd')}}" class="w-full p-2 bg-green-500 text-white mt-1 cursor-pointer">
-                        </p>
-                    </aside>
-                </form>
+                @livewire('password-update')
             </section>
             @if (auth()->user()->current_team_id == 1)
                 <section>
