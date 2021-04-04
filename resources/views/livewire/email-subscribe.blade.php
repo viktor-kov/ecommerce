@@ -6,8 +6,8 @@
         <input type="submit" value="{{__('other.subscribe-btn')}}" class="bg-green-500 p-2 mt-2 float-right cursor-pointer">
     </form>
     <div>
-        @if (session()->has('success'))
-            <p class="text-green-400">{{session()->get('success')}}</p>
+        @if (session()->has('email-stored'))
+            <p class="text-green-400">{{session()->get('email-stored')}}</p>
         @endif
     </div>
 </div>

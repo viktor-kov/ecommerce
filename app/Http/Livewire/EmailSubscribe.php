@@ -23,7 +23,7 @@ class EmailSubscribe extends Component
 
         $this->email = "";
 
-        session()->flash('success', __('other.thankyou-for-subscribing'));
+        session()->flash('email-stored', __('other.thankyou-for-subscribing'));
     }
 
 
