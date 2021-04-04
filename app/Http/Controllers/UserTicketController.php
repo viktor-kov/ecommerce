@@ -15,12 +15,12 @@ class UserTicketController extends Controller
     //show all tickets for user
     public function ticketsIndex() {
         $tickets = UserTicket::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->get();
-        return view('ticket.ticket-index', ['tickets' => $tickets]);
+        return view('ticket.ticketsAll', ['tickets' => $tickets]);
     }
 
     //new ticket
     public function newTicket() {
-        return view('ticket.ticket-new');
+        return view('ticket.ticketNew');
     }
 
     //save the new ticket
@@ -60,7 +60,7 @@ class UserTicketController extends Controller
 
         //retrieving all messages in ticket
         $messages = TicketMessage::all()->where('ticket_id', $ticket_id);
-        return view('ticket.ticket', ['messages' => $messages, 'ticket' => $ticket]);
+        return view('ticket.ticketSingle', ['messages' => $messages, 'ticket' => $ticket]);
     }
 
     //saving ticket message
@@ -94,6 +94,6 @@ class UserTicketController extends Controller
     //show all tickets for admin
     public function allTickets() {
         $tickets = UserTicket::where('status', 1)->orderBy('created_at', 'DESC')->get();
-        return view('ticket.tickets-all', ['tickets' => $tickets]);
+        return view('ticket.ticketsAllAdmin', ['tickets' => $tickets]);
     }
 }

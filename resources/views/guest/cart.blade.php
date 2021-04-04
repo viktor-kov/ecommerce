@@ -76,7 +76,7 @@
             <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
             <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10">
                 @foreach ($featured_products as $product) 
-                    @include('product-preview.product-show-section')
+                    @include('product-preview.productShowSection')
                 @endforeach
             </ul>
         </section>

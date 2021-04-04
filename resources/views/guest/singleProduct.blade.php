@@ -53,7 +53,7 @@
 @section('often-bought')
 <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-2 mt-10 mb-10">
     @foreach ($featured_products as $product) 
-        @include('product-preview.product-show-section')
+        @include('product-preview.productShowSection')
     @endforeach
 </ul>
 @endsection

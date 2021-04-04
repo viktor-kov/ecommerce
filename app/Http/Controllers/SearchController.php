@@ -18,6 +18,6 @@ class SearchController extends Controller
 
         $products = Product::where('name', 'like', "%$search_for%")->get();
 
-        return view('guest.searched-products', ['products' => $products]);
+        return view('guest.searchedProducts', ['products' => $products]);
     }
 }

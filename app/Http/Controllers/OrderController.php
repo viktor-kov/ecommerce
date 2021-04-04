@@ -21,7 +21,7 @@ class OrderController extends Controller
         //total sum of all products in order
         $all_products_price = Order::where('invoice_id', $id)->sum(DB::raw('price * quantity'));
 
-        return view('admin.show-order', [
+        return view('admin.showOrder', [
             'order' => $all_products,
             'total_sum' => $all_products_price,
             'invoice' => $invoice,
@@ -38,7 +38,7 @@ class OrderController extends Controller
             $total_sum = Order::where('invoice_id', $id)->sum(DB::raw('price * quantity'));
 
             if($invoice->user_id == auth()->user()->id) {
-                return view('guest.show-order-guest', [
+                return view('guest.showOrderToGuest', [
                     'invoice' => $invoice, 
                     'order' => $order, 
                     'total_sum' => $total_sum,

@@ -23,7 +23,7 @@
 @section('content')
     <ul class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         @foreach ($products as $product)
-            @include('admin.product-edit-preview')
+            @include('admin.productEditPreview')
         @endforeach
     </ul>
     <p class="mt-8">

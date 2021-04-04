@@ -76,7 +76,7 @@ class PagesController extends Controller
                 ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
                 ->get();
 
-            return view('guest.product-id', [
+            return view('guest.singleProduct', [
                 'reviews' => $reviews,
                 'showed_product' => $product,
                 'product_specifications' => $product_specifications['product_spect'],
@@ -118,29 +118,29 @@ class PagesController extends Controller
 
     public function showAllUsers($id = null) {
         if($id) {
-            return view('admin.userprofile', [
+            return view('admin.userProfile', [
                 'user' => User::where('id', $id)->first()
             ]);
         }
         else {
-            return view('admin.all_users', [
+            return view('admin.allUsers', [
                 'users' => User::where('id', '!=', auth()->id())->paginate(14),
             ]);
         }
     }
 
     public function newProduct() {
-        return view('admin.new_product');
+        return view('admin.newProduct');
     }
 
     public function productsAdminShow($slug = null) {
         if($slug) {
-            return view('guest.product-id', [
+            return view('guest.singleProduct', [
                 'product' => Product::where('slug', $slug)->first(),
             ]);
         }
         $products = Product::paginate(8);
-        return view('admin.all_products', [
+        return view('admin.allProductsAdmin', [
             'products' => $products,
             'category_name' => 'Všetky produkty'
         ]);
@@ -154,7 +154,7 @@ class PagesController extends Controller
         //get the product category
         $product_category = $product->category;
 
-        return view('admin.edit_product', [
+        return view('admin.editProduct', [
             'product' => $product,
             'product_id' => $product_id,
             'product_category' => $product_category,
