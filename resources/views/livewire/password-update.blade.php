@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('success'))
-        <section class="w-full bg-green-400">
-            <p class="text-center text-white p-2">{{session()->get('success')}}</p>
-        </section>
-    @endif
     <form wire:submit.prevent="passwordUpdate" action="#" method="POST">
         @csrf
         @method('PUT')
