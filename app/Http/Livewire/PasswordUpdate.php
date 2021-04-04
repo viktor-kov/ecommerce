@@ -32,11 +32,10 @@ class PasswordUpdate extends Component
             $this->user->fill([
                 'password' => Hash::make($this->new_password)
             ])->save();
-            
-            session()->flash('success', __('passwords.password-changed'));
 
-            $this->current_password = "";
-            $this->new_password = "";
+            session()->flush();
+            
+            return redirect()->route('login');
         }
     }
 
