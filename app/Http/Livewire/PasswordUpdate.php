@@ -13,13 +13,19 @@ class PasswordUpdate extends Component
 
     protected $rules = [
         'current_password' => 'required',
-        'new_password' => 'required|min:8',
+        'new_password' => 'required|min:8'
     ];
 
     public function passwordUpdate() {
+        $this->validate();
+
         $this->user = auth()->user();
+
         if(! Hash::check($this->current_password, $this->user->password)) {
             $this->addError('current_password', __('passwords.bad-password'));
+            
+            $this->current_password = "";
+            $this->new_password = "";
         }
         else {
             //update the password
