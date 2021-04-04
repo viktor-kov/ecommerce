@@ -21,11 +21,7 @@
     <div class="grid col-span-full p-2 lg:col-span-1 lg:p-0">
         <aside>
             <p>{!! __('other.subscribe-text') !!}</p>
-            <form action="{{route('subscribe.update')}}" method="post">
-                @csrf
-                <input type="email" name="email" placeholder="email@email.com" class="w-full text-gray-700 p-1">
-                <input type="submit" value="{{__('other.subscribe-btn')}}" class="bg-green-500 p-2 mt-2 float-right cursor-pointer">
-            </form>
+            @livewire('email-subscribe')
         </aside>
     </div>
 </section>

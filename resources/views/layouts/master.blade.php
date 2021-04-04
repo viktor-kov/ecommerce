@@ -49,6 +49,7 @@
         <footer class="bg-black">
             @include('footer')
         </footer>
+        @livewireScripts
         @yield('extra-stuff')
     </body>
 </html>
