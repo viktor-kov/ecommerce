@@ -118,7 +118,7 @@ class PagesController extends Controller
 
     public function showAllUsers($id = null) {
         if($id) {
-            return view('admin.userProfile', [
+            return view('admin.userProfileAdmin', [
                 'user' => User::where('id', $id)->first()
             ]);
         }
