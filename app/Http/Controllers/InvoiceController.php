@@ -30,7 +30,13 @@ class InvoiceController extends Controller
 
     //update the invoice status
     public function updateStatus($id, $status) {
-        
+        $status_codes = [200, 300, 400];
+
+        //check if the status code exist, if not, abort
+        if(! in_array($status, $status_codes)) {
+            abort(403);
+        }  
+
         $invoice = Invoice::findOrFail($id);
 
         //cant go back on product status, if we are trying to go from "home" to "packed" nothing will happen
