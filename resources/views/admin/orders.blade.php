@@ -22,16 +22,32 @@
 <section>
     <ul class="grid grid-cols-4 text-center text-xl p-2 bg-green-400">
         <li>
-            <a href="{{route('orders')}}">{{__('order.order-active')}}</a>
+            @if (request()->segment(count(request()->segments())) == "show")
+                <strong><a href="{{route('orders')}}">{{__('order.order-active')}}</a></strong>
+            @else 
+                <a href="{{route('orders')}}">{{__('order.order-active')}}</a>
+            @endif
         </li>
-        <li class="">
-            <a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a>
+        <li>
+            @if (request()->segment(count(request()->segments())) == 200)
+                <strong><a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a></strong>
+            @else 
+                <a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a>
+            @endif
         </li>
-        <li class="">
-            <a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a>
+        <li>
+            @if (request()->segment(count(request()->segments())) == 300)
+                <strong><a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a></strong>
+            @else 
+                <a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a>
+            @endif
         </li>
-        <li class="">
-            <a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a>
+        <li>
+            @if (request()->segment(count(request()->segments())) == 400)
+                <strong><a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a></strong>
+            @else 
+                <a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a>
+            @endif
         </li>
     </ul>
 </section>
