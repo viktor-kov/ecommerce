@@ -17,31 +17,33 @@ class UserActions
      */
     public function handle(Request $request, Closure $next)
     {   
-        //getting the path where wea re redirecting
-        $url = $request->path();
-        //exploding the path on /
-        $exploded = explode('/', $url);
+        $last_segment = $request->segment(count($request->segments()));
 
-        //if someone is in ticket, we dont want to log the action
-        if(isset($exploded[0]) == 'ticket' && isset($exploded[2]) == 'show') {
-            return $next($request);
-        }
+        //home page
+        if($last_segment == NULL) {
+            $last_segment = "/";
 
-        //logging the user actions to db
-        //homepage
-        if($url == '/') {
             UserAction::create([
-                'action' => '/',
+                'action' => $last_segment,
             ]);
         }
 
-        //there we are logging the 3 parameter of url - like what product user opened
-        if(isset($exploded[2])) {
+        //profile page
+        if($last_segment == "profile") {
             UserAction::create([
-                'action' => $exploded[2],
+                'action' => $last_segment,
             ]);
         }
 
+        //if we visit products page
+        if($request->segment(count($request->segments()) - 2) == "products") {
+            $last_segment = "products";
+
+            UserAction::create([
+                'action' => $last_segment,
+            ]);
+        }
+        
         return $next($request);
     }
 }
