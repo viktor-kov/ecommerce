@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\StorageProduct;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -24,4 +25,8 @@ class Product extends Model
         'without_dph',
         'photo_path',
     ];
+
+    public function amount() {
+        return $this->hasOne(StorageProduct::class);
+    }
 }

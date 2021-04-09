@@ -42,6 +42,9 @@
                     {{__('admin.product-price')}} <input type="text" name="product_price" id="product_price" class="w-3/4">
                 </p>
                 <p class="flex justify-between mt-1">
+                    {{__('admin.amount')}} <input type="text" name="product_amount" id="product_amount" class="w-3/4">
+                </p>
+                <p class="flex justify-between mt-1">
                     {{__('admin.product-category')}}
                     <select name="product_category" id="role" class="w-3/4" onchange="show(this)">
                         <option value="" selected disabled hidden>Vyber kategóriu</option>

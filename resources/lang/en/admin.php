@@ -23,6 +23,7 @@ return [
     'see-reviews' => 'Load all reviews',
     'order-completed' => 'Order has been completed',
     'user-role-updated' => 'Role was changed',
+    'amount' => 'Amount',
 ];
 
 ?>

@@ -23,6 +23,7 @@ return [
     'see-reviews' => 'Načítať všetky recenzie',
     'order-completed' => 'Objednávka bola vybavená',
     'user-role-updated' => 'Rola bola zmenená',
+    'amount' => 'Počet kusov',
 ];
 
 ?>

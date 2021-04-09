@@ -77,4 +77,6 @@ return [
     'product-added' => 'Produkt pridaný',
     'product-updated' => 'Produkt aktualizovaný',
     'product-deleted' => 'Produkt zmazaný',
+    'in-stock' => 'Na sklade je',
+    'piece' => 'kusov',
 ];

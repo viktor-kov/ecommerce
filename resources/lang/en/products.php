@@ -77,4 +77,6 @@ return [
     'product-added' => 'Product added',
     'product-updated' => 'Product updated',
     'product-deleted' => 'Product deleted',
+    'in-stock' => 'In stock is',
+    'piece' => 'pieces',
 ]; 

@@ -27,9 +27,12 @@
             <div class="product-informations">
                 <h1 class="text-4xl">{{$showed_product->name}}</h1>
                 <p class="mt-4 h-64 overflow-y-auto p-2 border border-dashed">{{$showed_product->text}}</p>
-                <aside class="pricin mt-6 mb-6 p-2 bg-gray-200">
+                <aside class="mt-6 mb-6 p-2 bg-gray-200">
                     <p class="flex justify-between">{{__('products.with-dph')}} <span class="font-extrabold text-xl">{{$showed_product->price}}€</span></p>
                     <p class="flex justify-between text-gray-400">{{__('products.without-dph')}} <span>{{$showed_product->without_dph}}€</span></p>
+                </aside>
+                <aside class="mt-6 mb-6 p-2 bg-gray-200">
+                    <p class="flex justify-between text-lg">{{__('products.in-stock')}} <span>{{$showed_product->amount->product_amount}}{{__('products.piece')}}</span></p>
                 </aside>
                 <aside class="buy-buttons">
                     <form action="{{route('cart.store')}}" method="post">

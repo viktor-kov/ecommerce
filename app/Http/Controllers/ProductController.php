@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\StorageProduct;
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductDeleteRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Services\ProductService;
-use Exception;
 
 class ProductController extends Controller
 {   
@@ -52,6 +53,10 @@ class ProductController extends Controller
         //save product specifications
         $productService->saveProductSpecifications($input_validated, $product_id, $request->product_category);
         
+        $product_storage = new StorageProduct;
+        $product_storage->product_id = $product_id;
+        $product_storage->product_amount = $request->product_amount;
+        $product_storage->save();
     
         return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-added'));
     }
