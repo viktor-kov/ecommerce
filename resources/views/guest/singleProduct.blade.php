@@ -32,7 +32,7 @@
                     <p class="flex justify-between text-gray-400">{{__('products.without-dph')}} <span>{{$showed_product->without_dph}}€</span></p>
                 </aside>
                 <aside class="mt-6 mb-6 p-2 bg-gray-200">
-                    <p class="flex justify-between text-lg">{{__('products.in-stock')}} <span>{{$showed_product->amount->product_amount}}{{__('products.piece')}}</span></p>
+                    <p class="flex justify-between text-lg">{{__('products.in-stock')}} <span>{{$amount}} {{__('products.piece')}}</span></p>
                 </aside>
                 <aside class="buy-buttons">
                     <form action="{{route('cart.store')}}" method="post">

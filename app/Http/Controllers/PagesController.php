@@ -75,10 +75,14 @@ class PagesController extends Controller
                 ->join('users', 'reviews.user_id', '=', 'users.id')
                 ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
                 ->get();
-
+            
+            //product amount
+            $amount = $product->amount;
+            
             return view('guest.singleProduct', [
                 'reviews' => $reviews,
                 'showed_product' => $product,
+                'amount' => $amount->product_amount ?? 0, //if in some case cant get product amount, return 0 product amount
                 'product_specifications' => $product_specifications['product_spect'],
                 'specification_view' => $product_specifications['product_view'],
                 'featured_products' => $featured_products,
