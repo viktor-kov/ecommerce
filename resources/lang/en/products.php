@@ -79,4 +79,6 @@ return [
     'product-deleted' => 'Product deleted',
     'in-stock' => 'In stock is',
     'piece' => 'pieces',
+    'unavailable' => 'The product is currently unavailable'
+    
 ]; 

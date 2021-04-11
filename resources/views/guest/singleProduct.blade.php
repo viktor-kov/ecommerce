@@ -36,7 +36,7 @@
                 </aside>
                 <aside class="buy-buttons">
                     @if ($amount == 0)
-                        <p class="p-4 bg-red-400 text-white w-full block text-center"><i class="fas fa-shopping-basket mr-2"></i>{{__('products.add-to-cart')}}</p>
+                        <p class="p-4 bg-red-400 text-white w-full block text-center">{{__('products.unavailable')}}</p>
                     @else 
                         <form action="{{route('cart.store')}}" method="post">
                             @csrf
