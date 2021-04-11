@@ -25,7 +25,7 @@
         <section class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 mt-4 p-8">
             <img src="{{asset('img/'.$showed_product->photo_path)}}" alt="" class="h-200 mx-auto p-2">
             <div class="product-informations">
-                <h1 class="text-4xl">{{$showed_product->name}}</h1>
+                <h1 class="text-4xl break-words">{{$showed_product->name}}</h1>
                 <p class="mt-4 h-64 overflow-y-auto p-2 border border-dashed">{{$showed_product->text}}</p>
                 <aside class="mt-6 mb-6 p-2 bg-gray-200">
                     <p class="flex justify-between">{{__('products.with-dph')}} <span class="font-extrabold text-xl">{{$showed_product->price}}€</span></p>
