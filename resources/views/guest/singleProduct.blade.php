@@ -64,7 +64,7 @@
 @endsection
 
 @section('reviews')
-    <h1 class="text-3xl">Reviews</h1>
+    <h1 class="text-3xl">{{__('review.reviews')}}</h1>
     <ul class="flex overflow-x-auto mb-2">
         @forelse ($reviews as $review)
             <li class="mr-2">
@@ -83,7 +83,7 @@
                 </section>
             </li>
         @empty
-            <li class="text-3xl">No reviews for this product, be the first!</li>
+            <li class="text-3xl">{{__('review.no-review')}}</li>
         @endforelse
     </ul>
     @auth
@@ -91,9 +91,9 @@
             <form action="{{route('review.store')}}" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{$showed_product->id}}">
-                <textarea name="review_text" rows="5"class="w-full p-2" placeholder="Add review"></textarea>
+                <textarea name="review_text" rows="5"class="w-full p-2" placeholder="{{__('review.your-review')}}"></textarea>
                 <input type="hidden" name="product_slug" value="{{$showed_product->slug}}">
-                <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">Add review</button>
+                <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">{{__('review.add-review')}}</button>
             </form>
         </section>
     @endauth
