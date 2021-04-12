@@ -56,7 +56,7 @@
 
 
 @section('often-bought')
-<ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10 mb-10">
+<ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10 mb-10 p-2">
     @foreach ($featured_products as $product) 
         @include('product-preview.productShowSection')
     @endforeach
@@ -91,7 +91,7 @@
             <form action="{{route('review.store')}}" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{$showed_product->id}}">
-                <textarea name="review_text" rows="5"class="w-full" placeholder="Add review"></textarea>
+                <textarea name="review_text" rows="5"class="w-full p-2" placeholder="Add review"></textarea>
                 <input type="hidden" name="product_slug" value="{{$showed_product->slug}}">
                 <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">Add review</button>
             </form>

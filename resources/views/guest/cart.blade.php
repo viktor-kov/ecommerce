@@ -22,7 +22,7 @@
 
 
 @section('content')
-<section class="min-h-screen p-2 sm:p-0">
+<section class="min-h-screen p-2">
     @if (Cart::count() > 0)
         <ul class="mt-2 w-full md:w-3/4">
             @foreach (Cart::content() as $product_in_cart)
@@ -72,7 +72,7 @@
             </section>
     @endif
     @if ($featured_products->isNotEmpty())
-        <section class="mt-20">
+        <section class="mt-20 p-2">
             <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
             <ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10">
                 @foreach ($featured_products as $product) 

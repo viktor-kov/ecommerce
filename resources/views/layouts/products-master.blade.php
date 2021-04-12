@@ -34,7 +34,7 @@
         <section>
             @yield('category-name')
         </section>
-        <main class="min-h-screen">
+        <main class="min-h-screen p-2">
             @yield('content')
         </main>
         <aside>
