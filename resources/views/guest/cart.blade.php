@@ -28,10 +28,10 @@
             @foreach (Cart::content() as $product_in_cart)
                 <li class="mb-2 flex border-b border-black">
                     <section class="grid grid-cols-4 justify-around p-2 text-xl w-full">
-                        <a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->id ])}}">
+                        <a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}">
                             <img src="{{asset('img/'.$product_in_cart->options->product_photo)}}"  alt="{{$product_in_cart->name}}" class="h-24 w-auto">
                         </a>
-                        <h1 class="grid items-center"><a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->id ])}}">{{$product_in_cart->name}}</a></h1>
+                        <h1 class="grid items-center"><a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}">{{$product_in_cart->name}}</a></h1>
                         <form action="{{route('cart.update', ['row_id' => $product_in_cart->rowId])}}" class="place-self-center" method="post">
                             @csrf
                             @method('PUT')

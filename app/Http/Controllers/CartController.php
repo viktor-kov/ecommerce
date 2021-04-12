@@ -44,8 +44,9 @@ class CartController extends Controller
         }
         
         $product_id = $request->product_id;
-        $product = Product::where('slug', $product_id)->first();
+        $product = Product::findOrFail($product_id);
         $product_name = $product->name;
+        $product_slug = $product->slug;
         $product_price = $product->price;
         $product_category = $product->category;
 
@@ -57,17 +58,18 @@ class CartController extends Controller
             'qty' => 1,
             'price' => $product_price,
             'options' => [
+                'slug' => $product_slug,
                 'category' => $product_category,
                 'product_photo' => $product_photo,
             ]
         ])->associate('App\Models\Product');
-    
 
         return redirect()->route('cart.index')->with('success', __('cart.added-to-cart'));
     }
 
     //remove item from cart
     public function cartDestroy($row_id) {
+        
         Cart::remove($row_id);
 
         return redirect()->route('cart.index')->with('success', __('cart.deleted-from-cart'));

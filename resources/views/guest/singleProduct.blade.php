@@ -40,9 +40,7 @@
                     @else 
                         <form action="{{route('cart.store')}}" method="post">
                             @csrf
-                            <input type="hidden" name="product_id" value="{{$showed_product->slug}}">
-                            <input type="hidden" name="product_name" value="{{$showed_product->name}}">
-                            <input type="hidden" name="product_category" value="{{$showed_product->category}}">
+                            <input type="hidden" name="product_id" value="{{$showed_product->id}}">
                             <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer w-full block hover:bg-green-500"><i class="fas fa-shopping-basket mr-2"></i>{{__('products.add-to-cart')}}</button>
                         </form>
                     @endif
