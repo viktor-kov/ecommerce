@@ -15,7 +15,13 @@ class StorageUpdate extends Component
         $this->product_amount_update = $single_product->product_amount;
     }
 
+    public $rules = [
+        'product_amount_update' => 'required',
+    ];
+
     public function updateAmount() {
+
+        $this->validate();
 
         //retrieving product_id
         $product_id = $this->single_product->product_id;
@@ -28,7 +34,7 @@ class StorageUpdate extends Component
             'product_amount' => $this->product_amount_update,
         ]);
 
-        session()->flash('success', 'updarted');
+        session()->flash('product_amout_updated', __('products.amount-updated'));
     }
 
     public function render()

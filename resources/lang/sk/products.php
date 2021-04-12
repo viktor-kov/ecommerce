@@ -79,5 +79,7 @@ return [
     'product-deleted' => 'Produkt zmazaný',
     'in-stock' => 'Na sklade je',
     'piece' => 'kusov',
-    'unavailable' => 'Produkt je momentálne nedostupný'
+    'unavailable' => 'Produkt je momentálne nedostupný',
+    'amount-updated' => 'Počet kusov bol aktualizovaný',
+    'update-amount' => 'Aktualizovať počet',
 ];

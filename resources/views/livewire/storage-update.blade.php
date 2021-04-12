@@ -11,12 +11,17 @@
                 @csrf
                 @method('PUT')
                 <input type="number" name="product_amount" id="product_amount" class="border border-black outline-none w-full p-1" wire:model="product_amount_update">
-                <button type="submit" class="p-2 bg-green-400 w-full mt-1">Update</button>
+                <button type="submit" class="p-2 bg-green-400 w-full mt-1 text-white">{{__('products.update-amount')}}</button>
             </form>
         </div>
-        @if (session()->has('success'))
-            <div class="w-full bg-green-400 col-span-full mt-1 mb-1">
-                <p class="text-center p-2">{{session()->get('success')}}</p>
+        @error('product_amount_update')
+            <div class="w-full col-span-full mt-1 mb-1">
+                <span class="text-red-500">{{ $message }}</span>
+            </div>
+        @enderror
+        @if (session()->has('product_amout_updated'))
+            <div class="w-full bg-green-400 text-white col-span-full mt-1 mb-1">
+                <p class="text-center p-2">{{session()->get('product_amout_updated')}}</p>
             </div>
         @endif
     </section>
