@@ -60,7 +60,7 @@
                     <a href="{{route('home.index')}}" class="p-4 border border-black mt-4 inline-block ">{{__('checkout.back-to-categories')}}</a>
                     <form action="{{route('checkout.index')}}" method="get">
                         @csrf
-                        <input type="submit" value="{{__('checkout.checkout')}}" class="p-4 w-full border border-black mt-4 inline-block bg-green-400 cursor-pointer">
+                        <button type="submit" class="p-4 w-full mt-4 inline-block bg-green-400 cursor-pointer text-white">{{__('checkout.checkout')}}</button>
                     </form>
                 </section>
             </section>

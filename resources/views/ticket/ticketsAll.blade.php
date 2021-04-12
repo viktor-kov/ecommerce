@@ -3,7 +3,7 @@
 @section('ticket')
     <section class="min-h-screen p-4">
         <form action="{{route('ticket.new')}}" method="GET">
-            <button type="submit" class="w-full p-4 bg-green-400">{{__('ticket.new-ticket')}}</button>
+            <button type="submit" class="w-full p-4 bg-green-400 text-white text-lg">{{__('ticket.new-ticket')}}</button>
         </form>
         <ul>
             @forelse ($tickets as $ticket)
