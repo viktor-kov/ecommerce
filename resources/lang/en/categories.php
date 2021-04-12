@@ -1,12 +1,12 @@
 <?php 
 
 return [
-    'category-ram' => 'RAM memory',
-    'category-cpu' => 'Processor',
+    'category-ram' => 'RAM Memories',
+    'category-cpu' => 'Processors',
     'category-motherboard' => 'Motherborads',
-    'category-case' => 'Cases',
-    'category-supply' => 'Supply',
-    'category-disk' => 'Disk and SSD',
-    'category-cooling' => 'Cooling',
+    'category-case' => 'Computer Cases',
+    'category-supply' => 'Computer Supplies',
+    'category-disk' => 'Disks and SSDs',
+    'category-cooling' => 'Coolings',
     'category-gpu' => 'Graphic cards',
 ];
