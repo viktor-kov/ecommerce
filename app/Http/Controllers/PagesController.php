@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use App\Models\User;
 use App\Models\Review;
 use App\Models\Invoice;

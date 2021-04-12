@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Invoice;
-use Illuminate\Http\Request;
-use Stripe\Service\OrderService;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller

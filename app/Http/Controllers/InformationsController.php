@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInformationRequest;
 use App\Models\Informations;
-use Illuminate\Http\Request;
 
 class InformationsController extends Controller
 {

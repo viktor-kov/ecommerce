@@ -7,8 +7,6 @@ use Stripe\Stripe;
 use App\Models\Order;
 use App\Models\Invoice;
 use App\Models\Informations;
-use Illuminate\Http\Request;
-use Stripe\Checkout\Session;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\StorageProduct;

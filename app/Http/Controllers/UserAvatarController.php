@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AvatarUpdateRequest;
-use Laravel\Jetstream\Http\Controllers\Inertia\UserProfileController;
 
 class UserAvatarController extends Controller
 {

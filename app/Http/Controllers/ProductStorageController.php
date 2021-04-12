@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductAmountUpdateRequest;
-use Illuminate\Http\Request;
 use App\Models\StorageProduct;
 
 class ProductStorageController extends Controller

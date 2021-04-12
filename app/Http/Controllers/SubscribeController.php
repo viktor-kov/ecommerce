@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSubscriptionRequest;
 use App\Models\EmailSubscription;
-use Illuminate\Http\Request;
-use App\Models\Subscriptions;
 
 class SubscribeController extends Controller
 {

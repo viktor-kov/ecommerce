@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
 use App\Models\Product;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Models\StorageProduct;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Storage;

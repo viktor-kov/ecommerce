@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
-use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {   
