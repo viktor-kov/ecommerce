@@ -6,10 +6,10 @@ use Livewire\Component;
 use App\Models\StorageProduct;
 
 class StorageUpdate extends Component
-{
+{   
     public $single_product;
     public $product_amount_update;
-    protected $product_id;
+    public $product_id;
 
     public function mount($single_product) {
         $this->product_amount_update = $single_product->product_amount;
@@ -23,11 +23,10 @@ class StorageUpdate extends Component
 
         $this->validate();
 
-        //retrieving product_id
-        $product_id = $this->single_product->product_id;
+        $this->product_id = $this->single_product->product_id;
 
         //find or fail by product id
-        $product_amount = StorageProduct::where('product_id', $product_id)->firstOrFail();
+        $product_amount = StorageProduct::where('product_id', $this->product_id)->firstOrFail();
 
         //supdate the amount
         $product_amount->update([
