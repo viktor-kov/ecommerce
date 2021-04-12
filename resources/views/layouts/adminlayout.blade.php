@@ -36,5 +36,6 @@
                 @yield('stats')
             </section>
         </main>
+        @livewireScripts
         @yield('footer-js')
     </body>

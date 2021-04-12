@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
@@ -15,8 +16,8 @@ use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\UserAvatarController;
 use App\Http\Controllers\UserTicketController;
 use App\Http\Controllers\InformationsController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SpecificationController;
+use App\Http\Controllers\ProductStorageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,22 +33,22 @@ use App\Http\Controllers\SpecificationController;
 //main routes
 Route::get('/', [PagesController::class, 'home'])->name('home.index');
 Route::get('/profile', [PagesController::class, 'userProfile'])->name('profile.show');
-Route::get('/admin', [PagesController::class, 'adminPanel'])->middleware('admin')->name('adminpanel');
+Route::get('/admin', [PagesController::class, 'adminPanel'])->middleware(['auth', 'admin'])->name('adminpanel');
 Route::get('/products/{id}/{slug?}', [PagesController::class, 'productsShow'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 //product routes
-Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware('admin')->name('allproducts');;
-Route::get('/product/new', [PagesController::class, 'newProduct'])->middleware('admin')->name('newproduct');
-Route::post('/product/add', [ProductController::class, 'productStore'])->middleware('admin')->name('addproduct');
-Route::get('/product/edit/{id?}', [PagesController::class, 'editProduct'])->middleware('admin')->name('editproduct');
-Route::put('/product/edit/{id}', [ProductController::class, 'productUpdate'])->middleware('admin')->name('updateproduct');
-Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete'])->middleware('admin')->name('deleteproduct');
+Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware(['auth', 'admin'])->name('allproducts');;
+Route::get('/product/new', [PagesController::class, 'newProduct'])->middleware(['auth', 'admin'])->name('newproduct');
+Route::post('/product/add', [ProductController::class, 'productStore'])->middleware(['auth', 'admin'])->name('addproduct');
+Route::get('/product/edit/{id?}', [PagesController::class, 'editProduct'])->middleware(['auth', 'admin'])->name('editproduct');
+Route::put('/product/edit/{id}', [ProductController::class, 'productUpdate'])->middleware(['auth', 'admin'])->name('updateproduct');
+Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete'])->middleware(['auth', 'admin'])->name('deleteproduct');
 
 
 
 //user info routes
-Route::put('/user/role/{id}', [UserRoleController::class, 'updateUserRole'])->where(['id' => '[0-9]+'])->middleware('admin')->name('userupdate');
-Route::get('/users/show/{id?}', [PagesController::class, 'showAllUsers'])->where(['id' => '[0-9]+'])->middleware('admin')->name('allusers');
+Route::put('/user/role/{id}', [UserRoleController::class, 'updateUserRole'])->where(['id' => '[0-9]+'])->middleware(['auth', 'admin'])->name('userupdate');
+Route::get('/users/show/{id?}', [PagesController::class, 'showAllUsers'])->where(['id' => '[0-9]+'])->middleware(['auth', 'admin'])->name('allusers');
 Route::put('/user/informations', [InformationsController::class, 'informationsUpdate'])->middleware('auth')->name('informations.update');
 Route::put('/avatar', [UserAvatarController::class, 'avatarUpdate'])->middleware('auth')->name('avatar.update');
 
@@ -71,19 +72,19 @@ Route::put('/password', [PasswordController::class, 'passwordUpdate'])->middlewa
 Route::get('/order/show/{id}', [OrderController::class, 'showOrderGuest'])->name('orderguest.show');
 Route::get('/invoice/show/{id}', [InvoiceController::class, 'invoiceShow'])->name('invoice.show');
 
-Route::get('/orders/show', [PagesController::class, 'ordersShow'])->middleware('admin')->name('orders');
-Route::get('/orders/{category}', [OrderController::class, 'showOrderCategory'])->middleware('admin')->name('orders.category');
-Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware('admin')->name('order-status.update');
-Route::get('/orders/show/{id}', [OrderController::class, 'showOrder'])->middleware('admin')->name('order.show');
-Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware('admin')->name('order.finish');
+Route::get('/orders/show', [PagesController::class, 'ordersShow'])->middleware(['auth', 'admin'])->name('orders');
+Route::get('/orders/{category}', [OrderController::class, 'showOrderCategory'])->middleware(['auth', 'admin'])->name('orders.category');
+Route::put('/order/{id}/{status}', [InvoiceController::class, 'updateStatus'])->middleware(['auth', 'admin'])->name('order-status.update');
+Route::get('/orders/show/{id}', [OrderController::class, 'showOrder'])->middleware(['auth', 'admin'])->name('order.show');
+Route::put('/finish/order/{id}', [InvoiceController::class, 'finishOrder'])->middleware(['auth', 'admin'])->name('order.finish');
 
 Route::get('/specifications/{category_id}/{product_id?}', [SpecificationController::class, 'specificationsShow'])->middleware('ajax')->name('spec.show');
 
 
 //routes for storing reviews, getting and deleting them
 Route::post('/review', [ReviewController::class, 'reviewStore'])->middleware('auth')->name('review.store');
-Route::get('/reviews/show', [ReviewController::class, 'reviewIndex'])->middleware('admin')->name('review.index');
-Route::delete('/review/{id}', [ReviewController::class, 'reviewDelete'])->middleware('admin')->name('review.destroy');
+Route::get('/reviews/show', [ReviewController::class, 'reviewIndex'])->middleware(['auth', 'admin'])->name('review.index');
+Route::delete('/review/{id}', [ReviewController::class, 'reviewDelete'])->middleware(['auth', 'admin'])->name('review.destroy');
 
 //routes for tickets
 Route::get('/tickets', [UserTicketController::class, 'ticketsIndex'])->middleware('auth')->name('tickets.index');
@@ -102,6 +103,10 @@ Route::get('/career', [PagesController::class, 'career'])->name('career');
 Route::get('/search', [SearchController::class, 'productSearch'])->name('product.search');
 
 Route::get('/lang/{lang}', [LanguageController::class, 'setLanguage'])->name('lang');
+
+//routes for starage
+Route::get('/storage', [PagesController::class, 'productsStorage'])->middleware(['auth', 'admin'])->name('products.storage');
+Route::put('/storage/update/{product_id}', [ProductStorageController::class, 'updateProductAmount'])->middleware(['auth', 'admin'])->name('productamount.update');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesController::class, 'userProfile'])->name('profile');
 

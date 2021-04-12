@@ -12,6 +12,10 @@ class StorageProduct extends Model
 
     public $timestamps = false;
 
+    public $fillable = [
+        'product_amount',
+    ];
+
     public function product() {
         return $this->belongsTo(Product::class);
     }

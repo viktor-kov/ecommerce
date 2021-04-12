@@ -23,7 +23,6 @@ class Product extends Model
     protected $hidden = [
         'slug',
         'without_dph',
-        'photo_path',
     ];
 
     public function amount() {

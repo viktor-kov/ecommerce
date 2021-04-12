@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\UserAction;
 use App\Models\Informations;
+use App\Models\StorageProduct;
 use App\Services\AdminServices;
 use App\Services\ProductService;
 use App\Models\EmailSubscription;
@@ -174,5 +175,13 @@ class PagesController extends Controller
         return view('admin.orders', [
             'orders' => Invoice::orderBy('created_at', 'DESC')->where('active', 1)->get(),
         ]);
+    }
+
+    //return all products in storage
+    public function productsStorage() {
+
+        $productsInStorage = StorageProduct::paginate(10);
+        
+        return view('admin.storage', ['products' => $productsInStorage]);
     }
 }
