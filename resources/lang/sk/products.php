@@ -82,4 +82,5 @@ return [
     'unavailable' => 'Produkt je momentálne nedostupný',
     'amount-updated' => 'Počet kusov bol aktualizovaný',
     'update-amount' => 'Aktualizovať počet',
+    'unavailable-short' => 'Produkt je nedostupný',
 ];

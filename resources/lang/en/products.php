@@ -82,5 +82,6 @@ return [
     'unavailable' => 'The product is currently unavailable',
     'amount-updated' => 'Product amount has been updated',
     'update-amount' => 'Update amount',
+    'unavailable-short' => 'Product is unavailable',
     
 ]; 

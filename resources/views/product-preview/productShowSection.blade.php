@@ -15,7 +15,7 @@
                         <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer block w-full hover:bg-green-500"><i class="fas fa-shopping-basket mr-2"></i>{{$product->price}}€</button>
                     </form>
                 @else
-                    <p class="p-4 bg-red-400 text-white w-full block text-center">{{__('products.unavailable')}}</p>
+                    <p class="p-4 bg-red-400 text-white w-full block text-center">{{__('products.unavailable-short')}}</p>
                 @endif
             </div>
         </div>

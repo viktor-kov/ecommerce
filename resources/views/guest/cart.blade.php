@@ -74,7 +74,7 @@
     @if ($featured_products->isNotEmpty())
         <section class="mt-20">
             <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
-            <ul class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-2 mt-10">
+            <ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10">
                 @foreach ($featured_products as $product) 
                     @include('product-preview.productShowSection')
                 @endforeach
