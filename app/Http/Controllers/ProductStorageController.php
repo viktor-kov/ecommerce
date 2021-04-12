@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductAmountUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\StorageProduct;
 
 class ProductStorageController extends Controller
 {   
     //update product amount
-    public function updateProductAmount(Request $request, $product_id) {
+    public function updateProductAmount(ProductAmountUpdateRequest $request, $product_id) {
 
         //find or fail by product id
         $product_amount = StorageProduct::where('product_id', $product_id)->firstOrFail();
@@ -19,6 +20,6 @@ class ProductStorageController extends Controller
         ]);
         
         //return
-        return back();
+        return back()->with('success', __('products.amount-updated'));
     }
 }
