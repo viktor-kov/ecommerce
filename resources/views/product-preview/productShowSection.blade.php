@@ -8,11 +8,15 @@
                 <a href="{{route('product.show', ['id' => $product->category, 'slug' => $product->slug])}}">{{$product->name}}</a>
             </h2>
             <div class="product-price items-center mt-4">
-                <form action="{{route('cart.store')}}" method="post">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                    <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer block w-full hover:bg-green-500"><i class="fas fa-shopping-basket mr-2"></i>{{$product->price}}€</button>
-                </form>
+                @if ($product->amount->product_amount > 0)
+                    <form action="{{route('cart.store')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer block w-full hover:bg-green-500"><i class="fas fa-shopping-basket mr-2"></i>{{$product->price}}€</button>
+                    </form>
+                @else
+                    <p class="p-4 bg-red-400 text-white w-full block text-center">{{__('products.unavailable')}}</p>
+                @endif
             </div>
         </div>
     </a>
