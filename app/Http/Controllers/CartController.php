@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\StorageProduct;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -78,8 +79,28 @@ class CartController extends Controller
     //update the cart quantity
     public function cartUpdate($row_id, Request $request) {
 
+        //wanted amount of product
         $qty = $request->qty;
-        Cart::update($row_id, $qty);
-        return redirect()->route('cart.index')->with('success', __('cart.updated-product-qty'));
+
+        //check if this amount is predefined
+        if(in_array($qty, [1, 2, 3, 4, 5])) {
+
+            //get the product from cart
+            $product_in_cart = Cart::get($row_id);
+
+            //get the product from db 
+            $product_in_storage = StorageProduct::where('product_id', $product_in_cart->id)->firstOrFail();
+
+            //if our wanted quantity is over than the amount in db, we will show error mesage
+            if($qty > $product_in_storage->product_amount) {
+                return redirect()->route('cart.index')->with('error', __('cart.not-enought-amount'));
+            }
+
+            //update the product quantitny in cart
+            Cart::update($row_id, $qty);
+            return redirect()->route('cart.index')->with('success', __('cart.updated-product-qty'));
+        }
+
+        return back()->with('error', __('other.error'));
     }
 }

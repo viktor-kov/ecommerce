@@ -16,7 +16,5 @@ return [
     'work-with-us' => 'Pracuj s nami!',
     'searched-for' => 'Hľadali ste výraz ',
     'no-search' => 'Žiadne výsledky pre ',
+    'error' => 'Chyba, skúste znovu',
 ];
-
-
-?>

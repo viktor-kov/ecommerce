@@ -16,6 +16,5 @@ return [
     'work-with-us' => 'Work with us!',
     'searched-for' => 'Searched for ',
     'no-search' => 'No results for ',
+    'error' => 'Error, try again',
 ];
-
-?>
