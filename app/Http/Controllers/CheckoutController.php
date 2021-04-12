@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests\InvoiceRequest;
+use App\Models\StorageProduct;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -87,6 +88,10 @@ class CheckoutController extends Controller
                     'quantity' => $product->qty,
                     'price' => $product->price,
                 ];
+
+                //decrement the product amount in our db
+                StorageProduct::where('product_id', $product->id)
+                    ->decrement('product_amount', $product->qty);
             }
             //inserting all bought products to DB
             Order::insert($products_array);
