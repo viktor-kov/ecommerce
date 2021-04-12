@@ -53,7 +53,7 @@ class UserInformationsUpdate extends Component
             'phone_number' => $this->phone_number,
         ]);
         
-        session()->flash('success', __('other.address-updated'));
+        session()->flash('informations-updated', __('other.address-updated'));
     }
 
     public function render()
