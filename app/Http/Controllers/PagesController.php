@@ -51,13 +51,13 @@ class PagesController extends Controller
             $product_category = $product->category;
 
             $product_specifications = new ProductService;
-            
+
             //getting the product specifications = the return is array of product spec and spec view.
             $product_specifications = $product_specifications->showProductSpecifications($product_category, $product_id);
-            
-            //trying to get random 4 products from the current product category, but when there is an error, 
+
+            //trying to get random 4 products from the current product category, but when there is an error,
             //we will choose 4 random products from all of the products
-            //but when we dont have 4 random products, we will choose all products (with different slug) 
+            //but when we dont have 4 random products, we will choose all products (with different slug)
             //which are avaliable or return empty array
             try {
                 $featured_products = Product::where('category', $product_category)->where('slug', '!=', $slug)->get()->random(4);
@@ -75,10 +75,10 @@ class PagesController extends Controller
                 ->join('users', 'reviews.user_id', '=', 'users.id')
                 ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
                 ->get();
-            
+
             //product amount
             $amount = $product->amount;
-            
+
             return view('guest.singleProduct', [
                 'reviews' => $reviews,
                 'showed_product' => $product,
@@ -95,7 +95,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function userProfile() {   
+    public function userProfile() {
         return view('guest.profile', [
             'informations' => Informations::where('user_id', auth()->user()->id)->first(),
             'invoices' => Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get()
@@ -123,7 +123,8 @@ class PagesController extends Controller
     public function showAllUsers($id = null) {
         if($id) {
             return view('admin.userProfileAdmin', [
-                'user' => User::where('id', $id)->first()
+                'user' => User::where('id', $id)->first(),
+                'informations' => Informations::where('user_id', $id)->first(),
             ]);
         }
         else {
@@ -165,7 +166,7 @@ class PagesController extends Controller
         ]);
 
     }
-    
+
     public function thankyou() {
         return view('guest.thankyou');
     }
@@ -180,7 +181,7 @@ class PagesController extends Controller
     public function productsStorage() {
 
         $productsInStorage = StorageProduct::paginate(10);
-        
+
         return view('admin.storage', ['products' => $productsInStorage]);
     }
 }
