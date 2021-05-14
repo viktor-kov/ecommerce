@@ -11,8 +11,8 @@
 @endsection
 
 @section('extra-js')
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -37,7 +37,7 @@
                 <aside class="buy-buttons">
                     @if ($amount == 0)
                         <p class="p-4 bg-red-400 text-white w-full block text-center">{{__('products.unavailable')}}</p>
-                    @else 
+                    @else
                         <form action="{{route('cart.store')}}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{$showed_product->id}}">
@@ -57,44 +57,46 @@
 
 @section('often-bought')
 <ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10 mb-10 p-2">
-    @foreach ($featured_products as $product) 
+    @foreach ($featured_products as $product)
         @include('product-preview.productShowSection')
     @endforeach
 </ul>
 @endsection
 
 @section('reviews')
-    <h1 class="text-3xl">{{__('review.reviews')}}</h1>
-    <ul class="flex overflow-x-auto mb-2">
-        @forelse ($reviews as $review)
-            <li class="mr-2">
-                <section class="w-72 h-72 p-4 border border-dashed overflow-y-auto">
-                    <header class="pb-1 border-dashed border-b">
-                        <strong>&commat;{{$review->name}}</strong>
-                    </header>
-                    <small class="text-xs">
-                        {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i | d.m.Y')}}
-                    </small>
-                    <body>
+    <section class="p-2">
+        <h1 class="text-3xl">{{__('review.reviews')}}</h1>
+        <ul class="flex overflow-x-auto mb-2">
+            @forelse ($reviews as $review)
+                <li class="mr-2">
+                    <section class="w-72 h-72 p-4 border border-dashed overflow-y-auto">
+                        <header class="pb-1 border-dashed border-b">
+                            <strong>&commat;{{$review->name}}</strong>
+                        </header>
+                        <small class="text-xs">
+                            {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i | d.m.Y')}}
+                        </small>
+                        <body>
                         <section class="mt-4">
                             {{$review->text}}
                         </section>
-                    </body>
-                </section>
-            </li>
-        @empty
-            <li class="text-3xl">{{__('review.no-review')}}</li>
-        @endforelse
-    </ul>
-    @auth
-        <section class="border border-dashed">
-            <form action="{{route('review.store')}}" method="POST">
-                @csrf
-                <input type="hidden" name="product_id" value="{{$showed_product->id}}">
-                <textarea name="review_text" rows="5"class="w-full p-2" placeholder="{{__('review.your-review')}}"></textarea>
-                <input type="hidden" name="product_slug" value="{{$showed_product->slug}}">
-                <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">{{__('review.add-review')}}</button>
-            </form>
-        </section>
-    @endauth
+                        </body>
+                    </section>
+                </li>
+            @empty
+                <li class="text-3xl">{{__('review.no-review')}}</li>
+            @endforelse
+        </ul>
+        @auth
+            <section>
+                <form action="{{route('review.store')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$showed_product->id}}">
+                    <textarea name="review_text" rows="5" class="w-full p-2 border border-dashed" placeholder="{{__('review.your-review')}}"></textarea>
+                    <input type="hidden" name="product_slug" value="{{$showed_product->slug}}">
+                    <button type="submit" class="block w-full p-4 bg-green-400 text-white cursor-pointer">{{__('review.add-review')}}</button>
+                </form>
+            </section>
+        @endauth
+    </section>
 @endsection
