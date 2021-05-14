@@ -69,7 +69,7 @@
              </div>
          </article>
      @else
-        <h1>No informations provided</h1>
+        <h1>{{__('admin.no-informations')}}</h1>
      @endif
  </section>
 @endsection
