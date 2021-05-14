@@ -11,8 +11,8 @@
 @endsection
 
 @section('extra-js')
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -21,9 +21,9 @@
 @endsection
 
 @section('content')
-    <section class="grid grid-cols-1 md:grid-cols-2 md:mt-10 md:p-10">
-        <section class="avatar flex flex-col m-auto">
-            <img src="{{asset('img/avatars/'.auth()->user()->profile_photo_path)}}" alt="" class="h-72 w-72 rounded-full border border-black">
+    <section class="grid grid-cols-1 md:grid-cols-2 mt-2 md:mt-10 md:p-10">
+        <section class="avatar flex flex-col mx-auto">
+            <img src="{{asset('img/avatars/'.auth()->user()->profile_photo_path)}}" alt="" class="h-72 w-72 mx-auto rounded-full border border-black">
             <section class="mt-8">
                 <form action="{{route('avatar.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
