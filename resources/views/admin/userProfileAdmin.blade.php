@@ -22,7 +22,7 @@
 
 @section('stats')
 
- <section class="grid grid-cols-2 gap-x-1 mt-12">
+ <section class="grid grid-cols-1 md:grid-cols-2 gap-x-1 mt-12 p-2">
      <section>
         <h1>{{__('admin.email')}} {{$user->email}}</h1>
         <p>{{__('admin.registered')}} {{$user->created_at}}</p>
@@ -43,7 +43,7 @@
         <img src="{{asset('img/avatars/'.$user->profile_photo_path)}}" alt="" class="h-72 w-72 rounded-full border border-black">
     </aside>
  </section>
- <section>
+ <section class="p-2">
      @if(isset($informations))
          <article class="p-4">
              <div>
