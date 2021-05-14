@@ -11,8 +11,8 @@
 @endsection
 
 @section('extra-js')
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -22,8 +22,9 @@
 
 
 @section('stats')
-<ul class="w-full">
-    @foreach ($users as $user)
+<section class="p-2">
+    <ul class="w-full">
+        @foreach ($users as $user)
             <li class="w-full mt-1 bg-gray-200 border border-black">
                 <a href="{{route('allusers', ['id' => $user->id])}}">
                     <section class="flex justify-between p-4">
@@ -32,9 +33,10 @@
                     </section>
                 </a>
             </li>
-    @endforeach
-</ul>
-<p class="mt-8">
-    {{$users->links()}}
-</p>
+        @endforeach
+    </ul>
+    <p class="mt-8">
+        {{$users->links()}}
+    </p>
+</section>
 @endsection
