@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'admin-panel' => 'Admin panel',
@@ -24,6 +24,5 @@ return [
     'order-completed' => 'Objednávka bola vybavená',
     'user-role-updated' => 'Rola bola zmenená',
     'amount' => 'Počet kusov',
+    'no-informations' => 'Žiadne informácie o užívateľovi',
 ];
-
-?>

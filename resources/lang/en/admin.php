@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'admin-panel' => 'Admin panel',
@@ -24,6 +24,5 @@ return [
     'order-completed' => 'Order has been completed',
     'user-role-updated' => 'Role was changed',
     'amount' => 'Amount',
+    'no-informations' => 'No informations about this user',
 ];
-
-?>

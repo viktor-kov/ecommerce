@@ -44,28 +44,32 @@
     </aside>
  </section>
  <section>
-    <article class="p-4">
-         <div>
-             <h1>{{__('profile.name')}}</h1> <p class="border border-black block w-full p-1">{{$informations->name}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.lastname')}}</h1> <p class="border border-black block w-full p-1">{{$informations->lastname}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.town')}}</h1> <p class="border border-black block w-full p-1">{{$informations->town}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.zip')}}</h1> <p class="border border-black block w-full p-1">{{$informations->psc}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.street')}}</h1> <p class="border border-black block w-full p-1">{{$informations->street}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.house-id')}}</h1> <p class="border border-black block w-full p-1">{{$informations->house_id}}</p>
-         </div>
-         <div>
-             <h1>{{__('profile.phone-number')}}</h1> <p class="border border-black block w-full p-1">{{$informations->phone_number}}</p>
-         </div>
-     </article>
+     @if(isset($informations))
+         <article class="p-4">
+             <div>
+                 <h1>{{__('profile.name')}}</h1> <p class="border border-black block w-full p-1">{{$informations->name}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.lastname')}}</h1> <p class="border border-black block w-full p-1">{{$informations->lastname}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.town')}}</h1> <p class="border border-black block w-full p-1">{{$informations->town}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.zip')}}</h1> <p class="border border-black block w-full p-1">{{$informations->psc}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.street')}}</h1> <p class="border border-black block w-full p-1">{{$informations->street}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.house-id')}}</h1> <p class="border border-black block w-full p-1">{{$informations->house_id}}</p>
+             </div>
+             <div>
+                 <h1>{{__('profile.phone-number')}}</h1> <p class="border border-black block w-full p-1">{{$informations->phone_number}}</p>
+             </div>
+         </article>
+     @else
+        <h1>No informations provided</h1>
+     @endif
  </section>
 @endsection
