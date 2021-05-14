@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReviewStoreRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -20,12 +21,12 @@ class ReviewController extends Controller
     }
 
     //storing the review = for one product we can have only one review (each user)
-    public function reviewStore(Request $request) {
+    public function reviewStore(ReviewStoreRequest $request) {
         $user_id = auth()->user()->id;
-        Review::firstOrCreate([
+
+        Review::create([
             'product_id' => $request->product_id,
             'user_id' => $user_id,
-        ],[
             'text' => $request->review_text,
         ]);
 
