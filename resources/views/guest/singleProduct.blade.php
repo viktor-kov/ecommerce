@@ -74,7 +74,7 @@
                             <strong>&commat;{{$review->name}}</strong>
                         </header>
                         <small class="text-xs">
-                            {{Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $review->created_at)->format('H:i | d.m.Y')}}
+                            {{$review->created_at->diffForHumans()}}
                         </small>
                         <body>
                         <section class="mt-4">
