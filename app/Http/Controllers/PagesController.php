@@ -74,6 +74,7 @@ class PagesController extends Controller
             $reviews = Review::where('product_id', $product_id)
                 ->join('users', 'reviews.user_id', '=', 'users.id')
                 ->select('reviews.text', 'reviews.id', 'reviews.created_at', 'users.name')
+                ->latest()
                 ->get();
 
             //product amount
