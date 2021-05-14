@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 return [
     'review-added' => 'Recenzia pridaná',
@@ -7,4 +7,5 @@ return [
     'reviews' => 'Recenzie',
     'add-review' => 'Pridajte recenziu',
     'your-review' => 'Vaša recenzia...',
+    'log-in-for-review' => 'Pre pridávanie recenzií musíte byť prihlásený!',
 ];

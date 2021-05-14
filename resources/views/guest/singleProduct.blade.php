@@ -98,5 +98,10 @@
                 </form>
             </section>
         @endauth
+        @guest
+            <section>
+                <p class="text-3xl p-2 border bg-gray-200 text-center">{{__('review.log-in-for-review')}}</p>
+            </section>
+        @endguest
     </section>
 @endsection
