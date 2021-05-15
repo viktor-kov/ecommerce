@@ -20,19 +20,6 @@ class ReviewController extends Controller
         ]);
     }
 
-    //storing the review = for one product we can have only one review (each user)
-    public function reviewStore(ReviewStoreRequest $request) {
-        $user_id = auth()->user()->id;
-
-        Review::create([
-            'product_id' => $request->product_id,
-            'user_id' => $user_id,
-            'text' => $request->review_text,
-        ]);
-
-        return back()->with('success', __('review.review-added'));
-    }
-
     //deleting the review
     public function reviewDelete($id) {
         Review::where('id', $id)->delete();
