@@ -11,8 +11,8 @@
 @endsection
 
 @section('extra-js')
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -21,7 +21,7 @@
 @endsection
 
 @section('hero')
-    <img src="img/banner.jpg" alt="" class="w-full">
+    <img src="{{asset('img/wellcome-img.jpg')}}" alt="" class="w-full">
 @endsection
 
 @section('content')
