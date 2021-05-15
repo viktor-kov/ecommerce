@@ -6,7 +6,7 @@
     <ul class="flex justify-around text-2xl">
         <li class="pr-4">
             <section>
-                <aside @if($invoice->status == 400) class="text-green-400 text-center" @else class="text-red-500 text-center" @endif>
+                <aside @if($invoice->status >= 200) class="text-green-400 text-center" @else class="text-red-500 text-center" @endif>
                     <p>
                         {{__('order.packed')}}
                     </p>
@@ -16,7 +16,7 @@
         </li>
         <li class="pr-4">
             <section>
-                <aside @if($invoice->status == 400) class="text-green-400 text-center" @else class="text-red-500 text-center" @endif>
+                <aside @if($invoice->status >= 300) class="text-green-400 text-center" @else class="text-red-500 text-center" @endif>
                     <p>
                         {{__('order.shipped')}}
                     </p>

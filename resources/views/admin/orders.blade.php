@@ -11,7 +11,7 @@
 @endsection
 
 @section('extra-js')
-    <script type="text/javascript"> 
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -24,28 +24,28 @@
         <li class="mb-1 bg-green-400 p-2">
             @if (request()->segment(count(request()->segments())) == "show")
                 <strong><a href="{{route('orders')}}">{{__('order.order-active')}}</a></strong>
-            @else 
+            @else
                 <a href="{{route('orders')}}">{{__('order.order-active')}}</a>
             @endif
         </li>
         <li class="mb-1 bg-green-400 p-2">
             @if (request()->segment(count(request()->segments())) == 200)
                 <strong><a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a></strong>
-            @else 
+            @else
                 <a href="{{route('orders.category', ['category' => 200])}}">{{__('order.packed')}}</a>
             @endif
         </li>
         <li class="mb-1 bg-green-400 p-2">
             @if (request()->segment(count(request()->segments())) == 300)
                 <strong><a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a></strong>
-            @else 
+            @else
                 <a href="{{route('orders.category', ['category' => 300])}}">{{__('order.shipped')}}</a>
             @endif
         </li>
         <li class="mb-1 bg-green-400 p-2">
             @if (request()->segment(count(request()->segments())) == 400)
                 <strong><a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a></strong>
-            @else 
+            @else
                 <a href="{{route('orders.category', ['category' => 400])}}">{{__('order.is-home')}}</a>
             @endif
         </li>
