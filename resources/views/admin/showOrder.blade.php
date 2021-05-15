@@ -41,7 +41,7 @@
                 <form action="{{route('order-status.update', ['id' => $invoice->id, 'status' => '200'])}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button type="submit" @if($invoice->status == 200 || $invoice->status >= 300) class="text-green-400" @else class="text-red-500" @endif>
+                    <button type="submit" @if($invoice->status >= 200) class="text-green-400" @else class="text-red-500" @endif>
                         <p>
                             {{__('order.packed')}}
                         </p>
@@ -55,7 +55,7 @@
                 <form action="{{route('order-status.update', ['id' => $invoice->id, 'status' => '300'])}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <button type="submit" @if($invoice->status == 300 || $invoice->status >= 400) class="text-green-400" @else class="text-red-500" @endif>
+                    <button type="submit" @if($invoice->status >= 300) class="text-green-400" @else class="text-red-500" @endif>
                         <p>
                             {{__('order.shipped')}}
                         </p>
