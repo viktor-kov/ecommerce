@@ -72,4 +72,18 @@
         <h1>{{__('admin.no-informations')}}</h1>
      @endif
  </section>
+ <section class="p-2">
+     <h1 class="text-3xl">{{__('products.previous-orders')}}</h1>
+     <ul>
+         @forelse($invoices as $invoice)
+             <li class="bg-gray-300  p-2 border border-black mb-1 flex justify-end">
+                 <a href="{{route('order.show', ['id' => $invoice->id])}}" class="w-full" target="_blank">{{$invoice->created_at->format('H:i | d.m.Y')}}</a>
+             </li>
+         @empty
+             <li>
+                 <p class="text-2xl">{{__('order.no-order')}}</p>
+             </li>
+         @endforelse
+     </ul>
+ </section>
 @endsection

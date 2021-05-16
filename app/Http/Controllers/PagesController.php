@@ -126,6 +126,7 @@ class PagesController extends Controller
             return view('admin.userProfileAdmin', [
                 'user' => User::where('id', $id)->first(),
                 'informations' => Informations::where('user_id', $id)->first(),
+                'invoices' => Invoice::where('user_id', $id)->latest()->get(),
             ]);
         }
         else {
