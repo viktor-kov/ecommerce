@@ -44,8 +44,9 @@
     </aside>
  </section>
  <section class="p-2">
+     <h1 class="text-3xl">{{__('checkout.ship-adress')}}</h1>
      @if(isset($informations))
-         <article class="p-4">
+         <article>
              <div>
                  <h1>{{__('profile.name')}}</h1> <p class="border border-black block w-full p-1">{{$informations->name}}</p>
              </div>
@@ -69,7 +70,7 @@
              </div>
          </article>
      @else
-        <h1>{{__('admin.no-informations')}}</h1>
+        <p class="text-2xl">{{__('admin.no-informations')}}</p>
      @endif
  </section>
  <section class="p-2">
