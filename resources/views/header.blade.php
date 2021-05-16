@@ -23,8 +23,8 @@
             <li class="pr-2"><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
             <li class="pr-2"><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
         @else
-            <li class="pr-2"><a href="{{route('profile')}}">{{auth()->user()->email}}</a></li>
-            <li class="pr-2"> 
+            <li class="pr-2"><a href="{{route('profile')}}">{{auth()->user()->name}}</a></li>
+            <li class="pr-2">
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
