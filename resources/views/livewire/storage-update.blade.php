@@ -10,7 +10,7 @@
             <form wire:submit.prevent="updateAmount" action="#" method="POST" class="w-full md:w-3/4">
                 @csrf
                 @method('PUT')
-                <input type="number" name="product_amount" id="product_amount" class="border border-black outline-none w-full p-1" wire:model="product_amount_update">
+                <input type="number" name="product_amount" id="product_amount" class="border border-black outline-none w-full p-1" wire:model.defer="product_amount_update">
                 <button type="submit" class="p-2 bg-green-400 w-full mt-1 text-white">{{__('products.update-amount')}}</button>
             </form>
         </div>
