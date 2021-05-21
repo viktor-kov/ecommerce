@@ -28,10 +28,10 @@ class CheckoutController extends Controller
 
     public function checkoutStore(InvoiceRequest $request)
     {
-        Stripe::setApiKey('sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo');
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $stripe = new \Stripe\StripeClient(
-            'sk_test_51IKNFzDzVSz0t3svjdJRAESEW0KkR73oB8uRitSg1cc9aJQEHEEV5AWsAc8LBl77OIOcuX5yqWd3Kj8mj9lSBu2S00CMiWhzzo'
+            env('STRIPE_SECRET')
           );
 
         $description = $request->name . ' ' . $request->lastname;
@@ -43,10 +43,10 @@ class CheckoutController extends Controller
               'cvc' => $request->card_cvc,
             ],
         ])->id;
-        
+
         //need to multiply the total price by 100x bcs the stripe is working with cents
         $price = Cart::subtotal() * 100;
-        
+
         //trying to charge the amount
         try {
             $charge = Charge::create(array(
