@@ -6,34 +6,34 @@
             </section>
         @endif
         <form wire:submit.prevent="updateInformations" action="#" method="POST" class="p-1 w-full">
-            @csrf 
+            @csrf
             @method('PUT')
                 <p class="w-full block">
-                    {{__('profile.name')}} <input type="text" name="name" class="border border-black block w-full p-1" wire:model="name">
+                    {{__('profile.name')}} <input type="text" name="name" class="border border-black block w-full p-1" wire:model.defer="name">
                 </p>
                 @error('name') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p class="w-full block">
-                    {{__('profile.lastname')}} <input type="text" name="lastname" class="border border-black block w-full p-1" wire:model="lastname">
+                    {{__('profile.lastname')}} <input type="text" name="lastname" class="border border-black block w-full p-1" wire:model.defer="lastname">
                 </p>
                 @error('lastname') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
-                    {{__('profile.town')}} <input type="text" name="town" class="border border-black block p-1 w-full" wire:model="town">
+                    {{__('profile.town')}} <input type="text" name="town" class="border border-black block p-1 w-full" wire:model.defer="town">
                 </p>
                 @error('town') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
-                    {{__('profile.zip')}} <input type="text" name="psc" class="border border-black block p-1 w-full" wire:model="psc">
+                    {{__('profile.zip')}} <input type="text" name="psc" class="border border-black block p-1 w-full" wire:model.defer="psc">
                 </p>
                 @error('zip') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
-                    {{__('profile.street')}} <input type="text" name="street" class="border border-black block p-1 w-full" wire:model="street">
+                    {{__('profile.street')}} <input type="text" name="street" class="border border-black block p-1 w-full" wire:model.defer="street">
                 </p>
                 @error('street') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
-                    {{__('profile.house-id')}} <input type="text" name="house_id" class="border border-black block p-1 w-full" wire:model="house_id">
+                    {{__('profile.house-id')}} <input type="text" name="house_id" class="border border-black block p-1 w-full" wire:model.defer="house_id">
                 </p>
                 @error('house_id') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
-                    {{__('profile.phone-number')}} <input type="text" name="phone_number" class="border border-black block p-1 w-full" wire:model="phone_number">
+                    {{__('profile.phone-number')}} <input type="text" name="phone_number" class="border border-black block p-1 w-full" wire:model.defer="phone_number">
                 </p>
                 @error('phone_number') <span class="text-red-500">{{ $message }}</span> @enderror
                 <p>
@@ -41,5 +41,5 @@
                 </p>
         </form>
     </div>
-    
+
 </div>
