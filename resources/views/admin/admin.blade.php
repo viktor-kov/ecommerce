@@ -27,10 +27,10 @@
 
 @section('footer-js')
 <script>
-    let data = {{$actions}}
-    let days = {!!$days!!}
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    let data = {{$actions}};
+    let days = {!!$days!!};
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: days,
