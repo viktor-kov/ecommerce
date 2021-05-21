@@ -62,7 +62,7 @@
         <ul>
         @foreach ($invoices as $invoice)
             <li class="bg-gray-300  p-2 border border-black mb-1 flex justify-end">
-                <a href="{{route('orderguest.show', ['id' => $invoice->id])}}" class="w-full" target="_blank">{{$invoice->created_at->format('H:i | d.m.Y')}}</a>
+                <a href="{{route('orderguest.show', ['id' => $invoice->id])}}" class="w-full flex justify-between" target="_blank"><span>{{__('profile.load-order')}}</span><span>{{$invoice->created_at->format('H:i | d.m.Y')}}</span></a>
             </li>
         @endforeach
         </ul>
