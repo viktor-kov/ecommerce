@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'name' => 'Meno',
@@ -14,4 +14,7 @@ return [
     'update-pwd' => 'Zmeniť heslo',
     'adminpanel' => 'Adminpanel',
     'new-avatar' => 'Avatar bol nahraný!',
+    'load-order' => 'Načítať objednávku',
+    'old-pwd' => 'Staré heslo:',
+    'new-pwd' => 'Nové heslo:',
 ];

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'name' => 'Name',
@@ -14,4 +14,7 @@ return [
     'update-pwd' => 'Update password',
     'adminpanel' => 'Adminpanel',
     'new-avatar' => 'Avatar was changed',
+    'load-order' => 'Load order',
+    'old-pwd' => 'Old password:',
+    'new-pwd' => 'New password:',
 ];
