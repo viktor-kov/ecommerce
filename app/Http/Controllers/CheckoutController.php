@@ -19,6 +19,11 @@ class CheckoutController extends Controller
     //returning the checkout view
     public function checkoutIndex()
     {
+        //if cart is empty, cant access the checkout page
+        if(count(Cart::content()) == 0) {
+            return redirect()->route('home.index');
+        }
+
         //if the user is logged in, get his informations. If not, return the view with nothing.
         if(auth()->user()) {
             return view('guest.checkout', ['informations' => Informations::where('user_id', auth()->user()->id)->first()]);
