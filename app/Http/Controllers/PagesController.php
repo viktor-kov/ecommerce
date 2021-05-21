@@ -170,6 +170,12 @@ class PagesController extends Controller
     }
 
     public function thankyou() {
+
+        //we can not access the thank you page when we dont have completed the order
+        if( !session()->has('order_completed')) {
+            return redirect()->route('home.index');
+        }
+
         return view('guest.thankyou');
     }
 

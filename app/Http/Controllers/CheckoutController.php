@@ -117,6 +117,6 @@ class CheckoutController extends Controller
         Cart::destroy();
 
         //returning to thank you page
-        return redirect()->route('thankyou.index');
+        return redirect()->route('thankyou.index')->with(['order_completed' => 'completed']);
     }
 }
