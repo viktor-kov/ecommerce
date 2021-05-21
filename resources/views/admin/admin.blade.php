@@ -5,7 +5,7 @@
 @endsection
 
 @section('navigation')
-    <section class="grid grid-cols-1 lg:grid-cols-4">
+    <section class="grid grid-cols-1 lg:grid-cols-4 p-1">
         <nav class="w-full">
             <ul class="text-lg font-semibold">
                 <li class="p-4 bg-gray-300 border border-black mb-1">{{__('admin.users')}}: {{$users}}</li>
