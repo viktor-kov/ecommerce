@@ -100,6 +100,43 @@
     <section class="bg-gray-300  p-2 border border-black mb-1 flex justify-end mt-4">
         <a href="{{route('invoice.show', ['id' => $invoice->invoice_name])}}" class="w-full" target="_blank">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format('H:i | d.m.Y') }}</a>
     </section>
+    <section>
+        <h1 class="text-3xl">{{__('order.ship-adress')}}</h1>
+        <table class="w-full">
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.name')}}</td>
+                <td class="border border-black p-1">{{$invoice->name}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.lastname')}}</td>
+                <td class="border border-black p-1">{{$invoice->lastname}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.email')}}</td>
+                <td class="border border-black p-1">{{$invoice->email}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.town')}}</td>
+                <td class="border border-black p-1">{{$invoice->town}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.psc')}}</td>
+                <td class="border border-black p-1">{{$invoice->psc}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.street')}}</td>
+                <td class="border border-black p-1">{{$invoice->street}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.house-id')}}</td>
+                <td class="border border-black p-1">{{$invoice->house_id}}</td>
+            </tr>
+            <tr>
+                <td class="border border-black p-1 w-1/4">{{__('profile.phone-number')}}</td>
+                <td class="border border-black p-1">{{$invoice->phone_number}}</td>
+            </tr>
+        </table>
+    </section>
     <section class="w-full">
         <iframe class="w-full h-96 p-2"
                 style="border:0"
