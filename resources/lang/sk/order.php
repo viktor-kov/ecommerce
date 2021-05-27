@@ -9,4 +9,5 @@ return [
     'completed' => 'Objednávka je dokončená',
     'order-active' => 'Aktívne objednávky',
     'no-order' => 'Žiadne objednávky',
+    'ship-adress' => 'Dodacia adresa',
 ];

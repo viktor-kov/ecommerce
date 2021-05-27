@@ -9,4 +9,5 @@ return [
     'completed' => 'Order is completed',
     'order-active' => 'Active orders',
     'no-order' => 'No orders',
+    'ship-adress' => 'Dodacia adresa',
 ];
