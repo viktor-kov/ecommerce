@@ -51,7 +51,7 @@
             <section class="h-full">
                 <div class="p-8">
                     <div class="relative">
-                        <img src="{{asset('img/' . $comparedProducts['productOne']['product']->photo_path)}}" alt="{{$comparedProducts['productOne']['product']->name}}" class="w-72 h-72 mx-auto">
+                        <img src="{{asset('img/' . $comparedProducts['productTwo']['product']->photo_path)}}" alt="{{$comparedProducts['productTwo']['product']->name}}" class="w-72 h-72 mx-auto">
                         <div class="absolute top-0 right-0">
                             <form action="{{route('comparison.delete', ['product_field' => 'product_2'])}}" method="POST">
                                 @csrf
