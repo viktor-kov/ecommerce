@@ -49,18 +49,14 @@
                     <form action="{{route('comparison.store')}}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$showed_product->id}}">
-                        <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer w-full block hover:bg-green-500"><i class="fas fa-balance-scale"></i>{{__('comparison.compare')}}</button>
+                        <button type="submit" class="p-4 border border-black cursor-pointer w-full block"><i class="fas fa-balance-scale mr-2"></i>{{__('comparison.compare')}}</button>
                     </form>
                 </aside>
             </div>
         </section>
         @include($specification_view)
     </div>
-
-
 @endsection
-
-
 
 @section('often-bought')
 <ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10 mb-10 p-2">
