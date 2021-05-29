@@ -49,7 +49,7 @@
                     <form action="{{route('comparison.store')}}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$showed_product->id}}">
-                        <button type="submit" class="p-4 bg-gray-300 cursor-pointer w-full block"><i class="fas fa-balance-scale"></i></button>
+                        <button type="submit" class="p-4 bg-green-400 text-white cursor-pointer w-full block hover:bg-green-500"><i class="fas fa-balance-scale"></i>{{__('comparison.compare')}}</button>
                     </form>
                 </aside>
             </div>
