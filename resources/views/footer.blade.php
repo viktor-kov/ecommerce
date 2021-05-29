@@ -6,6 +6,7 @@
                 <li><a href="{{route('contact')}}">{{__('other.contact')}}</a></li>
                 <li><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
                 <li><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
+                <li><a href="{{ route('comparison.show')}}">{{__('comparison.compare')}}</a></li>
             </ul>
         </nav>
     </div>
