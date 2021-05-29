@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductComparison extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'comparison_id',
+        'product_1',
+        'product_2',
+    ];
 }
