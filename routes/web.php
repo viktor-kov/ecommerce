@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ComparisonController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ReviewController;
@@ -56,7 +57,7 @@ Route::put('/avatar', [UserAvatarController::class, 'avatarUpdate'])->middleware
 Route::post('/subscribe', [SubscribeController::class, 'subscribeStore'])->name('subscribe.update');
 
 
-//cart 
+//cart
 Route::get('/cart', [CartController::class, 'cartIndex'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'cartStore'])->name('cart.store');
 Route::delete('/cart/{row_id}', [CartController::class, 'cartDestroy'])->name('cart.destroy');
@@ -113,4 +114,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/profile', [PagesControlle
 //fallback route
 Route::fallback(function () {
     abort(403);
+});
+
+
+Route::get('/comparison', [ComparisonController::class, 'showComparison'])->name('comparison.show');
+Route::post('/comparison', [ComparisonController::class, 'addToComparison'])->name('comparison.store');
+Route::get('/flush', function() {
+    session()->flush();
 });
