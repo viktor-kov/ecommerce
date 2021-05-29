@@ -45,6 +45,13 @@
                         </form>
                     @endif
                 </aside>
+                <aside class="mt-4">
+                    <form action="{{route('comparison.store')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{$showed_product->id}}">
+                        <button type="submit" class="p-4 bg-gray-300 cursor-pointer w-full block"><i class="fas fa-balance-scale"></i></button>
+                    </form>
+                </aside>
             </div>
         </section>
         @include($specification_view)
