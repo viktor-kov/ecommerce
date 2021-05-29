@@ -119,6 +119,5 @@ Route::fallback(function () {
 
 Route::get('/comparison', [ComparisonController::class, 'showComparison'])->name('comparison.show');
 Route::post('/comparison', [ComparisonController::class, 'addToComparison'])->name('comparison.store');
-Route::get('/flush', function() {
-    session()->flush();
-});
+Route::delete('/comparison/{product_field}', [ComparisonController::class, 'deleteFromComparison'])->name('comparison.delete');
+
