@@ -3,7 +3,7 @@
         <nav>
             <ul>
                 <li><a href="{{ route('show.gdpr')}}">{{__('other.gdpr')}}</a></li>
-                <li><a href="{{ route('show.businessConditions')}}">{{__('other.business-conditions')}}</a></li>
+                <li><a href="{{ route('show.termsOfUse')}}">{{__('other.terms-of-use')}}</a></li>
                 <li><a href="{{route('contact')}}">{{__('other.contact')}}</a></li>
                 <li><a href="{{ route('comparison.show')}}">{{__('comparison.compare')}}</a></li>
             </ul>

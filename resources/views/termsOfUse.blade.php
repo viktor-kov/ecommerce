@@ -4,7 +4,7 @@
     <section class="min-h-screen">
         <section>
             <p>
-                {{__('other.business-conditions')}}
+                {{__('other.terms-of-use')}}
             </p>
         </section>
     </section>

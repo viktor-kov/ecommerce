@@ -197,7 +197,7 @@ class PagesController extends Controller
         return view('gdpr');
     }
 
-    public function showBusinessConditions() {
-        return view('businessConditions');
+    public function showTermsOfUse() {
+        return view('termsOfUse');
     }
 }
