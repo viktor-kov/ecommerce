@@ -11,7 +11,7 @@ class ComparisonController extends Controller
 {
     public function showComparison(ProductService $productService) {
         if(! session('comparison.comparison_id')) {
-            abort(404);
+            return view('comparison.productComparison');
         }
 
         $comparedProducts = [];
