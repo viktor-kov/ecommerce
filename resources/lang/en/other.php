@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'thank-you' => 'Thank you for your purchase',
@@ -17,4 +17,6 @@ return [
     'searched-for' => 'Searched for ',
     'no-search' => 'No results for ',
     'error' => 'Error, try again',
+    'business-conditions' => 'Business conditions',
+    'gdpr' => 'GDPR',
 ];

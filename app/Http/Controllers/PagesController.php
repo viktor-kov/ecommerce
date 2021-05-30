@@ -192,4 +192,12 @@ class PagesController extends Controller
 
         return view('admin.storage', ['products' => $productsInStorage]);
     }
+
+    public function showGDPR() {
+        return view('gdpr');
+    }
+
+    public function showBusinessConditions() {
+        return view('businessConditions');
+    }
 }

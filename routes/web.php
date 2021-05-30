@@ -121,3 +121,6 @@ Route::get('/comparison', [ComparisonController::class, 'showComparison'])->name
 Route::post('/comparison', [ComparisonController::class, 'addToComparison'])->name('comparison.store');
 Route::delete('/comparison/{product_field}', [ComparisonController::class, 'deleteFromComparison'])->name('comparison.delete');
 
+Route::get('/gdpr', [PagesController::class, 'showGDPR'])->name('show.gdpr');
+Route::get('/businessconditions', [PagesController::class, 'showBusinessConditions'])->name('show.businessConditions');
+

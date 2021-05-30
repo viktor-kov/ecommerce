@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'thank-you' => 'Ďakujeme za Váš nákup!',
@@ -17,4 +17,6 @@ return [
     'searched-for' => 'Hľadali ste výraz ',
     'no-search' => 'Žiadne výsledky pre ',
     'error' => 'Chyba, skúste znovu',
+    'business-conditions' => 'Obchodné podmienky',
+    'gdpr' => 'GDPR',
 ];

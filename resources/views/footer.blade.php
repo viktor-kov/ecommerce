@@ -2,10 +2,9 @@
     <div class="list-none grid justify-around">
         <nav>
             <ul>
-                <li><a href="{{route('home.index')}}">{{__('other.home-page')}}</a></li>
+                <li><a href="{{ route('show.gdpr')}}">{{__('other.gdpr')}}</a></li>
+                <li><a href="{{ route('show.businessConditions')}}">{{__('other.business-conditions')}}</a></li>
                 <li><a href="{{route('contact')}}">{{__('other.contact')}}</a></li>
-                <li><a href="{{ route('login')}}">{{__('auth.login')}}</a></li>
-                <li><a href="{{ route('register')}}">{{__('auth.register')}}</a></li>
                 <li><a href="{{ route('comparison.show')}}">{{__('comparison.compare')}}</a></li>
             </ul>
         </nav>
