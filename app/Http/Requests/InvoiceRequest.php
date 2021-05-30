@@ -35,6 +35,8 @@ class InvoiceRequest extends FormRequest
             'card_exp_month' => 'required|digits:2',
             'card_exp_year' => 'required|digits:4',
             'card_cvc' => 'required|digits:3',
+            'agree_gdpr' => 'required',
+            'agree_terms_of_use' => 'required',
         ];
     }
 }

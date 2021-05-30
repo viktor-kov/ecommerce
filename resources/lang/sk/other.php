@@ -17,6 +17,8 @@ return [
     'searched-for' => 'Hľadali ste výraz ',
     'no-search' => 'Žiadne výsledky pre ',
     'error' => 'Chyba, skúste znovu',
-    'business-conditions' => 'Obchodné podmienky',
+    'terms-of-use' => 'Podmienky používania',
     'gdpr' => 'GDPR',
+    'agree-gdpr' => 'Súhlasím so spracovím osobných údajov',
+    'agree-temrs-of-use' => 'Súhlasím s podmienkami použitia',
 ];

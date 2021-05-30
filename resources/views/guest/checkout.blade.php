@@ -53,6 +53,12 @@
                     {{__('checkout.card-cvc')}} <input type="text" name="card_cvc" class="border border-black block p-1 outline-none w-full" value="{{ old('card_cvc') }}" placeholder="456" required>
                 </p>
                 <p>
+                    <input type="checkbox" name="agree_gdpr"> {!! __('other.agree-gdpr') !!}
+                </p>
+                <p>
+                    <input type="checkbox" name="agree_terms_of_use"> {!! __('other.agree-temrs-of-use')  !!}
+                </p>
+                <p>
                     <button type="submit" id="submitButton" class="p-4 w-full text-white text-xl mt-4 inline-block bg-green-400 cursor-pointer">{{__('checkout.total-sum')}} {{Cart::subtotal()}}€</button>
                 </p>
             </form>

@@ -17,6 +17,8 @@ return [
     'searched-for' => 'Searched for ',
     'no-search' => 'No results for ',
     'error' => 'Error, try again',
-    'business-conditions' => 'Business conditions',
+    'terms-of-use' => 'Terms of use',
     'gdpr' => 'GDPR',
+    'agree-gdpr' => 'Agree with GDPR',
+    'agree-temrs-of-use' => 'Agree with temrs of use',
 ];
