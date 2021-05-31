@@ -13,6 +13,7 @@ class ReviewController extends Controller
 
         $reviews = Review::join('users', 'reviews.user_id', '=', 'users.id')
                 ->select('reviews.user_id','reviews.id','reviews.text', 'reviews.created_at', 'users.name')
+                ->latest()
                 ->paginate(10);
 
         return view('admin.reviews', [
