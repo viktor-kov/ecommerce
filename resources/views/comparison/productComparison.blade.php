@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <h1 class="text-xl mt-4">
-                        <a href="{{route('product.show', ['id' => $comparedProducts['productOne']['product']->category, 'slug' => $comparedProducts['productOne']['product']->slug])}}">{{$comparedProducts['productOne']['product']->name}}</a>
+                        <a href="{{route('product.show', ['category_id' => $comparedProducts['productOne']['product']->category, 'slug' => $comparedProducts['productOne']['product']->slug])}}">{{$comparedProducts['productOne']['product']->name}}</a>
                     </h1>
                 </div>
                 @include($comparedProducts['productOne']['specificationsView'], ['product_specifications' => $comparedProducts['productOne']['specifications']])
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <h1 class="text-xl mt-4">
-                        <a href="{{route('product.show', ['id' => $comparedProducts['productTwo']['product']->category, 'slug' => $comparedProducts['productTwo']['product']->slug])}}">{{$comparedProducts['productTwo']['product']->name}}</a>
+                        <a href="{{route('product.show', ['category_id' => $comparedProducts['productTwo']['product']->category, 'slug' => $comparedProducts['productTwo']['product']->slug])}}">{{$comparedProducts['productTwo']['product']->name}}</a>
                     </h1>
                 </div>
                 @include($comparedProducts['productTwo']['specificationsView'], ['product_specifications' => $comparedProducts['productTwo']['specifications']])
