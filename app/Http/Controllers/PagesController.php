@@ -139,7 +139,9 @@ class PagesController extends Controller
     }
 
     public function newProduct() {
-        return view('admin.newProduct');
+        return view('admin.newProduct', [
+            'categories' => Category::get(),
+        ]);
     }
 
     public function productsAdminShow($slug = null) {

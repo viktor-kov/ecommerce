@@ -5,7 +5,7 @@
         function show(selected) {
             let product_category = selected.value;
             let url = '{{env('APP_URL')}}specifications/' + product_category;
-            
+
             $("#parameters").load(url);
         }
 
@@ -25,7 +25,7 @@
 
 @section('stats')
     <section>
-        <h1 class="text-center text-3xl">{{__('admin.add-product')}}</h1>    
+        <h1 class="text-center text-3xl">{{__('admin.add-product')}}</h1>
         <section class="bg-gray-200 p-4">
             <form action="{{route('addproduct')}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -48,14 +48,9 @@
                     {{__('admin.product-category')}}
                     <select name="product_category" id="role" class="w-3/4 p-1" onchange="show(this)">
                         <option value="" selected disabled hidden>Vyber kategóriu</option>
-                        <option value="1">Pamäť RAM</option>
-                        <option value="2">Procesory</option>
-                        <option value="3">Základné dosky</option>
-                        <option value="4">Počítačové skrine</option>
-                        <option value="5">Počítačové zdroje</option>
-                        <option value="6">Disky a SSD</option>
-                        <option value="7">Chladenie</option>
-                        <option value="8">Grafické karty</option>               
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{__('categories.'.$category->category_name)}}</option>
+                            @endforeach
                     </select>
                 </p>
                 <div id="parameters" class="mt-8"></div>
