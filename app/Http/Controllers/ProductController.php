@@ -69,6 +69,9 @@ class ProductController extends Controller
         $product_id = $request->id;
 
         $edited_product = Product::where('id', $product_id)->get()->first();
+
+        $categorySlug = $edited_product->getCategory->category_name;
+
         //from product name make slug
         $product_slug = Str::slug($request->product_name, '-');
 
@@ -88,13 +91,13 @@ class ProductController extends Controller
 
             //delete old specifications from old product category
             $productService->deleteSpecifications($product_id, $edited_product->category);
-
+            
+            $categorySlug = Product::find($product_id)->getCategory->category_name;
         }
 
         //update new specifications
         $productService->updateProductSpecification($request, $product_id);
 
-        $categorySlug = $edited_product->getCategory->category_name;
 
         return redirect()->route('product.show', ['category_id' => $categorySlug, 'slug' => $product_slug])->with('success', __('products.product-updated'));
     }
