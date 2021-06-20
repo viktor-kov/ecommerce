@@ -63,7 +63,7 @@
 
             newMessageHTML = `<li class="w-full p-4 bg-gray-100 mb-1 border border-black border-opacity-50">`+data.message+`</li>`;
         }
-       
+
         let existingMessages = ticketMessages.html();
 
         ticketMessages.html(existingMessages + newMessageHTML);
