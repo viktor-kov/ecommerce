@@ -28,4 +28,8 @@ class Product extends Model
     public function amount() {
         return $this->hasOne(StorageProduct::class);
     }
+
+    public function getCategory() {
+        return $this->hasOne(Category::class, 'id', 'category');
+    }
 }
