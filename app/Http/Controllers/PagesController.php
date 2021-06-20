@@ -40,7 +40,7 @@ class PagesController extends Controller
         return view('guest.career');
     }
 
-    public function productsShow($id, $slug = null) {
+    public function productsShow($category_id, $slug = null) {
         //if slug exist, than return view with product specifications
         if($slug) {
             //select product by slug from db
@@ -89,10 +89,12 @@ class PagesController extends Controller
                 'featured_products' => $featured_products,
             ]);
         }
+
+        $currentCategory = Category::where('category_name', $category_id)->firstOrFail();
+
         return view('guest.products', [
-            'id' => $id,
-            'products' => Product::all()->where('category', $id),
-            'category_name' => Category::where('id', $id)->first(),
+            'products' => Product::all()->where('category', $currentCategory->id),
+            'category_name' => $currentCategory->category_name,
         ]);
     }
 
