@@ -30,7 +30,7 @@
         <ul class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center pl-2 pr-2">
             @foreach ($categories as $category)
                 <li class="bg-gray-200 rounded-lg cursor-pointer block h-auto">
-                    <a href="{{route('product.show', ['id' => $category->id])}}">
+                    <a href="{{route('product.show', ['category_id' => $category->category_name])}}">
                         <img src="{{asset('img/categories/'.$category->category_photo)}}" alt="" class="mt-4 w-8/12 m-auto ">
                         <h2 class="mt-4 text-2xl">{{__('categories.'.$category->category_name)}}</h2>
                     </a>

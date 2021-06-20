@@ -35,7 +35,7 @@ use App\Http\Controllers\ProductStorageController;
 Route::get('/', [PagesController::class, 'home'])->name('home.index');
 Route::get('/profile', [PagesController::class, 'userProfile'])->name('profile.show');
 Route::get('/admin', [PagesController::class, 'adminPanel'])->middleware(['auth', 'admin'])->name('adminpanel');
-Route::get('/products/{id}/{slug?}', [PagesController::class, 'productsShow'])->where(['id' => '[0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
+Route::get('/products/{category_id}/{slug?}', [PagesController::class, 'productsShow'])->where(['category_id' => '[a-z-0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 //product routes
 Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware(['auth', 'admin'])->name('allproducts');;
