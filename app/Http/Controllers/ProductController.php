@@ -12,7 +12,7 @@ use App\Http\Requests\ProductDeleteRequest;
 use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
-{   
+{
     //showing all products
     public function index() {
         $products = Product::all();
@@ -35,7 +35,7 @@ class ProductController extends Controller
         $photo_name = $product_slug.'.'.$extension;
         $photo_path = $request->file('product_image')->storeAs('products', $photo_name, 'public');
 
-        $new_product->name = $product_name; 
+        $new_product->name = $product_name;
         $new_product->text = $request->product_description;
         $new_product->slug =  $product_slug;
         $new_product->category = $request->product_category;
@@ -47,16 +47,17 @@ class ProductController extends Controller
 
         $product_id = $new_product->id;
 
-        
+        $categorySlug = $new_product->getCategory->category_name;
+
         //save product specifications
         $productService->saveProductSpecifications($input_validated, $product_id, $request->product_category);
-        
+
         $product_storage = new StorageProduct;
         $product_storage->product_id = $product_id;
         $product_storage->product_amount = $request->product_amount;
         $product_storage->save();
-    
-        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-added'));
+
+        return redirect()->route('product.show', ['category_id' => $categorySlug, 'slug' => $product_slug])->with('success', __('products.product-added'));
     }
 
     //update the product
@@ -77,11 +78,11 @@ class ProductController extends Controller
         if($request->file('product_image')) {
            $product_photo = $productService->updateProductPhoto($request, $product_photo, $product_slug);
         }
-        
+
         //update product in main table
         $productService->updateProduct($request, $product_photo);
 
-        //if edited product category is different than the category we want to switch, 
+        //if edited product category is different than the category we want to switch,
         //than we will delete product specifications from the previous product category
         if($edited_product->category != $request->product_category) {
 
@@ -93,14 +94,16 @@ class ProductController extends Controller
         //update new specifications
         $productService->updateProductSpecification($request, $product_id);
 
-        return redirect()->route('product.show', ['id' => $request->product_category, 'slug' => $product_slug])->with('success', __('products.product-updated'));
+        $categorySlug = $edited_product->getCategory->category_name;
+
+        return redirect()->route('product.show', ['category_id' => $categorySlug, 'slug' => $product_slug])->with('success', __('products.product-updated'));
     }
 
     public function productDelete(ProductDeleteRequest $request) {
 
         $id = $request->id;
         $photo_path = $request->product_photo_path;
-        
+
         $delete_product = Product::where('id', $id)->delete();
 
         $delete_product_photo = Storage::disk('public')->delete($photo_path);
