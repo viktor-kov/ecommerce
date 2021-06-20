@@ -38,14 +38,14 @@ Route::get('/admin', [PagesController::class, 'adminPanel'])->middleware(['auth'
 Route::get('/products/{category_id}/{slug?}', [PagesController::class, 'productsShow'])->where(['category_id' => '[a-z-0-9]+', 'slug' => '[a-z-0-9]+'])->name('product.show');
 
 //product routes
-Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware(['auth', 'admin'])->name('allproducts');;
-Route::get('/product/new', [PagesController::class, 'newProduct'])->middleware(['auth', 'admin'])->name('newproduct');
-Route::post('/product/add', [ProductController::class, 'productStore'])->middleware(['auth', 'admin'])->name('addproduct');
-Route::get('/product/edit/{id?}', [PagesController::class, 'editProduct'])->middleware(['auth', 'admin'])->name('editproduct');
-Route::put('/product/edit/{id}', [ProductController::class, 'productUpdate'])->middleware(['auth', 'admin'])->name('updateproduct');
-Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete'])->middleware(['auth', 'admin'])->name('deleteproduct');
-
-
+Route::prefix('admin')->group(function () {
+    Route::get('/products/show/{slug?}', [PagesController::class, 'productsAdminShow'])->where(['slug' => '[a-z-0-9]+'])->middleware(['auth', 'admin'])->name('allproducts');;
+    Route::get('/product/new', [PagesController::class, 'newProduct'])->middleware(['auth', 'admin'])->name('newproduct');
+    Route::post('/product/add', [ProductController::class, 'productStore'])->middleware(['auth', 'admin'])->name('addproduct');
+    Route::get('/product/edit/{id?}', [PagesController::class, 'editProduct'])->middleware(['auth', 'admin'])->name('editproduct');
+    Route::put('/product/edit/{id}', [ProductController::class, 'productUpdate'])->middleware(['auth', 'admin'])->name('updateproduct');
+    Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete'])->middleware(['auth', 'admin'])->name('deleteproduct');
+});
 
 //user info routes
 Route::put('/user/role/{id}', [UserRoleController::class, 'updateUserRole'])->where(['id' => '[0-9]+'])->middleware(['auth', 'admin'])->name('userupdate');
