@@ -11,8 +11,8 @@
 @endsection
 
 @section('extra-js')
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         $(document).ready( function() {
             $('#message').delay(5000).fadeOut();
         });
@@ -28,10 +28,10 @@
             @foreach (Cart::content() as $product_in_cart)
                 <li class="mb-2 flex border-b border-black">
                     <section class="grid grid-cols-3 md:grid-cols-4 justify-around p-2 text-sm md:text-xl w-full">
-                        <a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}" class="hidden md:block">
+                        <a href="{{route('product.show', ['category_id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}" class="hidden md:block">
                             <img src="{{asset('img/'.$product_in_cart->options->product_photo)}}"  alt="{{$product_in_cart->name}}" class="h-24 w-auto">
                         </a>
-                        <h1 class="grid items-center"><a href="{{route('product.show', ['id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}">{{$product_in_cart->name}}</a></h1>
+                        <h1 class="grid items-center"><a href="{{route('product.show', ['category_id' => $product_in_cart->options->category, 'slug' => $product_in_cart->options->slug ])}}">{{$product_in_cart->name}}</a></h1>
                         <form action="{{route('cart.update', ['row_id' => $product_in_cart->rowId])}}" class="place-self-center" method="post">
                             @csrf
                             @method('PUT')
@@ -65,7 +65,7 @@
                 </section>
             </section>
             @endif
-            @else 
+            @else
             <section class="grid grid-rows-1 justify-center">
                 <h1 class="p-10 back text-3xl">{{__('checkout.empty-cart')}}</h1>
                 <a href="{{route('home.index')}}" class="p-4 border border-black text-center">{{__('checkout.start-shopping')}}</a>
@@ -75,7 +75,7 @@
         <section class="mt-20 p-2">
             <h1 class="hidden md:block text-2xl">{{__('checkout.featured-products')}}</h1>
             <ul class="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-x-2 mt-10">
-                @foreach ($featured_products as $product) 
+                @foreach ($featured_products as $product)
                     @include('product-preview.productShowSection')
                 @endforeach
             </ul>

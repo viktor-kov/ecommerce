@@ -43,13 +43,13 @@ class CartController extends Controller
         if($duplicates->isNotEmpty()) {
             return redirect()->route('cart.index');
         }
-        
+
         $product_id = $request->product_id;
         $product = Product::findOrFail($product_id);
         $product_name = $product->name;
         $product_slug = $product->slug;
         $product_price = $product->price;
-        $product_category = $product->category;
+        $product_category = $product->getCategory->category_name;
 
         $product_photo = $product->photo_path;
 
@@ -70,7 +70,7 @@ class CartController extends Controller
 
     //remove item from cart
     public function cartDestroy($row_id) {
-        
+
         Cart::remove($row_id);
 
         return redirect()->route('cart.index')->with('success', __('cart.deleted-from-cart'));
@@ -88,7 +88,7 @@ class CartController extends Controller
             //get the product from cart
             $product_in_cart = Cart::get($row_id);
 
-            //get the product from db 
+            //get the product from db
             $product_in_storage = StorageProduct::where('product_id', $product_in_cart->id)->firstOrFail();
 
             //if our wanted quantity is over than the amount in db, we will show error mesage
