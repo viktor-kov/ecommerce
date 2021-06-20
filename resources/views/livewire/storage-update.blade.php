@@ -2,7 +2,7 @@
     <section class="grid sm:grid-cols-1 md:grid-cols-3 justify-around p-2">
         <img src="{{asset('img/'.$single_product->product->photo_path)}}" alt="{{$single_product->product->name}}" class="w-20 h-20">
         <h1 class="text-xl grid items-center">
-            <a href="{{route('product.show', ['id' => $single_product->product->category, 'slug' => $single_product->product->slug])}}">
+            <a href="{{route('product.show', ['category_id' => $single_product->product->getCategory->category_name, 'slug' => $single_product->product->slug])}}">
                 {{$single_product->product->name}}
             </a>
         </h1>
